@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>LÉGER · Panel</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧊</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { DEFAULT: '#237d6d', light: '#349c87', soft: '#ddf3ec' } },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: Inter, system-ui, sans-serif; }
+    ::-webkit-scrollbar { width: 9px; height: 9px; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9px; }
+    .fade-in { animation: fade .25s ease; }
+    @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+  <!-- ───────────── LOGIN ───────────── -->
+  <div id="loginView" class="min-h-screen hidden items-center justify-center p-4">
+    <div class="w-full max-w-sm bg-white rounded-2xl shadow-xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <div class="text-4xl mb-2">🧊</div>
+        <h1 class="text-xl font-black text-brand">LÉGER</h1>
+        <p class="text-sm text-slate-400">Panel de pedidos</p>
+      </div>
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 mb-1">Usuario</label>
+          <input id="username" type="text" autocomplete="username" required
+            class="w-full rounded-lg border border-slate-200 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand/40" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 mb-1">Contraseña</label>
+          <input id="password" type="password" autocomplete="current-password" required
+            class="w-full rounded-lg border border-slate-200 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand/40" />
+        </div>
+        <p id="loginError" class="text-sm text-red-500 hidden"></p>
+        <button type="submit"
+          class="w-full bg-brand hover:bg-brand-light text-white font-bold py-2.5 rounded-lg transition">
+          Entrar
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ───────────── APP ───────────── -->
+  <div id="appView" class="hidden">
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3 justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">🧊</span>
+          <span class="font-black text-brand">LÉGER</span>
+          <span class="text-slate-300">·</span>
+          <span class="text-sm text-slate-400">Panel de pedidos</span>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <div id="presets" class="flex rounded-lg border border-slate-200 overflow-hidden text-sm">
+            <button data-days="0" class="preset px-3 py-1.5 hover:bg-slate-50">Hoy</button>
+            <button data-days="7" class="preset px-3 py-1.5 hover:bg-slate-50 border-l border-slate-200">7d</button>
+            <button data-days="30" class="preset px-3 py-1.5 hover:bg-slate-50 border-l border-slate-200 bg-brand/10 font-semibold text-brand">30d</button>
+            <button data-days="90" class="preset px-3 py-1.5 hover:bg-slate-50 border-l border-slate-200">90d</button>
+          </div>
+          <input id="startDate" type="date" class="rounded-lg border border-slate-200 px-2 py-1.5 text-sm" />
+          <span class="text-slate-400 text-sm">→</span>
+          <input id="endDate" type="date" class="rounded-lg border border-slate-200 px-2 py-1.5 text-sm" />
+          <button id="refreshBtn" class="px-3 py-1.5 bg-brand text-white rounded-lg text-sm font-semibold hover:bg-brand-light">Aplicar</button>
+          <button id="logoutBtn" class="px-3 py-1.5 text-slate-500 hover:text-red-500 text-sm">Salir</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
+      <!-- KPIs -->
+      <div id="kpiGrid" class="grid grid-cols-2 md:grid-cols-3 gap-3"></div>
+
+      <!-- Filters -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-4 flex flex-wrap gap-3 items-center">
+        <input id="searchInput" type="search" placeholder="Buscar por nombre o teléfono..."
+          class="flex-1 min-w-[200px] rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand/40" />
+        <select id="statusFilter" class="rounded-lg border border-slate-200 px-3 py-2 text-sm">
+          <option value="all">Todos los estados</option>
+        </select>
+      </div>
+
+      <!-- Orders table -->
+      <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wide">
+              <tr>
+                <th class="text-left px-4 py-3">Fecha</th>
+                <th class="text-left px-4 py-3">Cliente</th>
+                <th class="text-left px-4 py-3">Producto</th>
+                <th class="text-left px-4 py-3">Ciudad</th>
+                <th class="text-right px-4 py-3">Total</th>
+                <th class="text-left px-4 py-3">Estado</th>
+              </tr>
+            </thead>
+            <tbody id="ordersBody" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+        <div id="emptyState" class="hidden text-center py-12 text-slate-400">No hay pedidos en este rango.</div>
+        <div class="flex items-center justify-between px-4 py-3 border-t border-slate-100 text-sm">
+          <span id="pageInfo" class="text-slate-400"></span>
+          <div class="flex gap-2">
+            <button id="prevPage" class="px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 disabled:opacity-40">← Anterior</button>
+            <button id="nextPage" class="px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 disabled:opacity-40">Siguiente →</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Order detail modal -->
+  <div id="orderModal" class="hidden fixed inset-0 bg-black/40 z-40 items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-xl max-w-lg w-full p-6 fade-in max-h-[85vh] overflow-y-auto">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-bold text-lg text-slate-800">Detalle del pedido</h3>
+        <button id="closeModal" class="text-slate-400 hover:text-slate-600 text-2xl leading-none">&times;</button>
+      </div>
+      <div id="modalBody" class="space-y-2 text-sm"></div>
+    </div>
+  </div>
+
+  <script>
+    const STATUS_LABELS = {
+      pending_confirmation: 'Pendiente',
+      confirmed: 'Confirmado',
+      dispatched: 'Despachado',
+      delivered: 'Entregado',
+      returned: 'Devuelto',
+      cancelled: 'Cancelado',
+    };
+    const STATUS_COLORS = {
+      pending_confirmation: 'bg-amber-100 text-amber-700',
+      confirmed: 'bg-blue-100 text-blue-700',
+      dispatched: 'bg-indigo-100 text-indigo-700',
+      delivered: 'bg-emerald-100 text-emerald-700',
+      returned: 'bg-orange-100 text-orange-700',
+      cancelled: 'bg-red-100 text-red-700',
+    };
+
+    let token = localStorage.getItem('leger_admin_token') || '';
+    let currentPage = 1;
+    const pageSize = 20;
+
+    const $ = (id) => document.getElementById(id);
+
+    function fmtMoney(n) { return '$' + Number(n).toFixed(2); }
+    function fmtDate(iso) {
+      if (!iso) return '—';
+      const d = new Date(iso);
+      return d.toLocaleDateString('es-PA', { day: '2-digit', month: 'short' }) + ' ' +
+             d.toLocaleTimeString('es-PA', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    async function api(path, opts = {}) {
+      const res = await fetch(`/api/admin${path}`, {
+        ...opts,
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}`, ...(opts.headers || {}) },
+      });
+      if (res.status === 401) { logout(); throw new Error('unauthorized'); }
+      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+      return res.json();
+    }
+
+    function showApp() {
+      $('loginView').classList.add('hidden');
+      $('loginView').classList.remove('flex');
+      $('appView').classList.remove('hidden');
+      init();
+    }
+    function showLogin() {
+      $('appView').classList.add('hidden');
+      $('loginView').classList.remove('hidden');
+      $('loginView').classList.add('flex');
+    }
+    function logout() {
+      token = '';
+      localStorage.removeItem('leger_admin_token');
+      showLogin();
+    }
+
+    $('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      $('loginError').classList.add('hidden');
+      try {
+        const res = await fetch('/api/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: $('username').value, password: $('password').value }),
+        });
+        if (!res.ok) throw new Error('bad credentials');
+        const data = await res.json();
+        token = data.token;
+        localStorage.setItem('leger_admin_token', token);
+        showApp();
+      } catch {
+        $('loginError').textContent = 'Usuario o contraseña incorrectos.';
+        $('loginError').classList.remove('hidden');
+      }
+    });
+    $('logoutBtn').addEventListener('click', logout);
+
+    // Date range
+    const today = new Date();
+    function setRangeDays(days) {
+      const end = new Date();
+      const start = new Date();
+      start.setDate(start.getDate() - days);
+      $('startDate').value = start.toISOString().slice(0, 10);
+      $('endDate').value = end.toISOString().slice(0, 10);
+    }
+    setRangeDays(30);
+    document.querySelectorAll('.preset').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        setRangeDays(Number(btn.dataset.days));
+        document.querySelectorAll('.preset').forEach((b) => b.classList.remove('bg-brand/10', 'font-semibold', 'text-brand'));
+        btn.classList.add('bg-brand/10', 'font-semibold', 'text-brand');
+        loadAll();
+      });
+    });
+    $('refreshBtn').addEventListener('click', () => loadAll());
+    $('searchInput').addEventListener('input', debounce(() => { currentPage = 1; loadOrders(); }, 350));
+    $('statusFilter').addEventListener('change', () => { currentPage = 1; loadOrders(); });
+    $('prevPage').addEventListener('click', () => { if (currentPage > 1) { currentPage--; loadOrders(); } });
+    $('nextPage').addEventListener('click', () => { currentPage++; loadOrders(); });
+    $('closeModal').addEventListener('click', () => $('orderModal').classList.add('hidden'));
+
+    function debounce(fn, ms) {
+      let t;
+      return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
+    }
+
+    function rangeParams() {
+      return `start=${$('startDate').value}&end=${$('endDate').value}`;
+    }
+
+    async function loadKpis() {
+      const data = await api(`/summary?${rangeParams()}`);
+      $('kpiGrid').innerHTML = `
+        <div class="bg-white rounded-2xl border border-slate-200 p-4">
+          <p class="text-xs text-slate-400 font-semibold uppercase">Pedidos</p>
+          <p class="text-2xl font-black text-slate-800">${data.kpis.orders}</p>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-4">
+          <p class="text-xs text-slate-400 font-semibold uppercase">Ingresos</p>
+          <p class="text-2xl font-black text-brand">${fmtMoney(data.kpis.revenue)}</p>
+        </div>
+        <div class="bg-white rounded-2xl border border-slate-200 p-4">
+          <p class="text-xs text-slate-400 font-semibold uppercase">Ticket Promedio</p>
+          <p class="text-2xl font-black text-slate-800">${fmtMoney(data.kpis.aov)}</p>
+        </div>
+      `;
+    }
+
+    async function loadOrders() {
+      const status = $('statusFilter').value;
+      const q = $('searchInput').value.trim();
+      const params = new URLSearchParams({
+        start: $('startDate').value,
+        end: $('endDate').value,
+        page: currentPage,
+        page_size: pageSize,
+      });
+      if (status && status !== 'all') params.set('status', status);
+      if (q) params.set('q', q);
+
+      const data = await api(`/orders?${params.toString()}`);
+      const tbody = $('ordersBody');
+      tbody.innerHTML = '';
+      $('emptyState').classList.toggle('hidden', data.items.length > 0);
+
+      for (const o of data.items) {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50 cursor-pointer';
+        tr.innerHTML = `
+          <td class="px-4 py-3 text-slate-500 whitespace-nowrap">${fmtDate(o.created_at)}</td>
+          <td class="px-4 py-3">
+            <p class="font-semibold text-slate-800">${escapeHtml(o.name)}</p>
+            <p class="text-slate-400">${escapeHtml(o.phone)}</p>
+          </td>
+          <td class="px-4 py-3">
+            <p>${escapeHtml(o.product_name)}</p>
+            <p class="text-slate-400">${escapeHtml(o.plan_label)}${o.bump ? ' + Bruma' : ''}</p>
+          </td>
+          <td class="px-4 py-3 text-slate-500">${escapeHtml(o.city)}</td>
+          <td class="px-4 py-3 text-right font-semibold">${fmtMoney(o.total_usd)}</td>
+          <td class="px-4 py-3">
+            <select data-id="${o.id}" class="status-select text-xs font-semibold rounded-full px-2 py-1 border-0 ${STATUS_COLORS[o.status] || 'bg-slate-100'}">
+              ${Object.entries(STATUS_LABELS).map(([val, label]) => `<option value="${val}" ${val === o.status ? 'selected' : ''}>${label}</option>`).join('')}
+            </select>
+          </td>
+        `;
+        tr.addEventListener('click', (e) => {
+          if (e.target.tagName !== 'SELECT') openModal(o);
+        });
+        tbody.appendChild(tr);
+      }
+
+      tbody.querySelectorAll('.status-select').forEach((sel) => {
+        sel.addEventListener('click', (e) => e.stopPropagation());
+        sel.addEventListener('change', async (e) => {
+          const id = e.target.dataset.id;
+          const newStatus = e.target.value;
+          try {
+            await api(`/orders/${id}`, { method: 'PATCH', body: JSON.stringify({ status: newStatus }) });
+            e.target.className = `status-select text-xs font-semibold rounded-full px-2 py-1 border-0 ${STATUS_COLORS[newStatus] || 'bg-slate-100'}`;
+          } catch {
+            alert('No se pudo actualizar el estado.');
+          }
+        });
+      });
+
+      const totalPages = Math.max(1, Math.ceil(data.total / pageSize));
+      $('pageInfo').textContent = `${data.total} pedidos · página ${data.page} de ${totalPages}`;
+      $('prevPage').disabled = data.page <= 1;
+      $('nextPage').disabled = data.page >= totalPages;
+    }
+
+    function openModal(o) {
+      $('modalBody').innerHTML = `
+        <p><span class="text-slate-400">Cliente:</span> <strong>${escapeHtml(o.name)}</strong></p>
+        <p><span class="text-slate-400">Teléfono:</span> ${escapeHtml(o.phone)}</p>
+        <p><span class="text-slate-400">Dirección:</span> ${escapeHtml(o.address)}</p>
+        <p><span class="text-slate-400">Ciudad / Provincia:</span> ${escapeHtml(o.city)}, ${escapeHtml(o.province)}</p>
+        <p><span class="text-slate-400">Producto:</span> ${escapeHtml(o.product_name)} — ${escapeHtml(o.plan_label)}${o.bump ? ' + Bruma Instantánea' : ''}</p>
+        <p><span class="text-slate-400">Total:</span> <strong>${fmtMoney(o.total_usd)}</strong></p>
+        <p><span class="text-slate-400">Notas:</span> ${o.notes ? escapeHtml(o.notes) : '—'}</p>
+        <p><span class="text-slate-400">Fecha:</span> ${fmtDate(o.created_at)}</p>
+        <a href="https://wa.me/${o.phone.replace(/\D/g, '')}" target="_blank"
+           class="inline-block mt-2 bg-[#25d366] text-white font-semibold px-4 py-2 rounded-lg text-sm">Abrir WhatsApp</a>
+      `;
+      $('orderModal').classList.remove('hidden');
+      $('orderModal').classList.add('flex');
+    }
+
+    function escapeHtml(str) {
+      const d = document.createElement('div');
+      d.textContent = str ?? '';
+      return d.innerHTML;
+    }
+
+    function populateStatusFilter() {
+      const sel = $('statusFilter');
+      for (const [val, label] of Object.entries(STATUS_LABELS)) {
+        const opt = document.createElement('option');
+        opt.value = val;
+        opt.textContent = label;
+        sel.appendChild(opt);
+      }
+    }
+
+    async function loadAll() {
+      try {
+        await Promise.all([loadKpis(), loadOrders()]);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function init() {
+      populateStatusFilter();
+      loadAll();
+    }
+
+    if (token) { showApp(); } else { showLogin(); }
+  </script>
+</body>
+</html>

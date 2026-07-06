@@ -1,122 +1,78 @@
-# LÉGER — Piernas Ligeras Store
+# LÉGER — Piernas Ligeras — Monorepo
 
-A Next.js 16 (App Router) + TypeScript + Tailwind CSS storefront for **LÉGER**, a premium
-Cash-on-Delivery (COD) circulatory-wellness brand built for Panama. See
-`../LEGER_BRAND_POSITIONING_AND_STORE_BLUEPRINT.md` and `../PANAMA_COD_STORE_STRATEGY.md` in the
-parent folder for the full brand/product/marketing strategy this store implements.
+DTC Cash-on-Delivery (COD) e-commerce store for Panama. Circulatory-wellness brand ("piernas
+ligeras" — light legs): a roll-on, compression socks, and an instant cooling mist.
 
-## What's included
+## Structure
 
-- **Landing pages** for the 3 SKUs (message-matched for ad campaigns) + a bundle page:
-  - `/roll-on` — Roll-On Crioactivo (hero product)
-  - `/medias-compresion` — Medias de Compresión 360°
-  - `/bruma` — Bruma Instantánea
-  - `/kit-completo` — bundle-anchored landing page (push most ad spend here once validated)
-  - `/` — homepage (brand story, 3-product showcase, trust bar)
-- **COD checkout system**:
-  - `/checkout` — order form (product + plan/quantity selector, order-bump, delivery details)
-  - `POST /api/orders` — validates the order (Zod), computes the total server-side, stores it in
-    Postgres (if configured), and returns a pre-filled WhatsApp confirmation link
-  - `/gracias` — thank-you page that auto-opens the WhatsApp confirmation + shows the referral/
-    reorder upsell copy from the strategy doc
-- **Trust & legal pages**: `/garantia`, `/preguntas-frecuentes`, `/nosotros`,
-  `/politica-privacidad`, `/terminos`
-- Sticky mobile "Pedir con Pago Contra Entrega" bar, floating WhatsApp button, testimonials,
-  ingredient callouts, comparison table, and FAQ accordion — all data-driven from
-  `src/lib/products.ts` so copy/pricing can be edited without touching JSX.
+```
+brandedstore/
+├── frontend/        Next.js 16 App Router + TypeScript + Tailwind CSS
+├── backend/         FastAPI + PostgreSQL (orders API + admin dashboard)
+├── docker-compose.yml
+└── docker-compose.dev.yml   (local Postgres only, for development)
+```
 
-## Getting started
+## Quick start
 
 ```bash
+# 1. Local database (optional — or point DATABASE_URL at a remote one)
+docker compose -f docker-compose.dev.yml up -d
+
+# 2. Backend
+cd backend
+cp .env.example .env   # then edit DATABASE_URL / ADMIN_* / WHATSAPP_NUMBER
+pip install -r requirements.txt
+fastapi dev app/main.py   # http://localhost:8000, admin at /admin
+
+# 3. Frontend (new terminal)
+cd frontend
+cp .env.example .env.local   # then edit NEXT_PUBLIC_API_URL / NEXT_PUBLIC_WHATSAPP_NUMBER
 npm install
-npm run dev
+npm run dev   # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+## How the pieces fit together
 
-## Configuration
+- **`frontend/`** — the public storefront (3 product landing pages + a bundle page, home page,
+  checkout form, thank-you page, legal pages). The checkout form POSTs directly to the backend's
+  `/api/orders` using `NEXT_PUBLIC_API_URL`. No database code lives here.
+- **`backend/`** — a FastAPI service that:
+  - Validates and authoritatively prices every order (`app/core/catalog.py` — never trusts a
+    client-sent price), stores it in Postgres, and returns a `wa.me` WhatsApp deep link so the
+    team can confirm the order (COD confirmation is done by a human over WhatsApp, not
+    automatically).
+  - Serves a login-protected admin dashboard at `GET /admin` — view/search/filter orders and
+    update their status (pending → confirmed → dispatched → delivered/returned/cancelled).
+- Both services are independent Docker images (`frontend/Dockerfile`, `backend/Dockerfile`) wired
+  together by the root `docker-compose.yml`, so they can be deployed as two services in the same
+  Coolify/Easypanel/Dokploy project (matching how the sibling `tropicskin-panama` store is set up).
 
-1. **WhatsApp number** — copy `.env.example` to `.env.local` and set
-   `NEXT_PUBLIC_WHATSAPP_NUMBER` to your real WhatsApp Business number (international format, no
-   `+` or spaces, e.g. `50760000000`). Also update `BUSINESS.whatsappDisplay` in
-   `src/lib/products.ts` to match (the human-readable version shown in the UI).
+## Deploy
 
-2. **Postgres database (order storage, optional but recommended)**:
-   - Set `DATABASE_URL` in `.env.local` to your connection string, e.g.
-     `postgres://user:password@host:5432/dbname?sslmode=disable`.
-   - Run `npm run db:migrate` to create the `orders` table (applies `db/schema.sql`).
-   - Without `DATABASE_URL`, `/api/orders` still works end-to-end (it builds the WhatsApp
-     confirmation link and logs the order to the server console) — it just won't persist orders to
-     a database, which is fine for local testing but not recommended once you're taking real
-     orders.
-   - **Note on Docker-internal hostnames**: if your `DATABASE_URL` host looks like
-     `something_database` (a Docker Compose/Coolify service name), it will only resolve from
-     *inside* that same Docker network — not from your local machine or from Vercel. This is
-     expected: it will connect successfully once the app itself is deployed in that same network
-     (e.g. as another service on the same Coolify/Dokploy project). To develop or migrate locally
-     against it, either run the app inside that Docker network too, expose the database on a
-     public host/port, or use an SSH tunnel to the server.
-   - The connection string is only ever used server-side (`src/lib/db.ts`, called from the route
-     handler) — it is never exposed to the browser.
+Compatible with Coolify / Easypanel / Dokploy "Docker Compose" services. Point it at this repo's
+`docker-compose.yml` and set these environment variables on the project:
 
-3. **Editing products, prices, and copy** — everything lives in `src/lib/products.ts`
-   (`products` array, `kitProduct`, `testimonials`, `BUSINESS`). Update prices, ingredients,
-   FAQs, and testimonials there instead of editing page files directly.
+| Variable | Used by | Notes |
+|---|---|---|
+| `DATABASE_URL` | backend | Postgres connection string (`postgres://...`) |
+| `FRONTEND_ORIGIN` | backend | Public frontend URL, for CORS |
+| `WHATSAPP_NUMBER` | backend | International format, no `+`/spaces |
+| `ADMIN_USERNAME` / `ADMIN_PASSWORD` | backend | Admin dashboard login |
+| `ADMIN_SECRET_KEY` | backend | Random string that signs admin session tokens |
+| `NEXT_PUBLIC_API_URL` | frontend (build + runtime) | Public URL of the backend service |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | frontend (build) | Same number as `WHATSAPP_NUMBER`, no `+` |
 
-4. **Analytics/Pixels** (not wired up yet — add before running paid ads) — drop your Meta Pixel,
-   TikTok Pixel, GA4, and Microsoft Clarity snippets into `src/app/layout.tsx`.
+**Note on Docker-internal database hostnames:** if `DATABASE_URL`'s host looks like
+`something_database` (a Coolify/Docker Compose internal service name), it only resolves *inside*
+that same Docker network — not from your local machine. That's expected: it'll connect once the
+backend itself is deployed as another service in that same project. The backend also strips
+`sslmode` and normalizes `postgres://` → `postgresql+asyncpg://` internally, so you can paste the
+connection string straight from your hosting panel.
 
-## Order flow (how COD works here)
+## Docs
 
-1. Customer fills out `/checkout` (no card, no online payment).
-2. `POST /api/orders` validates the input, looks up the authoritative price server-side (never
-   trusts the client-sent price), stores the order in Postgres, and returns a `wa.me` deep link
-   pre-filled with the order summary.
-3. Customer is redirected to `/gracias`, which auto-opens WhatsApp so they can confirm with your
-   team — this is the human confirmation step that keeps COD confirmation/delivery rates high (see
-   the strategy doc's "COD Operational Playbook").
-4. Your team confirms the order over WhatsApp (and can upsell at this exact moment — see the
-   strategy doc's "WhatsApp confirmation-call upsell" section), then dispatches it.
-
-## Tech stack
-
-- **Next.js 16** (App Router, React 19, TypeScript)
-- **Tailwind CSS v4** with a custom LÉGER theme (mint/aqua + warm sand palette) in
-  `src/app/globals.css`
-- **Zod** for order validation (`src/lib/order-schema.ts`)
-- **pg** (node-postgres) for order storage
-- **lucide-react** for icons
-
-## Project structure
-
-```
-src/
-  app/
-    page.tsx                  Home
-    roll-on/, medias-compresion/, bruma/   Individual product landing pages
-    kit-completo/              Bundle landing page
-    checkout/                  COD order form page
-    gracias/                   Thank-you page
-    garantia/, preguntas-frecuentes/, nosotros/, politica-privacidad/, terminos/
-    api/orders/route.ts        Order submission API route
-  components/                  Shared UI (header, footer, product landing template, etc.)
-  lib/
-    products.ts                Single source of truth for products, pricing, copy, testimonials
-    order-schema.ts            Zod schema + Panama provinces list
-    db.ts                      Server-only Postgres connection pool
-    utils.ts                   cn() class helper, currency formatting
-db/schema.sql                   SQL to create the `orders` table
-scripts/migrate.mjs             Applies db/schema.sql against DATABASE_URL (npm run db:migrate)
-```
-
-## Next steps before launch
-
-- Replace the placeholder gradient/emoji product visuals (`src/components/product-visual.tsx`)
-  with real product photography once samples arrive.
-- Set your real WhatsApp Business number and confirm the database is reachable from your
-  deployment (see Configuration above).
-- Add Meta/TikTok Pixel + Conversions API, GA4, and Microsoft Clarity.
-- Pursue `registro sanitario` (APA/MINSA) for the topical products and display the real
-  registration number once issued (huge trust signal — see the blueprint doc, Section 4.3).
-- Swap the placeholder testimonials in `src/lib/products.ts` for real ones once your "Grupo
-  Fundador" of testers has feedback — never fabricate reviews.
+The original brand/product/marketing strategy this store implements lives in
+`../LEGER_BRAND_POSITIONING_AND_STORE_BLUEPRINT.md` and `../PANAMA_COD_STORE_STRATEGY.md` in the
+parent folder. Per-service details: [`frontend/README.md`](frontend/README.md) ·
+[`backend/README.md`](backend/README.md).

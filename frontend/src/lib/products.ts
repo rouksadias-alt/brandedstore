@@ -301,27 +301,6 @@ export function getCheckoutOption(slug: string): CheckoutOption {
   return checkoutOptions.find((o) => o.slug === slug) ?? checkoutOptions[0];
 }
 
-export function buildWhatsAppOrderLink(params: {
-  name: string;
-  phone: string;
-  product: string;
-  plan: string;
-  price: number;
-  bump?: boolean;
-  city?: string;
-}) {
-  const { name, phone, product, plan, price, bump, city } = params;
-  const lines = [
-    `¡Hola LÉGER! 👋 Quiero confirmar mi pedido:`,
-    `🧍 Nombre: ${name}`,
-    `📞 Teléfono: ${phone}`,
-    city ? `📍 Ciudad: ${city}` : null,
-    `🛍️ Producto: ${product}`,
-    `📦 Plan: ${plan}`,
-    bump ? `➕ Agregar Bruma Instantánea (+$9)` : null,
-    `💵 Total estimado: $${price}`,
-    `💳 Pago Contra Entrega`,
-  ].filter(Boolean);
-  const text = encodeURIComponent(lines.join("\n"));
-  return `https://wa.me/${BUSINESS.whatsappNumber}?text=${text}`;
-}
+// Order-confirmation WhatsApp links are generated server-side now
+// (backend/app/core/whatsapp.py) so the message always reflects the
+// authoritative, server-computed total. This file only owns catalog/copy.

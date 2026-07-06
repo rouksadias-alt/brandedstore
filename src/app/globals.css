@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fbfaf7;
+  --foreground: #17302b;
+
+  /* LÉGER brand palette — cool mint/aqua (relief, circulation) + warm sand neutral (premium, tropical) */
+  --leger-mint-50: #f1faf7;
+  --leger-mint-100: #ddf3ec;
+  --leger-mint-200: #b7e6d9;
+  --leger-mint-300: #86d2bf;
+  --leger-mint-400: #55b8a2;
+  --leger-mint-500: #349c87;
+  --leger-mint-600: #237d6d;
+  --leger-mint-700: #1d6459;
+  --leger-mint-800: #1a4f48;
+  --leger-mint-900: #17423c;
+
+  --leger-sand-50: #fbfaf7;
+  --leger-sand-100: #f5f1e8;
+  --leger-sand-200: #ece3d1;
+  --leger-sand-300: #ddccab;
+  --leger-sand-400: #c9ae7c;
+  --leger-sand-500: #b6935a;
+
+  --leger-ink: #17302b;
+  --leger-frost: #e8fbf5;
+
+  --whatsapp: #25d366;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-mint-50: var(--leger-mint-50);
+  --color-mint-100: var(--leger-mint-100);
+  --color-mint-200: var(--leger-mint-200);
+  --color-mint-300: var(--leger-mint-300);
+  --color-mint-400: var(--leger-mint-400);
+  --color-mint-500: var(--leger-mint-500);
+  --color-mint-600: var(--leger-mint-600);
+  --color-mint-700: var(--leger-mint-700);
+  --color-mint-800: var(--leger-mint-800);
+  --color-mint-900: var(--leger-mint-900);
+
+  --color-sand-50: var(--leger-sand-50);
+  --color-sand-100: var(--leger-sand-100);
+  --color-sand-200: var(--leger-sand-200);
+  --color-sand-300: var(--leger-sand-300);
+  --color-sand-400: var(--leger-sand-400);
+  --color-sand-500: var(--leger-sand-500);
+
+  --color-ink: var(--leger-ink);
+  --color-frost: var(--leger-frost);
+  --color-whatsapp: var(--whatsapp);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes frost-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+.animate-frost-pulse {
+  animation: frost-pulse 2.6s ease-in-out infinite;
+}
+
+.text-balance {
+  text-wrap: balance;
 }

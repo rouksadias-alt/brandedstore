@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: kitProduct.tagline,
 };
 
-const separatePrice = products.reduce((sum, p) => sum + p.price, 0);
+const separatePrice = kitProduct.compareAtPrice;
 
 const kitFaq = [
   {
@@ -57,13 +57,18 @@ export default function KitCompletoPage() {
               <LinkButton href="/checkout?product=kit-completo&plan=kit" size="lg">
                 Pedir el Kit Completo
               </LinkButton>
-              <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-extrabold text-mint-700">
-                  {formatUSD(kitProduct.price)}
+              <div className="flex flex-col gap-0.5">
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-mint-600">
+                  Los 3 productos juntos
                 </span>
-                <span className="text-base text-ink/40 line-through">
-                  {formatUSD(separatePrice)}
-                </span>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl font-extrabold text-mint-700">
+                    {formatUSD(kitProduct.price)}
+                  </span>
+                  <span className="text-base text-ink/40 line-through">
+                    {formatUSD(separatePrice)}
+                  </span>
+                </div>
               </div>
             </div>
             <p className="mt-2 text-sm font-bold text-mint-700">
@@ -82,7 +87,13 @@ export default function KitCompletoPage() {
 
           <div className="grid grid-cols-3 gap-3">
             {products.map((p) => (
-              <ProductVisual key={p.slug} emoji={p.emoji} gradient={p.gradient} size="sm" />
+              <ProductVisual
+                key={p.slug}
+                emoji={p.emoji}
+                gradient={p.gradient}
+                images={p.images ? [p.images[0]] : undefined}
+                size="sm"
+              />
             ))}
           </div>
         </div>
@@ -98,13 +109,23 @@ export default function KitCompletoPage() {
               href={`/${p.slug}`}
               className="group flex flex-col gap-4 rounded-2xl border border-mint-100 bg-white p-6 transition-shadow hover:shadow-lg"
             >
-              <ProductVisual emoji={p.emoji} gradient={p.gradient} size="sm" />
+              <ProductVisual
+                emoji={p.emoji}
+                gradient={p.gradient}
+                images={p.images ? [p.images[0]] : undefined}
+                size="sm"
+              />
               <div>
                 <p className="font-bold text-ink">{p.shortName}</p>
                 <p className="mt-1 text-sm text-ink/60">{p.tagline}</p>
               </div>
               <div className="mt-auto flex items-center justify-between">
-                <span className="text-sm font-bold text-mint-700">{formatUSD(p.price)}</span>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-mint-600">
+                    {p.heroPriceLabel ?? "2 unidades"}
+                  </p>
+                  <span className="text-sm font-bold text-mint-700">{formatUSD(p.price)}</span>
+                </div>
                 <span className="flex items-center gap-1 text-xs font-semibold text-mint-700 opacity-0 transition-opacity group-hover:opacity-100">
                   Ver más <ArrowRight className="h-3.5 w-3.5" />
                 </span>

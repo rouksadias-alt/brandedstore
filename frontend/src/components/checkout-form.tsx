@@ -11,6 +11,7 @@ import { checkoutOptions, getCheckoutOption } from "@/lib/products";
 import { PANAMA_PROVINCES } from "@/lib/order-schema";
 
 const BUMP_PRICE = 9;
+const EXPRESS_PRICE = 2;
 
 export function CheckoutForm() {
   const router = useRouter();
@@ -30,17 +31,19 @@ export function CheckoutForm() {
   const selectedTier = option.tiers.find((t) => t.id === planId) ?? option.tiers[0];
 
   const [bump, setBump] = useState(false);
+  const [express, setExpress] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
-  const total = selectedTier.price + (bump && option.allowBump ? BUMP_PRICE : 0);
+  const total = selectedTier.price + (bump && option.allowBump ? BUMP_PRICE : 0) + (express ? EXPRESS_PRICE : 0);
 
   function handleProductChange(slug: string) {
     setProductSlug(slug);
     const nextOption = getCheckoutOption(slug);
     setPlanId(nextOption.tiers.find((t) => t.isFeatured)?.id ?? nextOption.tiers[0].id);
     setBump(false);
+    setExpress(false);
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -59,6 +62,7 @@ export function CheckoutForm() {
       productSlug,
       planId,
       bump,
+      express,
       notes: String(formData.get("notes") ?? ""),
     };
 
@@ -180,6 +184,25 @@ export function CheckoutForm() {
         </label>
       )}
 
+      {/* Express shipping */}
+      <label className="flex cursor-pointer items-start gap-3 rounded-2xl border-2 border-mint-300/60 bg-mint-50/60 p-4 transition-colors hover:border-mint-400">
+        <input
+          type="checkbox"
+          checked={express}
+          onChange={(e) => setExpress(e.target.checked)}
+          className="mt-1 h-5 w-5 accent-mint-600"
+        />
+        <span className="flex-1">
+          <span className="flex items-center gap-2 text-sm font-bold text-ink">
+            ⚡ Envío Express — menos de 48 h
+            <span className="rounded-full bg-mint-600 px-2 py-0.5 text-[10px] font-bold text-white">+{formatUSD(EXPRESS_PRICE)}</span>
+          </span>
+          <span className="mt-0.5 block text-xs text-ink/60">
+            Entrega prioritaria en Ciudad de Panamá. Envío estándar gratis incluido de todas formas.
+          </span>
+        </span>
+      </label>
+
       {/* Contact & shipping */}
       <fieldset className="space-y-4">
         <legend className="mb-1 text-sm font-bold uppercase tracking-wide text-ink/60">
@@ -245,6 +268,12 @@ export function CheckoutForm() {
           <div className="mt-1.5 flex items-center justify-between text-sm">
             <span className="text-ink/70">+ Bruma Instantánea</span>
             <span className="font-semibold text-ink">{formatUSD(BUMP_PRICE)}</span>
+          </div>
+        )}
+        {express && (
+          <div className="mt-1.5 flex items-center justify-between text-sm">
+            <span className="text-ink/70">⚡ Envío Express &lt;48 h</span>
+            <span className="font-semibold text-ink">{formatUSD(EXPRESS_PRICE)}</span>
           </div>
         )}
         <div className="mt-3 flex items-center justify-between border-t border-mint-200 pt-3">

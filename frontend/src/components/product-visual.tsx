@@ -42,13 +42,13 @@ export function ProductVisual({
 
         {/* Thumbnails (only if more than 1 image) */}
         {images.length > 1 && (
-          <div className="flex gap-2 justify-center">
+          <div className="flex flex-wrap gap-2 justify-center">
             {images.map((src, i) => (
               <button
                 key={i}
                 onClick={() => setActive(i)}
                 className={cn(
-                  "relative h-16 w-16 overflow-hidden rounded-xl border-2 transition-all",
+                  "relative h-14 w-14 sm:h-16 sm:w-16 shrink-0 overflow-hidden rounded-xl border-2 transition-all",
                   i === active
                     ? "border-mint-600 shadow-md scale-105"
                     : "border-transparent opacity-60 hover:opacity-90"

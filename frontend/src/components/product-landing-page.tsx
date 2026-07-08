@@ -40,7 +40,7 @@ export function ProductLandingPage({ product }: { product: Product }) {
                     {formatUSD(product.price)}
                   </span>
                   {product.compareAtPrice && (
-                    <span className="text-base text-ink/40 line-through">
+                    <span className="text-base text-ink/50 line-through">
                       {formatUSD(product.compareAtPrice)}
                     </span>
                   )}

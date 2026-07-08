@@ -7,7 +7,7 @@ import { formatUSD } from "@/lib/utils";
 export function StickyCtaBar({
   price,
   productSlug,
-  label = "Pedir con Pago Contra Entrega",
+  label = "Pedir Ahora",
   unitLabel = "2 unidades",
 }: {
   price: number;

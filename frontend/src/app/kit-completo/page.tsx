@@ -65,7 +65,7 @@ export default function KitCompletoPage() {
                   <span className="text-2xl font-extrabold text-mint-700">
                     {formatUSD(kitProduct.price)}
                   </span>
-                  <span className="text-base text-ink/40 line-through">
+                  <span className="text-base text-ink/50 line-through">
                     {formatUSD(separatePrice)}
                   </span>
                 </div>
@@ -85,7 +85,7 @@ export default function KitCompletoPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4">
             {products.map((p) => (
               <ProductVisual
                 key={p.slug}
@@ -161,14 +161,14 @@ export default function KitCompletoPage() {
 
       {/* Oferta */}
       <Section id="oferta">
-        <div className="mx-auto max-w-xl rounded-3xl border-2 border-mint-600 bg-mint-50 p-8 text-center shadow-lg">
+        <div className="mx-auto max-w-xl rounded-3xl border-2 border-mint-600 bg-mint-50 p-6 sm:p-8 text-center shadow-lg">
           <span className="inline-block rounded-full bg-sand-500 px-4 py-1 text-xs font-bold uppercase tracking-wide text-white">
             Más Popular
           </span>
           <p className="mt-4 font-display text-2xl font-semibold text-ink">{kitProduct.name}</p>
           <div className="mt-3 flex items-center justify-center gap-2">
             <span className="text-4xl font-extrabold text-mint-700">{formatUSD(kitProduct.price)}</span>
-            <span className="text-lg text-ink/40 line-through">{formatUSD(separatePrice)}</span>
+            <span className="text-lg text-ink/50 line-through">{formatUSD(separatePrice)}</span>
           </div>
           <p className="mt-1 text-sm font-semibold text-mint-700">
             Ahorras {formatUSD(separatePrice - kitProduct.price)}

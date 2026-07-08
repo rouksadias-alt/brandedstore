@@ -153,12 +153,20 @@ export function CheckoutForm() {
               )}
             >
               {tier.badge && (
-                <span className="absolute -top-2.5 rounded-full bg-sand-500 px-2.5 py-0.5 text-[10px] font-bold uppercase text-white">
+                <span className="absolute -top-2.5 rounded-full bg-sand-500 px-2.5 py-0.5 text-[10px] font-bold uppercase text-white shadow-sm">
                   {tier.badge}
                 </span>
               )}
               <span className="text-sm font-bold text-ink">{tier.label}</span>
-              <span className="text-lg font-extrabold text-mint-700">{formatUSD(tier.price)}</span>
+              <span className="text-[11px] font-medium text-ink/60">{tier.units}</span>
+              <div className="mt-1 flex items-baseline gap-1.5">
+                <span className="text-lg font-extrabold text-mint-700">{formatUSD(tier.price)}</span>
+                {tier.compareAtPrice && (
+                  <span className="text-xs font-medium text-ink/50 line-through">
+                    {formatUSD(tier.compareAtPrice)}
+                  </span>
+                )}
+              </div>
             </button>
           ))}
         </div>
@@ -193,7 +201,7 @@ export function CheckoutForm() {
           className="mt-1 h-5 w-5 accent-mint-600"
         />
         <span className="flex-1">
-          <span className="flex items-center gap-2 text-sm font-bold text-ink">
+          <span className="flex flex-wrap items-center gap-2 text-sm font-bold text-ink">
             ⚡ Envío Express — menos de 48 h
             <span className="rounded-full bg-mint-600 px-2 py-0.5 text-[10px] font-bold text-white">+{formatUSD(EXPRESS_PRICE)}</span>
           </span>

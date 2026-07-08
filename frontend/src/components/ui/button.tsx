@@ -25,7 +25,7 @@ const sizeClasses: Record<NonNullable<ButtonBaseProps["size"]>, string> = {
 };
 
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap";
+  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none text-center leading-tight";
 
 export function Button({
   variant = "primary",

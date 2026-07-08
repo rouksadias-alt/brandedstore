@@ -33,6 +33,7 @@ export type Product = {
   tagline: string;
   price: number;
   compareAtPrice?: number;
+  heroPriceLabel?: string;
   heroHeadline: string;
   heroSubheadline: string;
   gradient: string;
@@ -100,6 +101,7 @@ export const products: Product[] = [
     tagline: "Lo sientes frío, lo sientes trabajando — en 60 segundos.",
     price: 39,
     compareAtPrice: 58,
+    heroPriceLabel: "Precio por 2 unidades",
     heroHeadline: "¿Tus piernas se sienten pesadas antes de que termine el día?",
     heroSubheadline:
       "El Roll-On Crioactivo LÉGER combina Centella Asiática, Cafeína y una bola aplicadora fría que drena la pesadez al instante — sientes el efecto desde la primera aplicación.",
@@ -158,6 +160,7 @@ export const products: Product[] = [
     tagline: "La misma tecnología que usan las aeromozas y enfermeras — ahora con estilo.",
     price: 39,
     compareAtPrice: 50,
+    heroPriceLabel: "Precio por 2 pares",
     heroHeadline: "La misma tecnología que usan las aeromozas y enfermeras — ahora con estilo",
     heroSubheadline:
       "Compresión graduada real en fibra de bambú y grafeno: más apretado en el tobillo, disminuye hacia la rodilla, para circulación activa durante tu día completo.",
@@ -216,6 +219,7 @@ export const products: Product[] = [
     tagline: "El refresh de piernas que cabe en tu cartera.",
     price: 34,
     compareAtPrice: 58,
+    heroPriceLabel: "Precio por 2 unidades",
     heroHeadline: "El refresh de piernas que cabe en tu cartera",
     heroSubheadline:
       "Un spray frío de Castaño de Indias, Mentol y Cafeína Verde para ese \"bajón\" de piernas a media tarde — sin manos libres, sin rutina, en segundos.",

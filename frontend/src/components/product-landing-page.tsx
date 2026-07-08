@@ -31,15 +31,20 @@ export function ProductLandingPage({ product }: { product: Product }) {
               <LinkButton href={`/checkout?product=${product.slug}`} size="lg">
                 Pedir con Pago Contra Entrega
               </LinkButton>
-              <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-extrabold text-mint-700">
-                  {formatUSD(product.price)}
+              <div className="flex flex-col gap-0.5">
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-mint-600">
+                  {product.heroPriceLabel ?? "Precio por 2 unidades"}
                 </span>
-                {product.compareAtPrice && (
-                  <span className="text-base text-ink/40 line-through">
-                    {formatUSD(product.compareAtPrice)}
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl font-extrabold text-mint-700">
+                    {formatUSD(product.price)}
                   </span>
-                )}
+                  {product.compareAtPrice && (
+                    <span className="text-base text-ink/40 line-through">
+                      {formatUSD(product.compareAtPrice)}
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
 
@@ -207,7 +212,7 @@ export function ProductLandingPage({ product }: { product: Product }) {
       </Section>
 
       <div className="h-20 sm:hidden" aria-hidden />
-      <StickyCtaBar price={product.price} productSlug={product.slug} />
+      <StickyCtaBar price={product.price} productSlug={product.slug} unitLabel={product.heroPriceLabel} />
     </>
   );
 }

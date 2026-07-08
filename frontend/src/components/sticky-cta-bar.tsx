@@ -8,15 +8,18 @@ export function StickyCtaBar({
   price,
   productSlug,
   label = "Pedir con Pago Contra Entrega",
+  unitLabel = "2 unidades",
 }: {
   price: number;
   productSlug: string;
   label?: string;
+  unitLabel?: string;
 }) {
   return (
     <div className="fixed inset-x-0 bottom-0 z-30 border-t border-black/10 bg-background/95 px-4 py-3 backdrop-blur-md shadow-[0_-4px_20px_rgba(0,0,0,0.06)] sm:hidden">
       <div className="flex items-center justify-between gap-3">
         <div>
+          <p className="text-[10px] font-semibold uppercase tracking-wide text-mint-600">{unitLabel}</p>
           <p className="text-lg font-bold text-ink">{formatUSD(price)}</p>
           <p className="flex items-center gap-1 text-[11px] font-medium text-ink/60">
             <ShieldCheck className="h-3 w-3 text-mint-600" /> Pago al recibir

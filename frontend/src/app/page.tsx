@@ -15,13 +15,14 @@ export default function Home() {
       <Section className="pb-10 pt-10 sm:pt-16">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
-            <Eyebrow>La marca #1 de piernas ligeras en Panamá</Eyebrow>
+            <Eyebrow>Ciencia Circulatoria de Grado Farmacéutico</Eyebrow>
             <h1 className="font-display text-4xl font-semibold leading-[1.08] text-balance text-ink sm:text-5xl lg:text-6xl">
               No es cansancio. Es tu circulación pidiendo ayuda.
             </h1>
             <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink/70">
-              El primer sistema de bienestar circulatorio diseñado para el clima tropical —
-              formulado con Centella Asiática y Castaño de Indias, no una crema genérica más.
+              El primer sistema de bienestar circulatorio formulado con ingredientes de grado
+              farmacéutico — Centella Asiática, Castaño de Indias, Compresión Graduada — adaptado
+              específicamente al clima tropical de Panamá. Sin intermediarios, sin sobreprecio de farmacia.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -41,7 +42,7 @@ export default function Home() {
                 <ShieldCheck className="h-4 w-4 text-mint-600" /> Garantía {BUSINESS.guaranteeDays} días
               </span>
               <span className="flex items-center gap-1.5">
-                <Sparkles className="h-4 w-4 text-mint-600" /> Hecho para el trópico
+                <Sparkles className="h-4 w-4 text-mint-600" /> Grado Farmacéutico
               </span>
             </div>
           </div>
@@ -73,15 +74,15 @@ export default function Home() {
       <Section className="bg-mint-50/50">
         <SectionHeading
           eyebrow="Por qué LÉGER"
-          title="Cinco razones por las que las panameñas confían en nosotros"
+          title="La autoridad de una farmacia, sin el sobreprecio de una farmacia"
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {[
-            { title: "Ciencia real", desc: "Ingredientes estudiados, con nombre y explicados simplemente." },
+            { title: "Grado farmacéutico", desc: "Ingredientes con nombre, mecanismo de acción y estudio — igual que te explicaría un farmacéutico." },
             { title: "Sensación inmediata", desc: "El frío se siente desde el primer uso — la prueba de que funciona." },
             { title: "Hecho para el trópico", desc: "Formulado para el calor, la humedad y estar de pie todo el día." },
-            { title: "Autoridad y transparencia", desc: "Ingredientes claros, garantía real, políticas honestas." },
-            { title: "Pertenencia", desc: `+${BUSINESS.founderCount} mujeres ya confían en ${BUSINESS.brand}.` },
+            { title: "Transparencia radical", desc: "Ingredientes claros, garantía real, cero promesas vacías." },
+            { title: "Comunidad", desc: `+${BUSINESS.founderCount} mujeres ya confían en ${BUSINESS.brand}.` },
           ].map((pillar) => (
             <div key={pillar.title} className="rounded-2xl border border-mint-100 bg-white p-5">
               <CheckCircle2 className="h-6 w-6 text-mint-600" />

@@ -36,9 +36,13 @@ export function SiteFooter() {
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
             <p className="font-display text-2xl font-semibold text-white">{BUSINESS.brand}</p>
+            <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.15em] text-mint-300">
+              Ciencia Circulatoria
+            </p>
             <p className="mt-3 text-sm leading-relaxed text-mint-200">
-              El primer sistema de bienestar circulatorio diseñado para el clima tropical.
-              Hecho para {BUSINESS.country}.
+              Ingredientes de grado farmacéutico, formulados para el clima tropical de{" "}
+              {BUSINESS.country}. La autoridad de una farmacia, vendida directo al consumidor
+              — sin intermediario, sin sobreprecio.
             </p>
             <p className="mt-4 text-sm font-medium text-mint-200">
               WhatsApp: {BUSINESS.whatsappDisplay}

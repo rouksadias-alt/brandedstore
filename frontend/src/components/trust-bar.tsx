@@ -1,11 +1,11 @@
-import { Truck, ShieldCheck, Banknote, Users } from "lucide-react";
+import { Truck, ShieldCheck, Banknote, FlaskConical } from "lucide-react";
 import { BUSINESS } from "@/lib/products";
 
 const items = [
+  { icon: FlaskConical, label: "Ingredientes Grado Farmacéutico" },
   { icon: Banknote, label: "Pago Contra Entrega" },
   { icon: ShieldCheck, label: `Garantía de ${BUSINESS.guaranteeDays} Días` },
   { icon: Truck, label: "Envío Rápido en Panamá" },
-  { icon: Users, label: `+${BUSINESS.founderCount} Piernas Ligeras` },
 ];
 
 export function TrustBar({ className }: { className?: string }) {

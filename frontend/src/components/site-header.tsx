@@ -20,8 +20,13 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-black/5 bg-background/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <Link href="/" className="font-display text-2xl font-semibold tracking-tight text-ink">
-          {BUSINESS.brand}
+        <Link href="/" className="flex flex-col leading-none">
+          <span className="font-display text-2xl font-semibold tracking-tight text-mint-800">
+            {BUSINESS.brand}
+          </span>
+          <span className="mt-0.5 hidden text-[10px] font-bold uppercase tracking-[0.15em] text-mint-600 sm:block">
+            Ciencia Circulatoria
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">

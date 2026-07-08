@@ -215,6 +215,13 @@ export const products: Product[] = [
     gradient: "from-mint-50 via-frost to-mint-100",
     accent: "mint",
     emoji: "💦",
+    images: [
+      "/images/bruma-1.png",
+      "/images/bruma-2.png",
+      "/images/bruma-3.png",
+      "/images/bruma-4.png",
+      "/images/bruma-5.png",
+    ],
     agitation: [
       "A media tarde sientes el \"bajón\" de piernas y no estás en casa para hacer nada.",
       "No tienes tiempo ni manos libres para una rutina de masaje.",

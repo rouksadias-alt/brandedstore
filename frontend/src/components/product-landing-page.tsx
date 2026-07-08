@@ -10,7 +10,7 @@ import { FaqAccordion } from "@/components/faq-accordion";
 import { StickyCtaBar } from "@/components/sticky-cta-bar";
 import { TrustBar } from "@/components/trust-bar";
 import { BUSINESS, type Product } from "@/lib/products";
-import { formatUSD } from "@/lib/utils";
+import { cn, formatUSD } from "@/lib/utils";
 
 export function ProductLandingPage({ product }: { product: Product }) {
   return (
@@ -69,8 +69,53 @@ export function ProductLandingPage({ product }: { product: Product }) {
         </div>
       </Section>
 
+      {/* 1.5 Teaser de ofertas — atajo para compradores decididos */}
+      <Section className="py-0 sm:py-0">
+        <div className="rounded-3xl border border-mint-100 bg-white p-4 shadow-sm sm:p-5">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4">
+            {product.pricingTiers.map((tier) => (
+              <a
+                key={tier.id}
+                href="#oferta"
+                className={cn(
+                  "relative flex flex-col items-center gap-0.5 rounded-2xl border-2 px-2 py-3 text-center transition-all sm:px-4 sm:py-4",
+                  tier.isFeatured
+                    ? "border-mint-600 bg-mint-50"
+                    : "border-black/10 bg-white hover:border-mint-300"
+                )}
+              >
+                {tier.badge && (
+                  <span
+                    className={cn(
+                      "absolute -top-2.5 rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white sm:text-[10px]",
+                      tier.isFeatured ? "bg-sand-500" : "bg-mint-600"
+                    )}
+                  >
+                    {tier.badge}
+                  </span>
+                )}
+                <p className="mt-1 text-xs font-bold leading-tight text-ink sm:text-sm">{tier.label}</p>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-lg font-extrabold text-mint-700 sm:text-xl">
+                    {formatUSD(tier.price)}
+                  </span>
+                  {tier.compareAtPrice && (
+                    <span className="text-[11px] text-ink/50 line-through">
+                      {formatUSD(tier.compareAtPrice)}
+                    </span>
+                  )}
+                </div>
+              </a>
+            ))}
+          </div>
+          <p className="mt-3 text-center text-[11px] font-medium text-ink/50">
+            Toca una oferta para ver los detalles y pedir ↓
+          </p>
+        </div>
+      </Section>
+
       {/* 2. Problema (agitar) */}
-      <Section className="bg-mint-50/50">
+      <Section className="mt-14 bg-mint-50/50 sm:mt-20">
         <SectionHeading
           eyebrow="¿Te pasa esto?"
           title="Sabes exactamente de qué hablamos"

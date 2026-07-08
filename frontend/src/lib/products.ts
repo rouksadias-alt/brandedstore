@@ -164,6 +164,13 @@ export const products: Product[] = [
     gradient: "from-sand-100 via-sand-50 to-mint-50",
     accent: "sand",
     emoji: "🧦",
+    images: [
+      "/images/medias-1.png",
+      "/images/medias-2.png",
+      "/images/medias-3.png",
+      "/images/medias-4.png",
+      "/images/medias-5.png",
+    ],
     agitation: [
       "Terminas tu turno con los pies y tobillos hinchados.",
       "Los vuelos largos o los turnos de pie te dejan las piernas \"cargadas\".",

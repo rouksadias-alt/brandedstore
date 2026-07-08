@@ -98,8 +98,8 @@ export const products: Product[] = [
     fullName:
       "Roll-On Frío de Centella Asiática y Cafeína — Alivio Inmediato para Piernas Pesadas",
     tagline: "Lo sientes frío, lo sientes trabajando — en 60 segundos.",
-    price: 29,
-    compareAtPrice: 45,
+    price: 39,
+    compareAtPrice: 58,
     heroHeadline: "¿Tus piernas se sienten pesadas antes de que termine el día?",
     heroSubheadline:
       "El Roll-On Crioactivo LÉGER combina Centella Asiática, Cafeína y una bola aplicadora fría que drena la pesadez al instante — sientes el efecto desde la primera aplicación.",
@@ -138,9 +138,9 @@ export const products: Product[] = [
       { feature: "Garantía de devolución 30 días", leger: true, generic: false, nothing: false },
     ],
     pricingTiers: [
-      { id: "1x", label: "1 Unidad", units: "30 días de uso", price: 29 },
-      { id: "2x", label: "2 Unidades", units: "60 días de uso", price: 46, compareAtPrice: 58, badge: "Ahorra $12" },
-      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 73, badge: "Más Popular", isFeatured: true },
+      { id: "2x", label: "2 Roll-On", units: "60 días de uso", price: 39, compareAtPrice: 58, badge: "Ahorra $19", isFeatured: true },
+      { id: "duo", label: "Roll-On + Medias", units: "El dúo más completo", price: 49, compareAtPrice: 84, badge: "Ahorra $35" },
+      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 113, badge: "Mejor Valor" },
     ],
     faq: [
       { question: "¿Esto en verdad funciona o es otra crema más?", answer: "El Roll-On combina Centella Asiática y Cafeína con una bola aplicadora fría que sientes trabajando desde el primer uso — no es una promesa vacía, es una sensación inmediata y real." },
@@ -156,8 +156,8 @@ export const products: Product[] = [
     fullName:
       "Medias de Compresión Graduada con Grafeno — Circulación Activa Todo el Día",
     tagline: "La misma tecnología que usan las aeromozas y enfermeras — ahora con estilo.",
-    price: 25,
-    compareAtPrice: 39,
+    price: 39,
+    compareAtPrice: 50,
     heroHeadline: "La misma tecnología que usan las aeromozas y enfermeras — ahora con estilo",
     heroSubheadline:
       "Compresión graduada real en fibra de bambú y grafeno: más apretado en el tobillo, disminuye hacia la rodilla, para circulación activa durante tu día completo.",
@@ -198,9 +198,9 @@ export const products: Product[] = [
       { feature: "Garantía de devolución 30 días", leger: true, generic: false, nothing: false },
     ],
     pricingTiers: [
-      { id: "1x", label: "1 Par", units: "Día o noche", price: 25 },
-      { id: "2x", label: "2 Pares", units: "Rotación semanal", price: 40, compareAtPrice: 50, badge: "Ahorra $10" },
-      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 73, badge: "Más Popular", isFeatured: true },
+      { id: "2x", label: "2 Pares Medias", units: "Rotación semanal", price: 39, compareAtPrice: 50, badge: "Ahorra $11", isFeatured: true },
+      { id: "duo", label: "Medias + Roll-On", units: "El dúo más completo", price: 49, compareAtPrice: 84, badge: "Ahorra $35" },
+      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 113, badge: "Mejor Valor" },
     ],
     faq: [
       { question: "¿Es compresión real o solo elástico apretado?", answer: "Es compresión graduada real (15–20mmHg), más apretada en el tobillo y disminuye hacia la rodilla — el mismo mecanismo que usan enfermeras y aeromozas, no un elástico genérico." },
@@ -214,8 +214,8 @@ export const products: Product[] = [
     shortName: "Bruma Instantánea",
     fullName: "Bruma Fría de Castaño de Indias y Mentol — Piernas Ligeras al Instante",
     tagline: "El refresh de piernas que cabe en tu cartera.",
-    price: 19,
-    compareAtPrice: 29,
+    price: 34,
+    compareAtPrice: 58,
     heroHeadline: "El refresh de piernas que cabe en tu cartera",
     heroSubheadline:
       "Un spray frío de Castaño de Indias, Mentol y Cafeína Verde para ese \"bajón\" de piernas a media tarde — sin manos libres, sin rutina, en segundos.",
@@ -256,9 +256,9 @@ export const products: Product[] = [
       { feature: "Garantía de devolución 30 días", leger: true, generic: false, nothing: false },
     ],
     pricingTiers: [
-      { id: "1x", label: "1 Unidad", units: "Uso diario x 30 días", price: 19 },
-      { id: "2x", label: "2 Unidades", units: "Casa + cartera", price: 30, compareAtPrice: 38, badge: "Ahorra $8" },
-      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 73, badge: "Más Popular", isFeatured: true },
+      { id: "2x", label: "2 Brumas", units: "Casa + cartera", price: 34, compareAtPrice: 58, badge: "Ahorra $24", isFeatured: true },
+      { id: "duo", label: "Bruma + Roll-On", units: "El dúo refrescante", price: 44, compareAtPrice: 74, badge: "Ahorra $30" },
+      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 113, badge: "Mejor Valor" },
     ],
     faq: [
       { question: "¿Puedo usarla sobre la media de compresión?", answer: "Sí — la Bruma está formulada para usarse sobre la piel directamente o sobre la media, sin dejar residuos grasosos." },
@@ -272,9 +272,9 @@ export const products: Product[] = [
 export const kitProduct = {
   slug: "kit-completo",
   name: "Kit LÉGER Piernas Ligeras Completo",
-  tagline: "Los 3 productos, un solo ritual — ahorra $14",
+  tagline: "Los 3 productos, un solo ritual — ahorra $54",
   price: 59,
-  compareAtPrice: 73,
+  compareAtPrice: 113,
   includes: products.map((p) => p.shortName),
 };
 

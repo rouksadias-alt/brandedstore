@@ -56,7 +56,11 @@ export function ProductLandingPage({ product }: { product: Product }) {
             </div>
           </div>
 
-          <ProductVisual emoji={product.emoji} gradient={product.gradient} />
+          <ProductVisual
+            emoji={product.emoji}
+            gradient={product.gradient}
+            images={product.images}
+          />
         </div>
       </Section>
 

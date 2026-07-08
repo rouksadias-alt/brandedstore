@@ -38,6 +38,7 @@ export type Product = {
   gradient: string;
   accent: string;
   emoji: string;
+  images?: string[];
   agitation: string[];
   whyItHappens: string;
   howItWorks: { step: string; title: string; description: string }[];
@@ -97,14 +98,19 @@ export const products: Product[] = [
     fullName:
       "Roll-On Frío de Centella Asiática y Cafeína — Alivio Inmediato para Piernas Pesadas",
     tagline: "Lo sientes frío, lo sientes trabajando — en 60 segundos.",
-    price: 29,
-    compareAtPrice: 39,
+    price: 39,
+    compareAtPrice: 55,
     heroHeadline: "¿Tus piernas se sienten pesadas antes de que termine el día?",
     heroSubheadline:
       "El Roll-On Crioactivo LÉGER combina Centella Asiática, Cafeína y una bola aplicadora fría que drena la pesadez al instante — sientes el efecto desde la primera aplicación.",
     gradient: "from-mint-100 via-mint-50 to-frost",
     accent: "mint",
     emoji: "🧊",
+    images: [
+      "/images/roll-on-1.png",
+      "/images/roll-on-2.png",
+      "/images/roll-on-3.png",
+    ],
     agitation: [
       "Al final del día sientes que cargas troncos en vez de piernas.",
       "Las medias o el pantalón te dejan marca en los tobillos.",
@@ -132,8 +138,8 @@ export const products: Product[] = [
       { feature: "Garantía de devolución 30 días", leger: true, generic: false, nothing: false },
     ],
     pricingTiers: [
-      { id: "1x", label: "1 Unidad", units: "30 días de uso", price: 29 },
-      { id: "2x", label: "2 Unidades", units: "60 días de uso", price: 49, compareAtPrice: 58, badge: "Ahorra $9" },
+      { id: "1x", label: "1 Unidad", units: "30 días de uso", price: 39 },
+      { id: "2x", label: "2 Unidades", units: "60 días de uso", price: 49, compareAtPrice: 78, badge: "Ahorra $29" },
       { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 73, badge: "Más Popular", isFeatured: true },
     ],
     faq: [
@@ -150,8 +156,8 @@ export const products: Product[] = [
     fullName:
       "Medias de Compresión Graduada con Grafeno — Circulación Activa Todo el Día",
     tagline: "La misma tecnología que usan las aeromozas y enfermeras — ahora con estilo.",
-    price: 25,
-    compareAtPrice: 34,
+    price: 39,
+    compareAtPrice: 55,
     heroHeadline: "La misma tecnología que usan las aeromozas y enfermeras — ahora con estilo",
     heroSubheadline:
       "Compresión graduada real en fibra de bambú y grafeno: más apretado en el tobillo, disminuye hacia la rodilla, para circulación activa durante tu día completo.",
@@ -185,8 +191,8 @@ export const products: Product[] = [
       { feature: "Garantía de devolución 30 días", leger: true, generic: false, nothing: false },
     ],
     pricingTiers: [
-      { id: "1x", label: "1 Par", units: "Día o noche", price: 25 },
-      { id: "2x", label: "2 Pares", units: "Rotación semanal", price: 42, compareAtPrice: 50, badge: "Ahorra $8" },
+      { id: "1x", label: "1 Par", units: "Día o noche", price: 39 },
+      { id: "2x", label: "2 Pares", units: "Rotación semanal", price: 42, compareAtPrice: 78, badge: "Ahorra $36" },
       { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 73, badge: "Más Popular", isFeatured: true },
     ],
     faq: [
@@ -201,8 +207,8 @@ export const products: Product[] = [
     shortName: "Bruma Instantánea",
     fullName: "Bruma Fría de Castaño de Indias y Mentol — Piernas Ligeras al Instante",
     tagline: "El refresh de piernas que cabe en tu cartera.",
-    price: 19,
-    compareAtPrice: 25,
+    price: 39,
+    compareAtPrice: 55,
     heroHeadline: "El refresh de piernas que cabe en tu cartera",
     heroSubheadline:
       "Un spray frío de Castaño de Indias, Mentol y Cafeína Verde para ese \"bajón\" de piernas a media tarde — sin manos libres, sin rutina, en segundos.",
@@ -236,8 +242,8 @@ export const products: Product[] = [
       { feature: "Garantía de devolución 30 días", leger: true, generic: false, nothing: false },
     ],
     pricingTiers: [
-      { id: "1x", label: "1 Unidad", units: "Uso diario x 30 días", price: 19 },
-      { id: "2x", label: "2 Unidades", units: "Casa + cartera", price: 32, compareAtPrice: 38, badge: "Ahorra $6" },
+      { id: "1x", label: "1 Unidad", units: "Uso diario x 30 días", price: 39 },
+      { id: "2x", label: "2 Unidades", units: "Casa + cartera", price: 65, compareAtPrice: 78, badge: "Ahorra $13" },
       { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 73, badge: "Más Popular", isFeatured: true },
     ],
     faq: [

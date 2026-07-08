@@ -290,6 +290,7 @@ export type CheckoutOption = {
   slug: string;
   name: string;
   emoji: string;
+  image?: string;
   tiers: PricingTier[];
   allowBump: boolean;
 };
@@ -299,6 +300,7 @@ export const checkoutOptions: CheckoutOption[] = [
     slug: p.slug,
     name: p.shortName,
     emoji: p.emoji,
+    image: p.images?.[0],
     tiers: p.pricingTiers,
     allowBump: p.slug !== "bruma",
   })),
@@ -306,6 +308,7 @@ export const checkoutOptions: CheckoutOption[] = [
     slug: kitProduct.slug,
     name: kitProduct.name,
     emoji: "🎁",
+    image: undefined,
     tiers: [
       {
         id: "kit",

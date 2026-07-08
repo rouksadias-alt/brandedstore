@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Check, Loader2, MessageCircleWarning } from "lucide-react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { formatUSD } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -110,7 +111,19 @@ export function CheckoutForm() {
                   : "border-black/10 bg-white hover:border-mint-300"
               )}
             >
-              <span className="text-2xl">{opt.emoji}</span>
+              {opt.image ? (
+                <div className="relative h-14 w-14 overflow-hidden rounded-xl">
+                  <Image
+                    src={opt.image}
+                    alt={opt.name}
+                    fill
+                    className="object-cover"
+                    sizes="56px"
+                  />
+                </div>
+              ) : (
+                <span className="text-2xl">{opt.emoji}</span>
+              )}
               <span className="text-xs font-semibold leading-tight text-ink/80">{opt.name}</span>
             </button>
           ))}

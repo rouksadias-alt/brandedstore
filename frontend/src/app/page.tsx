@@ -50,10 +50,21 @@ export default function Home() {
             <ProductVisual
               emoji={products[0].emoji}
               gradient={products[0].gradient}
+              images={products[0].images ? [products[0].images[0]] : undefined}
               className="col-span-2"
             />
-            <ProductVisual emoji={products[1].emoji} gradient={products[1].gradient} size="sm" />
-            <ProductVisual emoji={products[2].emoji} gradient={products[2].gradient} size="sm" />
+            <ProductVisual
+              emoji={products[1].emoji}
+              gradient={products[1].gradient}
+              images={products[1].images ? [products[1].images[0]] : undefined}
+              size="sm"
+            />
+            <ProductVisual
+              emoji={products[2].emoji}
+              gradient={products[2].gradient}
+              images={products[2].images ? [products[2].images[0]] : undefined}
+              size="sm"
+            />
           </div>
         </div>
       </Section>
@@ -95,7 +106,12 @@ export default function Home() {
               href={`/${p.slug}`}
               className="group flex flex-col gap-4 rounded-3xl border border-mint-100 bg-white p-6 transition-shadow hover:shadow-xl"
             >
-              <ProductVisual emoji={p.emoji} gradient={p.gradient} size="sm" />
+              <ProductVisual
+                emoji={p.emoji}
+                gradient={p.gradient}
+                images={p.images ? [p.images[0]] : undefined}
+                size="sm"
+              />
               <div>
                 <p className="font-display text-lg font-semibold text-ink">{p.shortName}</p>
                 <p className="mt-1 text-sm text-ink/60">{p.tagline}</p>

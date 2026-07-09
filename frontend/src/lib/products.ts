@@ -114,10 +114,10 @@ export const products: Product[] = [
       "/images/roll-on-3.png",
     ],
     agitation: [
-      "Al final del día sientes que cargas troncos en vez de piernas.",
-      "Las medias o el pantalón te dejan marca en los tobillos.",
-      "Te da pena usar sandalias porque tus piernas se ven hinchadas.",
-      "Sientes que esto va a \"empeorar\" con los años y te preocupa.",
+      "Subes las escaleras del Metro y sientes las piernas como si cargaras sacos de cemento.",
+      "Llegas a casa y lo primero que haces es tirarte al sofá — no te quedan fuerzas ni para jugar con tus hijos.",
+      "Te da pena ponerte sandalias o falda porque tus tobillos se ven hinchados y con la marca de la media.",
+      "Te despiertas de madrugada con calambres en las pantorrillas — y te preocupa terminar con várices como tu mamá.",
     ],
     whyItHappens:
       "Cuando pasas muchas horas de pie o sentada, la circulación venosa de las piernas tiene que trabajar contra la gravedad para regresar la sangre al corazón. El calor tropical dilata los vasos y hace todo peor, retenido líquido se acumula y sientes pesadez, hinchazón y esa sensación de \"piernas de tronco\" al final del día.",
@@ -175,10 +175,10 @@ export const products: Product[] = [
       "/images/medias-5.png",
     ],
     agitation: [
-      "Terminas tu turno con los pies y tobillos hinchados.",
-      "Los vuelos largos o los turnos de pie te dejan las piernas \"cargadas\".",
-      "Has probado medias \"de compresión\" baratas que en realidad no comprimen nada.",
-      "Te preocupa que la mala circulación empeore con los años.",
+      "A las 3pm ya sientes los zapatos apretados — tus tobillos se hincharon otra vez dentro del turno.",
+      "El viaje en bus o el vuelo te deja las piernas dormidas y \"cargadas\", y al bajarte casi no puedes caminar bien.",
+      "Compraste medias \"de compresión\" baratas que a la semana se aflojaron y no comprimen nada.",
+      "Ya notas venitas y arañas vasculares apareciendo — y sabes que sin hacer nada, solo van a empeorar.",
     ],
     whyItHappens:
       "La compresión graduada es una de las pocas intervenciones que médicos y farmacéuticos recomiendan de verdad: al aplicar más presión en el tobillo y menos hacia la rodilla, ayuda a que la sangre venosa suba más eficientemente contra la gravedad, reduciendo la hinchazón que se acumula durante horas de pie o sentada.",
@@ -234,10 +234,10 @@ export const products: Product[] = [
       "/images/bruma-5.png",
     ],
     agitation: [
-      "A media tarde sientes el \"bajón\" de piernas y no estás en casa para hacer nada.",
-      "No tienes tiempo ni manos libres para una rutina de masaje.",
-      "Sientes que necesitas algo rápido entre reuniones, en el bus o en un vuelo.",
-      "Quieres sentirte fresca antes de salir en la noche, sin bañarte de nuevo.",
+      "A media tarde, con el calor de la ciudad, sientes las piernas ardiendo y pulsando — y todavía te quedan horas de trabajo.",
+      "Estás en la oficina, en el bus o en fila y no puedes quitarte los zapatos ni subir las piernas — necesitas alivio ahí mismo.",
+      "Sales del trabajo directo a recoger a los niños o hacer diligencias — no hay tiempo para masajes ni rutinas.",
+      "Quieres sentirte fresca para salir en la noche, pero tus piernas llegan \"muertas\" del día.",
     ],
     whyItHappens:
       "El calor tropical dilata los vasos sanguíneos y acelera la sensación de pesadez a medida que avanza el día. Una bruma fría con venotónicos como el Castaño de Indias refresca al instante y ayuda a la pared venosa, sin necesidad de manos libres para masajear.",

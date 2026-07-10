@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta, date, time as dtime
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy import func, select, desc
+from sqlalchemy import func, select, desc, cast, Date
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.admin_auth import verify_credentials, create_token, require_admin
@@ -56,6 +56,12 @@ async def summary(
     revenue = float(await db.scalar(select(func.coalesce(func.sum(Order.total_usd), 0)).where(in_range)) or 0)
     aov = round(revenue / total_orders, 2) if total_orders else 0.0
 
+    bump_orders = await db.scalar(select(func.count()).where(in_range, Order.bump.is_(True))) or 0
+    express_orders = await db.scalar(select(func.count()).where(in_range, Order.express.is_(True))) or 0
+    bump_rate = round((bump_orders / total_orders) * 100, 1) if total_orders else 0.0
+    express_rate = round((express_orders / total_orders) * 100, 1) if total_orders else 0.0
+
+    # ── Orders by status ──
     status_rows = (
         await db.execute(select(Order.status, func.count()).where(in_range).group_by(Order.status))
     ).all()
@@ -63,10 +69,67 @@ async def summary(
     for s, c in status_rows:
         by_status[s] = c
 
+    # ── Daily trend (orders + revenue per day) ──
+    day_rows = (
+        await db.execute(
+            select(cast(Order.created_at, Date), func.count(), func.coalesce(func.sum(Order.total_usd), 0))
+            .where(in_range)
+            .group_by(cast(Order.created_at, Date))
+        )
+    ).all()
+    by_day = {r[0].isoformat(): {"orders": r[1], "revenue": float(r[2])} for r in day_rows}
+
+    series = []
+    cur = start_dt.date()
+    while cur <= end_dt.date():
+        key = cur.isoformat()
+        d = by_day.get(key, {"orders": 0, "revenue": 0.0})
+        series.append({"date": key, "orders": d["orders"], "revenue": round(d["revenue"], 2)})
+        cur += timedelta(days=1)
+
+    # ── Top offers (grouped by product_slug — covers every current & future offer) ──
+    product_rows = (
+        await db.execute(
+            select(Order.product_slug, func.max(Order.product_name), func.count(), func.coalesce(func.sum(Order.total_usd), 0))
+            .where(in_range)
+            .group_by(Order.product_slug)
+            .order_by(desc(func.coalesce(func.sum(Order.total_usd), 0)))
+        )
+    ).all()
+    top_products = [
+        {"slug": r[0], "name": r[1], "orders": r[2], "revenue": round(float(r[3] or 0), 2)}
+        for r in product_rows
+    ]
+
+    # ── Top provinces / cities (helps plan delivery routes) ──
+    city_rows = (
+        await db.execute(
+            select(Order.province, func.count(), func.coalesce(func.sum(Order.total_usd), 0))
+            .where(in_range)
+            .group_by(Order.province)
+            .order_by(desc(func.count()))
+            .limit(8)
+        )
+    ).all()
+    top_provinces = [
+        {"province": r[0] or "—", "orders": r[1], "revenue": round(float(r[2] or 0), 2)} for r in city_rows
+    ]
+
     return {
         "range": {"start": start_dt.date().isoformat(), "end": end_dt.date().isoformat()},
-        "kpis": {"orders": total_orders, "revenue": round(revenue, 2), "aov": aov},
+        "kpis": {
+            "orders": total_orders,
+            "revenue": round(revenue, 2),
+            "aov": aov,
+            "bump_orders": bump_orders,
+            "bump_rate": bump_rate,
+            "express_orders": express_orders,
+            "express_rate": express_rate,
+        },
         "orders_by_status": by_status,
+        "series": series,
+        "top_products": top_products,
+        "top_provinces": top_provinces,
     }
 
 
@@ -75,6 +138,7 @@ async def list_orders(
     start: str | None = None,
     end: str | None = None,
     status: str | None = None,
+    product: str | None = None,
     q: str | None = None,
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),
@@ -85,6 +149,8 @@ async def list_orders(
     base = select(Order).where(Order.created_at.between(start_dt, end_dt))
     if status and status != "all":
         base = base.where(Order.status == status)
+    if product and product != "all":
+        base = base.where(Order.product_slug == product)
     if q:
         like = f"%{q.strip()}%"
         base = base.where((Order.name.ilike(like)) | (Order.phone.ilike(like)))
@@ -106,9 +172,11 @@ async def list_orders(
             "address": o.address,
             "city": o.city,
             "province": o.province,
+            "product_slug": o.product_slug,
             "product_name": o.product_name,
             "plan_label": o.plan_label,
             "bump": o.bump,
+            "express": o.express,
             "total_usd": float(o.total_usd),
             "notes": o.notes,
             "status": o.status,

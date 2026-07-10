@@ -26,6 +26,7 @@ class Order(Base):
     plan_id: Mapped[str] = mapped_column(String(20))
     plan_label: Mapped[str] = mapped_column(String(100))
     bump: Mapped[bool] = mapped_column(Boolean, default=False)
+    express: Mapped[bool] = mapped_column(Boolean, default=False)
     total_usd: Mapped[float] = mapped_column(Numeric(10, 2))
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
 

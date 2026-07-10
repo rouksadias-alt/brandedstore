@@ -34,6 +34,7 @@ class OrderCreate(BaseModel):
     product_slug: str = Field(alias="productSlug")
     plan_id: str = Field(alias="planId", min_length=1, max_length=20)
     bump: bool = False
+    express: bool = False
     notes: str | None = Field(default=None, max_length=500)
 
     @field_validator("name", "address", "city")

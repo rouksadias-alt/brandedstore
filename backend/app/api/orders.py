@@ -16,7 +16,9 @@ router = APIRouter()
 @router.post("/orders", response_model=OrderResponse, response_model_by_alias=True)
 async def create_order(body: OrderCreate, db: AsyncSession = Depends(get_db)):
     try:
-        option, tier, bump_applied, total = price_order(body.product_slug, body.plan_id, body.bump)
+        option, tier, bump_applied, total = price_order(
+            body.product_slug, body.plan_id, body.bump, body.express
+        )
     except KeyError:
         raise HTTPException(
             status_code=400,
@@ -35,6 +37,7 @@ async def create_order(body: OrderCreate, db: AsyncSession = Depends(get_db)):
         plan=plan_label,
         price=total,
         bump=bump_applied,
+        express=body.express,
         city=f"{body.city}, {body.province}",
     )
 
@@ -49,6 +52,7 @@ async def create_order(body: OrderCreate, db: AsyncSession = Depends(get_db)):
         plan_id=tier.id,
         plan_label=tier.label,
         bump=bump_applied,
+        express=body.express,
         total_usd=total,
         notes=body.notes or None,
         status="pending_confirmation",

@@ -228,9 +228,6 @@ export const products: Product[] = [
     images: [
       "/images/bruma-1.png",
       "/images/bruma-2.png",
-      "/images/bruma-3.png",
-      "/images/bruma-4.png",
-      "/images/bruma-5.png",
     ],
     agitation: [
       "A media tarde, con el calor de la ciudad, sientes las piernas ardiendo y pulsando — y todavía te quedan horas de trabajo.",

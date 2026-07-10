@@ -18,11 +18,19 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     environment:
-      - DATABASE_URL=${DATABASE_URL:-postgres://postgres:brandedstore@brandedstore_databasebranded:5432/brandedstore?sslmode=disable}
-      - FRONTEND_ORIGIN=${FRONTEND_ORIGIN:-https://tudominio.com}
+      # NOTE: Easypanel's "Variables d'environnement" panel for this compose
+      # project does NOT get substituted into these ${VAR:-default} slots
+      # (confirmed by `echo $DATABASE_URL` inside the running backend
+      # container returning the *default* value, not the one shown in the
+      # UI). Until that's sorted out on the Easypanel side, the values after
+      # the `:-` are what's ACTUALLY used in production — keep them in sync
+      # with the real credentials (Postgres password, admin password, real
+      # domains) instead of relying on the Easypanel panel.
+      - DATABASE_URL=${DATABASE_URL:-postgres://postgres:7Otlcjn37i2kczza34rm@brandedstore_databasebranded:5432/brandedstore?sslmode=disable}
+      - FRONTEND_ORIGIN=${FRONTEND_ORIGIN:-https://brandedstore-app.9qvumg.easypanel.host}
       - WHATSAPP_NUMBER=${WHATSAPP_NUMBER:-50760000000}
       - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-change-me}
-      - ADMIN_SECRET_KEY=${ADMIN_SECRET_KEY:-dev-insecure-change-this-secret}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-nSZwrTlgIoWvhG0VjF8J}
+      - ADMIN_SECRET_KEY=${ADMIN_SECRET_KEY:-qZhmaOlgACQ0ovBFdzHStcYRfkjpe3JTGxX8VUwu}
       - ADMIN_SESSION_HOURS=${ADMIN_SESSION_HOURS:-12}
     restart: unless-stopped

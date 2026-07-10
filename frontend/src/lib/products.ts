@@ -255,7 +255,7 @@ export const products: Product[] = [
     ],
     pricingTiers: [
       { id: "2x", label: "2 Brumas", units: "Casa + cartera", price: 34, compareAtPrice: 58, badge: "Ahorra $24", isFeatured: true, image: "/images/bruma-1.png" },
-      { id: "duo", label: "Bruma + Roll-On", units: "El dúo refrescante", price: 44, compareAtPrice: 74, badge: "Ahorra $30", image: "/images/roll-on-1.png" },
+      { id: "duo", label: "Bruma + Roll-On", units: "El dúo refrescante", price: 44, compareAtPrice: 74, badge: "Ahorra $30", image: "/images/duo-bruma-rollon.png" },
       { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 113, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
     faq: [

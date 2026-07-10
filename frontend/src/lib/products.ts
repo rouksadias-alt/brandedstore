@@ -169,9 +169,6 @@ export const products: Product[] = [
     images: [
       "/images/medias-1.png",
       "/images/medias-2.png",
-      "/images/medias-3.png",
-      "/images/medias-4.png",
-      "/images/medias-5.png",
     ],
     agitation: [
       "A las 3pm ya sientes los zapatos apretados — tus tobillos se hincharon otra vez dentro del turno.",

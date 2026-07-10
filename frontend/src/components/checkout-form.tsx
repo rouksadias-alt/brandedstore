@@ -109,26 +109,30 @@ export function CheckoutForm() {
               type="button"
               onClick={() => handleProductChange(opt.slug)}
               className={cn(
-                "flex flex-col items-center gap-1.5 rounded-2xl border-2 px-3 py-4 text-center transition-all",
+                "flex flex-col overflow-hidden rounded-2xl border-2 text-center transition-all",
                 productSlug === opt.slug
                   ? "border-mint-600 bg-mint-50 shadow-sm"
                   : "border-black/10 bg-white hover:border-mint-300"
               )}
             >
               {opt.image ? (
-                <div className="relative h-14 w-14 overflow-hidden rounded-xl">
+                <div className="relative aspect-square w-full">
                   <Image
                     src={opt.image}
                     alt={opt.name}
                     fill
                     className="object-cover"
-                    sizes="56px"
+                    sizes="(max-width: 640px) 45vw, 180px"
                   />
                 </div>
               ) : (
-                <span className="text-2xl">{opt.emoji}</span>
+                <div className="flex aspect-square w-full items-center justify-center bg-mint-50">
+                  <span className="text-4xl">{opt.emoji}</span>
+                </div>
               )}
-              <span className="text-xs font-semibold leading-tight text-ink/80">{opt.name}</span>
+              <span className="px-2 py-3 text-xs font-semibold leading-tight text-ink/80">
+                {opt.name}
+              </span>
             </button>
           ))}
         </div>

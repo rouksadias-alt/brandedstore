@@ -150,26 +150,39 @@ export function CheckoutForm() {
               type="button"
               onClick={() => setPlanId(tier.id)}
               className={cn(
-                "relative flex flex-col items-center gap-1 rounded-2xl border-2 px-3 py-4 text-center transition-all",
+                "relative flex flex-col overflow-hidden rounded-2xl border-2 text-center transition-all",
                 planId === tier.id
                   ? "border-mint-600 bg-mint-50 shadow-sm"
                   : "border-black/10 bg-white hover:border-mint-300"
               )}
             >
               {tier.badge && (
-                <span className="absolute -top-2.5 rounded-full bg-sand-500 px-2.5 py-0.5 text-[10px] font-bold uppercase text-white shadow-sm">
+                <span className="absolute left-1/2 top-2 z-10 -translate-x-1/2 rounded-full bg-sand-500 px-2.5 py-0.5 text-[10px] font-bold uppercase text-white shadow-sm">
                   {tier.badge}
                 </span>
               )}
-              <span className="text-sm font-bold text-ink">{tier.label}</span>
-              <span className="text-[11px] font-medium text-ink/60">{tier.units}</span>
-              <div className="mt-1 flex items-baseline gap-1.5">
-                <span className="text-lg font-extrabold text-mint-700">{formatUSD(tier.price)}</span>
-                {tier.compareAtPrice && (
-                  <span className="text-xs font-medium text-ink/50 line-through">
-                    {formatUSD(tier.compareAtPrice)}
-                  </span>
-                )}
+              {tier.image && (
+                <div className="relative aspect-square w-full">
+                  <Image
+                    src={tier.image}
+                    alt={tier.label}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 90vw, 220px"
+                  />
+                </div>
+              )}
+              <div className="flex flex-col items-center gap-1 px-3 py-3">
+                <span className="text-sm font-bold text-ink">{tier.label}</span>
+                <span className="text-[11px] font-medium text-ink/60">{tier.units}</span>
+                <div className="mt-1 flex items-baseline gap-1.5">
+                  <span className="text-lg font-extrabold text-mint-700">{formatUSD(tier.price)}</span>
+                  {tier.compareAtPrice && (
+                    <span className="text-xs font-medium text-ink/50 line-through">
+                      {formatUSD(tier.compareAtPrice)}
+                    </span>
+                  )}
+                </div>
               </div>
             </button>
           ))}

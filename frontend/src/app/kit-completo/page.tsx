@@ -85,17 +85,11 @@ export default function KitCompletoPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-2 sm:gap-4">
-            {products.map((p) => (
-              <ProductVisual
-                key={p.slug}
-                emoji={p.emoji}
-                gradient={p.gradient}
-                images={p.images ? [p.images[0]] : undefined}
-                size="sm"
-              />
-            ))}
-          </div>
+          <ProductVisual
+            emoji="🎁"
+            gradient="from-mint-100 via-mint-50 to-sand-50"
+            images={kitProduct.images}
+          />
         </div>
       </Section>
 

@@ -172,7 +172,6 @@ export const products: Product[] = [
       "/images/medias-3.png",
       "/images/medias-4.png",
       "/images/medias-5.png",
-      "/images/bruma-medias-combo.png",
     ],
     agitation: [
       "A las 3pm ya sientes los zapatos apretados — tus tobillos se hincharon otra vez dentro del turno.",
@@ -232,7 +231,6 @@ export const products: Product[] = [
       "/images/bruma-3.png",
       "/images/bruma-4.png",
       "/images/bruma-5.png",
-      "/images/bruma-medias-combo.png",
     ],
     agitation: [
       "A media tarde, con el calor de la ciudad, sientes las piernas ardiendo y pulsando — y todavía te quedan horas de trabajo.",

@@ -111,7 +111,6 @@ export const products: Product[] = [
     images: [
       "/images/roll-on-1.png",
       "/images/roll-on-2.png",
-      "/images/roll-on-3.png",
     ],
     agitation: [
       "Subes las escaleras del Metro y sientes las piernas como si cargaras sacos de cemento.",

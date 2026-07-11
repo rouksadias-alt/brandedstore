@@ -5,7 +5,7 @@ import { Section, SectionHeading, Eyebrow } from "@/components/ui/section";
 import { ProductVisual } from "@/components/product-visual";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
 import { TrustBar } from "@/components/trust-bar";
-import { BUSINESS, products, kitProduct } from "@/lib/products";
+import { BUSINESS, products, kitProduct, duoOffers } from "@/lib/products";
 import { formatUSD } from "@/lib/utils";
 
 export default function Home() {
@@ -146,6 +146,33 @@ export default function Home() {
             </LinkButton>
           </div>
         </div>
+
+        {/* Duo bundles */}
+        {duoOffers.length > 0 && (
+          <div className="mt-5 grid gap-4 sm:grid-cols-2">
+            {duoOffers.map((duo) => (
+              <Link
+                key={duo.slug}
+                href={`/${duo.slug}`}
+                className="group flex items-center justify-between gap-4 rounded-2xl border border-mint-100 bg-white p-5 transition-shadow hover:shadow-lg"
+              >
+                <div>
+                  <span className="inline-block rounded-full bg-mint-100 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-mint-700">
+                    {duo.badge}
+                  </span>
+                  <p className="mt-2 font-display text-lg font-semibold text-ink">{duo.title}</p>
+                  <div className="mt-1 flex items-baseline gap-2">
+                    <span className="text-lg font-bold text-mint-700">{formatUSD(duo.price)}</span>
+                    <span className="text-sm text-ink/50 line-through">{formatUSD(duo.compareAtPrice)}</span>
+                  </div>
+                </div>
+                <span className="flex items-center gap-1 text-sm font-semibold text-mint-700">
+                  Ver dúo <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        )}
       </Section>
 
       {/* Testimonials */}

@@ -277,6 +277,82 @@ export const kitProduct = {
   includes: products.map((p) => p.shortName),
 };
 
+export type DuoOffer = {
+  slug: string;
+  title: string;
+  tagline: string;
+  heroHeadline: string;
+  heroSubheadline: string;
+  price: number;
+  compareAtPrice: number;
+  badge: string;
+  emoji: string;
+  gradient: string;
+  images: string[];
+  productSlugs: [string, string];
+  checkoutProductSlug: string;
+  checkoutPlanId: string;
+  useCases: { time: string; title: string; desc: string }[];
+  faq: FAQItem[];
+};
+
+// Dedicated landing pages for 2-product bundles — one step up from a single
+// product, one step below the full Kit. Add new duos here and create a
+// matching `app/<slug>/page.tsx` that renders <DuoLandingPage duo={...} />.
+export const duoOffers: DuoOffer[] = [
+  {
+    slug: "bruma-rollon",
+    title: "Bruma + Roll-On Crioactivo",
+    tagline: "Frío inmediato + refresco al instante — el dúo para piernas ligeras todo el día",
+    heroHeadline: "Alivio en casa por la mañana, refresco instantáneo el resto del día",
+    heroSubheadline:
+      "El Roll-On Crioactivo drena la pesadez con frío profundo cuando tienes tiempo de aplicarlo con calma, y la Bruma te da ese mismo alivio en segundos, sin manos libres, dondequiera que estés — oficina, bus o fila del súper.",
+    price: 44,
+    compareAtPrice: 74,
+    badge: "Ahorra $30",
+    emoji: "💦",
+    gradient: "from-mint-50 via-frost to-mint-100",
+    images: ["/images/duo-bruma-rollon.png"],
+    productSlugs: ["bruma", "roll-on"],
+    checkoutProductSlug: "bruma",
+    checkoutPlanId: "duo",
+    useCases: [
+      {
+        time: "Mañana / en casa",
+        title: "Roll-On Crioactivo",
+        desc: "Aplica con calma antes de salir — la bola metálica fría y la Centella Asiática drenan la pesadez desde temprano.",
+      },
+      {
+        time: "Fuera de casa",
+        title: "Bruma Instantánea",
+        desc: "Rocía sobre la piel o la media en segundos, sin manos libres — tu alivio de bolsillo para el resto del día.",
+      },
+    ],
+    faq: [
+      {
+        question: "¿Por qué comprar los dos en vez de uno solo?",
+        answer: "Porque cubren momentos distintos: el Roll-On es ideal cuando tienes unos minutos para aplicarlo con calma (mañana o al llegar a casa), y la Bruma es tu solución rápida cuando estás fuera y no puedes detenerte — juntos cubren todo el día.",
+      },
+      {
+        question: "¿Cuánto ahorro comprando el dúo?",
+        answer: "El dúo cuesta $44 vs. $74 comprando cada producto por separado en su presentación de 2 unidades — un ahorro real de $30.",
+      },
+      {
+        question: "¿Tiene la misma garantía que los productos individuales?",
+        answer: "Sí — Garantía de 30 días y Pago Contra Entrega, igual que cualquier producto LÉGER.",
+      },
+      {
+        question: "¿Cómo pago?",
+        answer: "Pago Contra Entrega — pagas en efectivo al repartidor cuando recibes tu pedido. Cero riesgo.",
+      },
+    ],
+  },
+];
+
+export function getDuoOfferBySlug(slug: string): DuoOffer | undefined {
+  return duoOffers.find((d) => d.slug === slug);
+}
+
 export function getProductBySlug(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
 }

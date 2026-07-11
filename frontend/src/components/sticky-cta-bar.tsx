@@ -7,14 +7,20 @@ import { formatUSD } from "@/lib/utils";
 export function StickyCtaBar({
   price,
   productSlug,
+  planId,
   label = "Pedir Ahora",
   unitLabel = "2 unidades",
 }: {
   price: number;
   productSlug: string;
+  planId?: string;
   label?: string;
   unitLabel?: string;
 }) {
+  const href = planId
+    ? `/checkout?product=${productSlug}&plan=${planId}`
+    : `/checkout?product=${productSlug}`;
+
   return (
     <div className="fixed inset-x-0 bottom-0 z-30 border-t border-black/10 bg-background/95 px-4 py-3 backdrop-blur-md shadow-[0_-4px_20px_rgba(0,0,0,0.06)] sm:hidden">
       <div className="flex items-center justify-between gap-3">
@@ -25,7 +31,7 @@ export function StickyCtaBar({
             <ShieldCheck className="h-3 w-3 text-mint-600" /> Pago al recibir
           </p>
         </div>
-        <LinkButton href={`/checkout?product=${productSlug}`} size="md" className="flex-1">
+        <LinkButton href={href} size="md" className="flex-1">
           {label}
         </LinkButton>
       </div>

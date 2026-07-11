@@ -8,9 +8,13 @@ services:
         # defaults are what's ACTUALLY baked into the compiled frontend.
         - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-https://api.soyleger.store}
         - NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER:-34694210495}
+        - NEXT_PUBLIC_FB_PIXEL_ID=${NEXT_PUBLIC_FB_PIXEL_ID:-1021474537476265}
+        - NEXT_PUBLIC_TIKTOK_PIXEL_ID=${NEXT_PUBLIC_TIKTOK_PIXEL_ID:-}
     environment:
       - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-https://api.soyleger.store}
       - NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER:-34694210495}
+      - NEXT_PUBLIC_FB_PIXEL_ID=${NEXT_PUBLIC_FB_PIXEL_ID:-1021474537476265}
+      - NEXT_PUBLIC_TIKTOK_PIXEL_ID=${NEXT_PUBLIC_TIKTOK_PIXEL_ID:-}
     depends_on:
       - backend
     restart: unless-stopped

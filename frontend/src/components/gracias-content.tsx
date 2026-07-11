@@ -9,6 +9,7 @@ import { Section } from "@/components/ui/section";
 import { LinkButton } from "@/components/ui/button";
 import { BUSINESS, getUpsellProducts } from "@/lib/products";
 import { formatUSD } from "@/lib/utils";
+import { trackPurchase } from "@/lib/analytics";
 
 export function GraciasContent() {
   const searchParams = useSearchParams();
@@ -28,6 +29,16 @@ export function GraciasContent() {
     }, 900);
     return () => clearTimeout(timer);
   }, [wa]);
+
+  // Order already exists in the DB by the time this page renders (checkout-form
+  // only redirects here after a successful POST /orders), so this is a safe
+  // place to fire the ad-platform conversion event — even though it's Pago
+  // Contra Entrega and not yet actually paid.
+  useEffect(() => {
+    if (!product || !total) return;
+    trackPurchase({ value: Number(total), content_name: product });
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- fire once per page load
+  }, []);
 
   return (
     <Section className="pb-24 pt-12">

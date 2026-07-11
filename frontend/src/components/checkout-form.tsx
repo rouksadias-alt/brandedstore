@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Check, Loader2, MessageCircleWarning } from "lucide-react";
 import Image from "next/image";
@@ -9,6 +9,7 @@ import { formatUSD } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { checkoutOptions, getCheckoutOption } from "@/lib/products";
 import { PANAMA_PROVINCES } from "@/lib/order-schema";
+import { trackInitiateCheckout } from "@/lib/analytics";
 
 const BUMP_PRICE = 9;
 const EXPRESS_PRICE = 2;
@@ -41,6 +42,11 @@ export function CheckoutForm() {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   const total = selectedTier.price + (bump && option.allowBump ? BUMP_PRICE : 0) + (express ? EXPRESS_PRICE : 0);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- fire once on landing, not on every plan tweak
+  useEffect(() => {
+    trackInitiateCheckout({ value: total, content_name: option.name });
+  }, []);
 
   function handleProductChange(slug: string) {
     setProductSlug(slug);

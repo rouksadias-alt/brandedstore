@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { WhatsAppFloatingButton } from "@/components/whatsapp-floating-button";
+import { Pixels } from "@/components/analytics/pixels";
 
 const sans = Plus_Jakarta_Sans({
   variable: "--font-sans",
@@ -44,6 +45,7 @@ export default function RootLayout({
       className={`${sans.variable} ${display.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-ink">
+        <Pixels />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

@@ -141,7 +141,7 @@ export const products: Product[] = [
     ],
     pricingTiers: [
       { id: "2x", label: "2 Roll-On", units: "60 días de uso", price: 39, compareAtPrice: 58, badge: "Ahorra $19", isFeatured: true, image: "/images/roll-on-1.png" },
-      { id: "duo", label: "Roll-On + Medias", units: "El dúo más completo", price: 49, compareAtPrice: 84, badge: "Ahorra $35", image: "/images/medias-2.png" },
+      { id: "duo", label: "Roll-On + Medias", units: "El dúo más completo", price: 49, compareAtPrice: 84, badge: "Ahorra $35", image: "/images/duo-rollon-medias.png" },
       { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 113, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
     faq: [
@@ -199,7 +199,7 @@ export const products: Product[] = [
     ],
     pricingTiers: [
       { id: "2x", label: "2 Pares Medias", units: "Rotación semanal", price: 39, compareAtPrice: 50, badge: "Ahorra $11", isFeatured: true, image: "/images/medias-2.png" },
-      { id: "duo", label: "Medias + Roll-On", units: "El dúo más completo", price: 49, compareAtPrice: 84, badge: "Ahorra $35", image: "/images/roll-on-1.png" },
+      { id: "duo", label: "Medias + Roll-On", units: "El dúo más completo", price: 49, compareAtPrice: 84, badge: "Ahorra $35", image: "/images/duo-rollon-medias.png" },
       { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 113, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
     faq: [

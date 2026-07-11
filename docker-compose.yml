@@ -31,6 +31,7 @@ services:
       - DATABASE_URL=${DATABASE_URL:-postgres://postgres:7Otlcjn37i2kczza34rm@brandedstore_databasebranded:5432/brandedstore?sslmode=disable}
       - FRONTEND_ORIGIN=${FRONTEND_ORIGIN:-https://soyleger.store}
       - WHATSAPP_NUMBER=${WHATSAPP_NUMBER:-50760000000}
+      - GOOGLE_SHEETS_WEBHOOK_URL=${GOOGLE_SHEETS_WEBHOOK_URL:-https://script.google.com/macros/s/AKfycbwdEw8_v2lZ5U66Nr5LRh4mYmdqNOfirI3xNiddUuHmiUjyPZhs_DveMzAOD4XRQvtV/exec}
       - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD:-00198600}
       - ADMIN_SECRET_KEY=${ADMIN_SECRET_KEY:-qZhmaOlgACQ0ovBFdzHStcYRfkjpe3JTGxX8VUwu}

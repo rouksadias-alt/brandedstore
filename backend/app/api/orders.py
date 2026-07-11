@@ -8,6 +8,7 @@ from app.core.whatsapp import build_whatsapp_order_link
 from app.db.models import Order
 from app.db.session import get_db
 from app.schemas.orders import OrderCreate, OrderResponse
+from app.services.sheets import send_to_sheets
 
 logger = logging.getLogger("leger.orders")
 router = APIRouter()
@@ -63,5 +64,7 @@ async def create_order(body: OrderCreate, db: AsyncSession = Depends(get_db)):
     except Exception as exc:  # noqa: BLE001 — never fail checkout on a DB hiccup
         await db.rollback()
         logger.error("Failed to persist order (continuing with WhatsApp link only): %s", exc)
+
+    await send_to_sheets(order)
 
     return OrderResponse(whatsapp_link=whatsapp_link, total=total)

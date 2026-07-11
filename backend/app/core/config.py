@@ -36,6 +36,11 @@ class Settings(BaseSettings):
     # (international format, no "+" or spaces, e.g. 50760000000)
     WHATSAPP_NUMBER: str = "50760000000"
 
+    # Google Apps Script Web App URL that appends every order as a row in a
+    # Google Sheet (live ops dashboard without DB access). Leave empty to
+    # disable — checkout never fails because of this, it's best-effort.
+    GOOGLE_SHEETS_WEBHOOK_URL: str = ""
+
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
     @property

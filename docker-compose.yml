@@ -4,11 +4,13 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-}
-        - NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER:-}
+        # Same Easypanel substitution issue as the backend below — these
+        # defaults are what's ACTUALLY baked into the compiled frontend.
+        - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-https://brandedstore-api.9qvumg.easypanel.host}
+        - NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER:-50760000000}
     environment:
-      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-}
-      - NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER:-}
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-https://brandedstore-api.9qvumg.easypanel.host}
+      - NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER:-50760000000}
     depends_on:
       - backend
     restart: unless-stopped

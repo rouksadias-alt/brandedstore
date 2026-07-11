@@ -34,7 +34,7 @@ class Settings(BaseSettings):
 
     # WhatsApp Business number that order-confirmation links point to
     # (international format, no "+" or spaces, e.g. 50760000000)
-    WHATSAPP_NUMBER: str = "50760000000"
+    WHATSAPP_NUMBER: str = "34694210495"
 
     # Google Apps Script Web App URL that appends every order as a row in a
     # Google Sheet (live ops dashboard without DB access). Leave empty to

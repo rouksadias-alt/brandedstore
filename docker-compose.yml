@@ -7,10 +7,10 @@ services:
         # Same Easypanel substitution issue as the backend below — these
         # defaults are what's ACTUALLY baked into the compiled frontend.
         - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-https://api.soyleger.store}
-        - NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER:-50760000000}
+        - NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER:-34694210495}
     environment:
       - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-https://api.soyleger.store}
-      - NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER:-50760000000}
+      - NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER:-34694210495}
     depends_on:
       - backend
     restart: unless-stopped
@@ -30,7 +30,7 @@ services:
       # domains) instead of relying on the Easypanel panel.
       - DATABASE_URL=${DATABASE_URL:-postgres://postgres:7Otlcjn37i2kczza34rm@brandedstore_databasebranded:5432/brandedstore?sslmode=disable}
       - FRONTEND_ORIGIN=${FRONTEND_ORIGIN:-https://soyleger.store}
-      - WHATSAPP_NUMBER=${WHATSAPP_NUMBER:-50760000000}
+      - WHATSAPP_NUMBER=${WHATSAPP_NUMBER:-34694210495}
       - GOOGLE_SHEETS_WEBHOOK_URL=${GOOGLE_SHEETS_WEBHOOK_URL:-https://script.google.com/macros/s/AKfycbwdEw8_v2lZ5U66Nr5LRh4mYmdqNOfirI3xNiddUuHmiUjyPZhs_DveMzAOD4XRQvtV/exec}
       - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD:-00198600}

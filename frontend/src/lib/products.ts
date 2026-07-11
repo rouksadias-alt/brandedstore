@@ -55,8 +55,8 @@ export const BUSINESS = {
   tagline: "Siéntete Léger",
   // Update NEXT_PUBLIC_WHATSAPP_NUMBER in .env.local (international format,
   // no "+" or spaces) once you have your real WhatsApp Business number.
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "50760000000",
-  whatsappDisplay: "+507 6000-0000",
+  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "34694210495",
+  whatsappDisplay: "+34 694 21 04 95",
   country: "Panamá",
   guaranteeDays: 30,
   founderCount: 500,

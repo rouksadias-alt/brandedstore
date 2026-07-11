@@ -2,10 +2,12 @@
 
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { PartyPopper, MessageCircle, Gift, RefreshCcw } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { PartyPopper, MessageCircle, Gift, RefreshCcw, Sparkles, ArrowRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { LinkButton } from "@/components/ui/button";
-import { BUSINESS } from "@/lib/products";
+import { BUSINESS, getUpsellProducts } from "@/lib/products";
 import { formatUSD } from "@/lib/utils";
 
 export function GraciasContent() {
@@ -14,6 +16,10 @@ export function GraciasContent() {
   const name = searchParams.get("name");
   const product = searchParams.get("product");
   const total = searchParams.get("total");
+  const productSlug = searchParams.get("productSlug");
+  const planId = searchParams.get("planId");
+
+  const upsellProducts = productSlug ? getUpsellProducts(productSlug, planId) : [];
 
   useEffect(() => {
     if (!wa) return;
@@ -59,6 +65,42 @@ export function GraciasContent() {
             </LinkButton>
           )}
         </div>
+
+        {upsellProducts.length > 0 && (
+          <div className="mt-6 rounded-2xl border-2 border-dashed border-mint-400 bg-white p-6 text-left">
+            <p className="flex items-center gap-2 font-bold text-ink">
+              <Sparkles className="h-5 w-5 text-mint-600" /> Antes de irte — completa tu ritual
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-ink/65">
+              Muchas clientas piden esto también para cubrir cada momento del día. Un pedido
+              rápido y aparte, pago contra entrega igual que el anterior.
+            </p>
+            <div className={`mt-4 grid gap-3 ${upsellProducts.length > 1 ? "sm:grid-cols-2" : ""}`}>
+              {upsellProducts.map((p) => (
+                <Link
+                  key={p.slug}
+                  href={`/checkout?product=${p.slug}`}
+                  className="group flex items-center gap-3 rounded-xl border border-mint-100 bg-mint-50/50 p-3 transition-shadow hover:shadow-md"
+                >
+                  <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-white">
+                    {p.images?.[0] ? (
+                      <Image src={p.images[0]} alt={p.shortName} fill className="object-cover" sizes="56px" />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center text-2xl">{p.emoji}</div>
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-bold text-ink">{p.shortName}</p>
+                    <p className="text-xs text-ink/60">
+                      {formatUSD(p.price)} — {p.heroPriceLabel ?? "2 unidades"}
+                    </p>
+                  </div>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-mint-600 transition-transform group-hover:translate-x-1" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           <div className="rounded-2xl border border-mint-100 bg-white p-5 text-left">

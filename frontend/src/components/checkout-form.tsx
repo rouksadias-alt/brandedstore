@@ -19,6 +19,10 @@ export function CheckoutForm() {
 
   const initialProduct = searchParams.get("product") ?? "roll-on";
   const initialPlan = searchParams.get("plan");
+  // When the customer lands on checkout from a specific product/duo/kit
+  // page (i.e. the URL already has ?product=...), we lock the product so
+  // they only see what they came here to buy — no distracting switcher.
+  const hasFixedProduct = Boolean(searchParams.get("product"));
 
   const [productSlug, setProductSlug] = useState(initialProduct);
   const option = useMemo(() => getCheckoutOption(productSlug), [productSlug]);
@@ -86,6 +90,8 @@ export function CheckoutForm() {
         wa: data.whatsappLink,
         name: payload.name.split(" ")[0] ?? "",
         product: option.name,
+        productSlug,
+        planId,
         total: String(total),
       });
       router.push(`/gracias?${params.toString()}`);
@@ -97,46 +103,67 @@ export function CheckoutForm() {
 
   return (
     <form onSubmit={handleSubmit} className="mt-10 space-y-8">
-      {/* Product selector */}
-      <fieldset>
-        <legend className="mb-3 text-sm font-bold uppercase tracking-wide text-ink/60">
-          1. Elige tu producto
-        </legend>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {checkoutOptions.map((opt) => (
-            <button
-              key={opt.slug}
-              type="button"
-              onClick={() => handleProductChange(opt.slug)}
-              className={cn(
-                "flex flex-col overflow-hidden rounded-2xl border-2 text-center transition-all",
-                productSlug === opt.slug
-                  ? "border-mint-600 bg-mint-50 shadow-sm"
-                  : "border-black/10 bg-white hover:border-mint-300"
-              )}
-            >
-              {opt.image ? (
-                <div className="relative aspect-square w-full">
-                  <Image
-                    src={opt.image}
-                    alt={opt.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 45vw, 180px"
-                  />
-                </div>
-              ) : (
-                <div className="flex aspect-square w-full items-center justify-center bg-mint-50">
-                  <span className="text-4xl">{opt.emoji}</span>
-                </div>
-              )}
-              <span className="px-2 py-3 text-xs font-semibold leading-tight text-ink/80">
-                {opt.name}
-              </span>
-            </button>
-          ))}
+      {/* Product selector — only shown on the generic /checkout entry point.
+          Coming from a specific product/duo/kit page locks it to that item. */}
+      {hasFixedProduct ? (
+        <div>
+          <p className="mb-3 text-sm font-bold uppercase tracking-wide text-ink/60">
+            1. Tu producto
+          </p>
+          <div className="flex items-center gap-4 rounded-2xl border-2 border-mint-600 bg-mint-50 p-4">
+            {option.image ? (
+              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl">
+                <Image src={option.image} alt={option.name} fill className="object-cover" sizes="64px" />
+              </div>
+            ) : (
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white">
+                <span className="text-3xl">{option.emoji}</span>
+              </div>
+            )}
+            <span className="font-bold text-ink">{option.name}</span>
+          </div>
         </div>
-      </fieldset>
+      ) : (
+        <fieldset>
+          <legend className="mb-3 text-sm font-bold uppercase tracking-wide text-ink/60">
+            1. Elige tu producto
+          </legend>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {checkoutOptions.map((opt) => (
+              <button
+                key={opt.slug}
+                type="button"
+                onClick={() => handleProductChange(opt.slug)}
+                className={cn(
+                  "flex flex-col overflow-hidden rounded-2xl border-2 text-center transition-all",
+                  productSlug === opt.slug
+                    ? "border-mint-600 bg-mint-50 shadow-sm"
+                    : "border-black/10 bg-white hover:border-mint-300"
+                )}
+              >
+                {opt.image ? (
+                  <div className="relative aspect-square w-full">
+                    <Image
+                      src={opt.image}
+                      alt={opt.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 45vw, 180px"
+                    />
+                  </div>
+                ) : (
+                  <div className="flex aspect-square w-full items-center justify-center bg-mint-50">
+                    <span className="text-4xl">{opt.emoji}</span>
+                  </div>
+                )}
+                <span className="px-2 py-3 text-xs font-semibold leading-tight text-ink/80">
+                  {opt.name}
+                </span>
+              </button>
+            ))}
+          </div>
+        </fieldset>
+      )}
 
       {/* Plan selector */}
       <fieldset>

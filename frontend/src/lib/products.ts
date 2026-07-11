@@ -353,6 +353,25 @@ export function getDuoOfferBySlug(slug: string): DuoOffer | undefined {
   return duoOffers.find((d) => d.slug === slug);
 }
 
+// Post-purchase upsell: which product each "duo" plan is paired with, so we
+// know what's *not* included yet and worth offering on the thank-you page.
+const DUO_PAIR: Record<string, string> = {
+  "roll-on": "medias-compresion",
+  "medias-compresion": "roll-on",
+  bruma: "roll-on",
+};
+
+export function getUpsellProducts(productSlug: string, planId: string | null): Product[] {
+  if (productSlug === "kit-completo" || planId === "kit") {
+    return []; // already has all 3 — nothing left to upsell.
+  }
+  const owned = new Set<string>([productSlug]);
+  if (planId === "duo" && DUO_PAIR[productSlug]) {
+    owned.add(DUO_PAIR[productSlug]);
+  }
+  return products.filter((p) => !owned.has(p.slug));
+}
+
 export function getProductBySlug(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
 }

@@ -13,7 +13,14 @@ app = FastAPI(title="LÉGER API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.FRONTEND_ORIGIN, "http://localhost:3000"],
+    # Keep the Easypanel *.easypanel.host domain allowed too (in addition to
+    # the real custom domain in FRONTEND_ORIGIN) so things don't break mid
+    # DNS cutover, and so the raw Easypanel URL still works for testing.
+    allow_origins=[
+        settings.FRONTEND_ORIGIN,
+        "https://brandedstore-app.9qvumg.easypanel.host",
+        "http://localhost:3000",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

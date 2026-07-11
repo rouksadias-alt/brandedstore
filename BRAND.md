@@ -2,7 +2,7 @@
 
 ## Nombre de marca
 **LÉGER**
-*(se mantiene — ya tiene equity: dominio usaleger.com, reconocimiento inicial, y "léger" en francés = "ligero", que es la promesa central del producto)*
+*(se mantiene — ya tiene equity: dominio soyleger.store, reconocimiento inicial, y "léger" en francés = "ligero", que es la promesa central del producto)*
 
 Descriptor de autoridad (usar junto al logo en header/footer/empaques):
 > **LÉGER · Ciencia Circulatoria**

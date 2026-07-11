@@ -41,6 +41,13 @@ class Settings(BaseSettings):
     # disable — checkout never fails because of this, it's best-effort.
     GOOGLE_SHEETS_WEBHOOK_URL: str = ""
 
+    # CallMeBot API key that lets the backend push a WhatsApp message
+    # straight to WHATSAPP_NUMBER the instant an order comes in (no click
+    # needed from the customer). Get it by messaging the CallMeBot WhatsApp
+    # contact once — see backend/app/services/whatsapp_notify.py. Leave
+    # empty to disable — checkout never fails because of this.
+    CALLMEBOT_API_KEY: str = ""
+
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
     @property

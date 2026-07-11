@@ -9,6 +9,7 @@ from app.db.models import Order
 from app.db.session import get_db
 from app.schemas.orders import OrderCreate, OrderResponse
 from app.services.sheets import send_to_sheets
+from app.services.whatsapp_notify import send_order_notification
 
 logger = logging.getLogger("leger.orders")
 router = APIRouter()
@@ -66,5 +67,6 @@ async def create_order(body: OrderCreate, db: AsyncSession = Depends(get_db)):
         logger.error("Failed to persist order (continuing with WhatsApp link only): %s", exc)
 
     await send_to_sheets(order)
+    await send_order_notification(order)
 
     return OrderResponse(whatsapp_link=whatsapp_link, total=total)

@@ -19,6 +19,8 @@ export function GraciasContent() {
   const total = searchParams.get("total");
   const productSlug = searchParams.get("productSlug");
   const planId = searchParams.get("planId");
+  const eventId = searchParams.get("eventId");
+  const phone = searchParams.get("phone");
 
   const upsellProducts = productSlug ? getUpsellProducts(productSlug, planId) : [];
 
@@ -35,8 +37,8 @@ export function GraciasContent() {
   // place to fire the ad-platform conversion event — even though it's Pago
   // Contra Entrega and not yet actually paid.
   useEffect(() => {
-    if (!product || !total) return;
-    trackPurchase({ value: Number(total), content_name: product });
+    if (!product || !total || !eventId) return;
+    trackPurchase({ value: Number(total), content_name: product, eventId, phone });
     // eslint-disable-next-line react-hooks/exhaustive-deps -- fire once per page load
   }, []);
 

@@ -37,6 +37,18 @@ class OrderCreate(BaseModel):
     express: bool = False
     notes: str | None = Field(default=None, max_length=500)
 
+    # --- Ad-platform tracking (all optional — checkout never fails because
+    # of these). Sent by the frontend so the backend's Conversions API call
+    # can be deduplicated against the browser pixel's Purchase event and
+    # carry the strongest possible matching signal. See app/services/capi/.
+    event_id: str | None = Field(default=None, alias="eventId", max_length=100)
+    fbp: str | None = Field(default=None, max_length=100)
+    fbc: str | None = Field(default=None, max_length=200)
+    ttp: str | None = Field(default=None, max_length=200)
+    ttclid: str | None = Field(default=None, max_length=200)
+    sc_click_id: str | None = Field(default=None, alias="scClickId", max_length=200)
+    event_source_url: str | None = Field(default=None, alias="eventSourceUrl", max_length=500)
+
     @field_validator("name", "address", "city")
     @classmethod
     def _strip(cls, v: str) -> str:
@@ -69,3 +81,7 @@ class OrderResponse(BaseModel):
     ok: bool = True
     whatsapp_link: str = Field(serialization_alias="whatsappLink")
     total: float
+    # Same event_id the backend used for its Purchase CAPI call — the
+    # frontend must fire its client-side Purchase pixel with this exact ID
+    # (as eventID/event_id/client_dedup_id) for cross-channel dedup to work.
+    event_id: str = Field(serialization_alias="eventId")

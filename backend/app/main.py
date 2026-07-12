@@ -1,3 +1,4 @@
+import logging
 import os
 
 from fastapi import FastAPI, HTTPException, Request
@@ -5,9 +6,18 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 
-from app.api import orders, health, admin
+from app.api import orders, health, admin, tracking
 from app.core.config import settings
 from app.db.session import create_tables
+
+# Without this, the root logger has no handler and defaults to WARNING, so
+# every logger.info(...) call in app/services (Sheets, WhatsApp, CAPI) is
+# silently dropped. This makes INFO+ show up in `docker logs` / Easypanel's
+# log viewer for every "leger.*" logger.
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+)
 
 app = FastAPI(title="LÉGER API")
 
@@ -66,6 +76,7 @@ async def http_exception_handler(request: Request, exc: HTTPException):
 app.include_router(orders.router, prefix="/api")
 app.include_router(health.router, prefix="/api")
 app.include_router(admin.router, prefix="/api/admin")
+app.include_router(tracking.router, prefix="/api")
 
 _DASHBOARD_HTML = os.path.join(os.path.dirname(__file__), "admin", "dashboard.html")
 

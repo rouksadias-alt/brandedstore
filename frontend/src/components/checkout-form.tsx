@@ -9,7 +9,7 @@ import { formatUSD } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { checkoutOptions, getCheckoutOption } from "@/lib/products";
 import { PANAMA_PROVINCES } from "@/lib/order-schema";
-import { trackInitiateCheckout } from "@/lib/analytics";
+import { trackInitiateCheckout, getClickIds } from "@/lib/analytics";
 
 const BUMP_PRICE = 9;
 const EXPRESS_PRICE = 2;
@@ -63,9 +63,20 @@ export function CheckoutForm() {
     setFieldErrors({});
 
     const formData = new FormData(e.currentTarget);
+    const phone = String(formData.get("phone") ?? "");
+    // Generated client-side so it can be sent both to the backend (for its
+    // Purchase Conversions API call) and, via the /gracias URL, to the
+    // client-side Purchase pixel — matching event_id is what lets
+    // Meta/TikTok/Snap deduplicate the two into a single conversion.
+    const eventId =
+      typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : `evt_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    const { fbp, fbc, ttp, ttclid, scClickId } = getClickIds();
+
     const payload = {
       name: String(formData.get("name") ?? ""),
-      phone: String(formData.get("phone") ?? ""),
+      phone,
       address: String(formData.get("address") ?? ""),
       city: String(formData.get("city") ?? ""),
       province: String(formData.get("province") ?? ""),
@@ -74,6 +85,13 @@ export function CheckoutForm() {
       bump,
       express,
       notes: String(formData.get("notes") ?? ""),
+      eventId,
+      fbp,
+      fbc,
+      ttp,
+      ttclid,
+      scClickId,
+      eventSourceUrl: typeof window !== "undefined" ? window.location.href : undefined,
     };
 
     try {
@@ -99,6 +117,8 @@ export function CheckoutForm() {
         productSlug,
         planId,
         total: String(total),
+        eventId: data.eventId ?? eventId,
+        phone,
       });
       router.push(`/gracias?${params.toString()}`);
     } catch {

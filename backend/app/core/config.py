@@ -48,6 +48,21 @@ class Settings(BaseSettings):
     # empty to disable — checkout never fails because of this.
     CALLMEBOT_API_KEY: str = ""
 
+    # --- Conversions API (server-side ad tracking) ---
+    # Same Pixel IDs as the frontend's NEXT_PUBLIC_*_PIXEL_ID, mirrored here
+    # so the backend can hit each platform's server-to-server events
+    # endpoint. Each platform is independently optional — CAPI calls for a
+    # platform are skipped silently if its PIXEL_ID or ACCESS_TOKEN is
+    # empty. See app/services/capi/ for the actual implementations.
+    FB_PIXEL_ID: str = ""
+    FB_CAPI_ACCESS_TOKEN: str = ""  # Events Manager → Settings → Conversions API → Generate access token
+
+    TIKTOK_PIXEL_ID: str = ""
+    TIKTOK_CAPI_ACCESS_TOKEN: str = ""  # TikTok Ads Manager → Events → Manage → Generate Access Token
+
+    SNAPCHAT_PIXEL_ID: str = ""
+    SNAPCHAT_CAPI_ACCESS_TOKEN: str = ""  # Snapchat Ads Manager → Events Manager → Conversions API → Generate token
+
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
     @property

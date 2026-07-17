@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
+import { AnnouncementBar } from "@/components/announcement-bar";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { WhatsAppFloatingButton } from "@/components/whatsapp-floating-button";
@@ -46,6 +47,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-ink">
         <Pixels />
+        <AnnouncementBar />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

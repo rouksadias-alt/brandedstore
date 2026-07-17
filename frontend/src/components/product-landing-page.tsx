@@ -4,6 +4,8 @@ import { Section, SectionHeading, Eyebrow } from "@/components/ui/section";
 import { ProductVisual } from "@/components/product-visual";
 import { IngredientCard } from "@/components/ingredient-card";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
+import { AggregateRatingBadge } from "@/components/aggregate-rating-badge";
+import { ProductJsonLd } from "@/components/product-json-ld";
 import { ComparisonTable } from "@/components/comparison-table";
 import { PricingTiers } from "@/components/pricing-tiers";
 import { FaqAccordion } from "@/components/faq-accordion";
@@ -15,8 +17,19 @@ import { cn, formatUSD } from "@/lib/utils";
 export function ProductLandingPage({ product }: { product: Product }) {
   return (
     <>
+      <ProductJsonLd
+        product={{
+          slug: product.slug,
+          name: product.fullName,
+          description: product.tagline,
+          price: product.price,
+          images: product.images,
+          reviewTag: product.shortName,
+        }}
+      />
+
       {/* 1. Hero */}
-      <Section className="pb-10 pt-8 sm:pt-14">
+      <Section id="hero" className="pb-10 pt-8 sm:pt-14">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
             <Eyebrow>{product.shortName}</Eyebrow>
@@ -26,6 +39,8 @@ export function ProductLandingPage({ product }: { product: Product }) {
             <p className="mt-5 text-lg leading-relaxed text-ink/70">
               {product.heroSubheadline}
             </p>
+
+            <AggregateRatingBadge className="mt-4" />
 
             <div className="mt-7 flex flex-wrap items-center gap-4">
               <LinkButton href={`/checkout?product=${product.slug}`} size="lg">
@@ -185,6 +200,7 @@ export function ProductLandingPage({ product }: { product: Product }) {
           eyebrow="Prueba social"
           title={`Las mujeres que ya confían en ${BUSINESS.brand}`}
         />
+        <AggregateRatingBadge className="-mt-6 mb-8 justify-center" />
         <TestimonialsCarousel />
       </Section>
 
@@ -257,7 +273,12 @@ export function ProductLandingPage({ product }: { product: Product }) {
       </Section>
 
       <div className="h-20 sm:hidden" aria-hidden />
-      <StickyCtaBar price={product.price} productSlug={product.slug} unitLabel={product.heroPriceLabel} />
+      <StickyCtaBar
+        price={product.price}
+        compareAtPrice={product.compareAtPrice}
+        productSlug={product.slug}
+        unitLabel={product.heroPriceLabel}
+      />
     </>
   );
 }

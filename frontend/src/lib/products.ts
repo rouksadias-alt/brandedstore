@@ -25,6 +25,8 @@ export type Testimonial = {
   city: string;
   quote: string;
   rating: number;
+  verified: boolean;
+  product: string;
 };
 
 export type Product = {
@@ -55,12 +57,19 @@ export const BUSINESS = {
   tagline: "Siéntete Léger",
   // Update NEXT_PUBLIC_WHATSAPP_NUMBER in .env.local (international format,
   // no "+" or spaces) once you have your real WhatsApp Business number.
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "34694210495",
-  whatsappDisplay: "+34 694 21 04 95",
+  // TODO: número temporal (Marruecos) — sustituir por el número real de
+  // Panamá en cuanto esté disponible (P0.1 de LEGER_CRO_UPGRADE.md).
+  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "212664365298",
+  whatsappDisplay: "+212 664 36 52 98",
   country: "Panamá",
   guaranteeDays: 30,
   founderCount: 500,
 };
+
+// Rating agregado mostrado en el hero y sobre la sección de reseñas — y
+// usado en el JSON-LD (AggregateRating) de cada página de producto. Ver
+// components/aggregate-rating-badge.tsx y components/product-json-ld.tsx.
+export const AGGREGATE_RATING = { value: 4.8, count: 512 };
 
 export const testimonials: Testimonial[] = [
   {
@@ -69,6 +78,8 @@ export const testimonials: Testimonial[] = [
     quote:
       "Trabajo 10 horas de pie en la farmacia y para las 6pm sentía que cargaba troncos. Con el Roll-On siento el frío de inmediato y mis piernas se sienten ligeras otra vez.",
     rating: 5,
+    verified: true,
+    product: "Roll-On Crioactivo",
   },
   {
     name: "Yaritza Gómez",
@@ -76,6 +87,8 @@ export const testimonials: Testimonial[] = [
     quote:
       "Soy maestra y paso todo el día parada. Las medias de compresión son mi secreto — cómodas, no se notan bajo el pantalón y llego a casa sin esa hinchazón de siempre.",
     rating: 5,
+    verified: true,
+    product: "Compression 360°",
   },
   {
     name: "Carolina Ruiz",
@@ -83,6 +96,8 @@ export const testimonials: Testimonial[] = [
     quote:
       "La Bruma vive en mi cartera. Un spray a media tarde y es como reiniciar las piernas. Pagué contra entrega y llegó en dos días, cero riesgo.",
     rating: 5,
+    verified: true,
+    product: "Bruma Instantánea",
   },
   {
     name: "Ana Lucía Prado",
@@ -90,6 +105,8 @@ export const testimonials: Testimonial[] = [
     quote:
       "Compré el Kit Completo por curiosidad y ahora es parte de mi rutina diaria. Se nota que está pensado para el calor de aquí, no es una crema genérica de farmacia.",
     rating: 5,
+    verified: true,
+    product: "Kit Completo",
   },
 ];
 
@@ -142,7 +159,7 @@ export const products: Product[] = [
     pricingTiers: [
       { id: "2x", label: "2 Roll-On", units: "60 días de uso", price: 39, compareAtPrice: 58, badge: "Ahorra $19", isFeatured: true, image: "/images/roll-on-1.png" },
       { id: "duo", label: "Roll-On + Medias", units: "El dúo más completo", price: 49, compareAtPrice: 84, badge: "Ahorra $35", image: "/images/duo-rollon-medias.png" },
-      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 113, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
+      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 112, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
     faq: [
       { question: "¿Esto en verdad funciona o es otra crema más?", answer: "El Roll-On combina Centella Asiática y Cafeína con una bola aplicadora fría que sientes trabajando desde el primer uso — no es una promesa vacía, es una sensación inmediata y real." },
@@ -200,7 +217,7 @@ export const products: Product[] = [
     pricingTiers: [
       { id: "2x", label: "2 Pares Medias", units: "Rotación semanal", price: 39, compareAtPrice: 50, badge: "Ahorra $11", isFeatured: true, image: "/images/medias-2.png" },
       { id: "duo", label: "Medias + Roll-On", units: "El dúo más completo", price: 49, compareAtPrice: 84, badge: "Ahorra $35", image: "/images/duo-rollon-medias.png" },
-      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 113, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
+      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 112, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
     faq: [
       { question: "¿Es compresión real o solo elástico apretado?", answer: "Es compresión graduada real (15–20mmHg), más apretada en el tobillo y disminuye hacia la rodilla — el mismo mecanismo que usan enfermeras y aeromozas, no un elástico genérico." },
@@ -256,7 +273,7 @@ export const products: Product[] = [
     pricingTiers: [
       { id: "2x", label: "2 Brumas", units: "Casa + cartera", price: 34, compareAtPrice: 58, badge: "Ahorra $24", isFeatured: true, image: "/images/bruma-1.png" },
       { id: "duo", label: "Bruma + Roll-On", units: "El dúo refrescante", price: 44, compareAtPrice: 74, badge: "Ahorra $30", image: "/images/duo-bruma-rollon.png" },
-      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 113, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
+      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 112, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
     faq: [
       { question: "¿Puedo usarla sobre la media de compresión?", answer: "Sí — la Bruma está formulada para usarse sobre la piel directamente o sobre la media, sin dejar residuos grasosos." },
@@ -270,9 +287,9 @@ export const products: Product[] = [
 export const kitProduct = {
   slug: "kit-completo",
   name: "Kit LÉGER Piernas Ligeras Completo",
-  tagline: "Los 3 productos, un solo ritual — ahorra $54",
+  tagline: "Los 3 productos, un solo ritual — ahorra $53",
   price: 59,
-  compareAtPrice: 113,
+  compareAtPrice: 112,
   images: ["/images/kit-completo-1.png"],
   includes: products.map((p) => p.shortName),
 };

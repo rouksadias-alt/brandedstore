@@ -3,16 +3,45 @@ import { ArrowRight, ShieldCheck, Truck, Sparkles, CheckCircle2 } from "lucide-r
 import { LinkButton } from "@/components/ui/button";
 import { Section, SectionHeading, Eyebrow } from "@/components/ui/section";
 import { ProductVisual } from "@/components/product-visual";
+import { IngredientCard } from "@/components/ingredient-card";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
+import { AggregateRatingBadge } from "@/components/aggregate-rating-badge";
+import { BeforeAfterSection } from "@/components/before-after-section";
+import { StatsStrip } from "@/components/stats-strip";
+import { BrandComparisonTable } from "@/components/brand-comparison-table";
+import { FaqAccordion } from "@/components/faq-accordion";
+import { StickyCtaBar } from "@/components/sticky-cta-bar";
 import { TrustBar } from "@/components/trust-bar";
-import { BUSINESS, products, kitProduct, duoOffers } from "@/lib/products";
+import { BUSINESS, products, kitProduct, duoOffers, type FAQItem, type Ingredient } from "@/lib/products";
 import { formatUSD } from "@/lib/utils";
+
+const ritualSteps = [
+  { time: "Mañana", title: "Roll-On Crioactivo", description: "Frío inmediato — activa la sensación y drena la pesadez desde temprano." },
+  { time: "Día", title: "Medias 360°", description: "Compresión graduada 15–20 mmHg — sostiene la circulación todo el día." },
+  { time: "Tarde", title: "Bruma Instantánea", description: "Refresca y \"reinicia\" las piernas en segundos, sin manos libres." },
+];
+
+const keyIngredients: Ingredient[] = [
+  { name: "Centella Asiática", icon: "leaf", benefit: "Apoya la microcirculación venosa." },
+  { name: "Castaño de Indias", icon: "shield", benefit: "Venotónico clásico — confort y tono venoso." },
+  { name: "Mentol / efecto frío", icon: "snowflake", benefit: "Alivio inmediato — la prueba sensorial de que está funcionando." },
+];
+
+const homeFaq: FAQItem[] = [
+  { question: "¿Cómo funciona el pago contra entrega?", answer: "Pagas en efectivo al recibir tu pedido. Cero riesgo, cero adelanto." },
+  { question: "¿Cuánto tarda el envío?", answer: "24–48h en Ciudad de Panamá; 2–4 días al interior." },
+  { question: "¿Cada cuánto uso los productos?", answer: "Roll-On por la mañana, Medias durante el día, Bruma cuando lo necesites." },
+  { question: "¿Sirve si paso muchas horas de pie o sentada?", answer: "Sí, está diseñado justo para eso." },
+  { question: "¿Es apto en el embarazo?", answer: "La fibra de bambú es suave y transpirable; aun así, consulta a tu médico." },
+  { question: "¿Y si no me funciona?", answer: `Tienes garantía de ${BUSINESS.guaranteeDays} días.` },
+  { question: "¿Qué tallas hay en las medias?", answer: "Talla única con compresión adaptable (S–XL) — cubre la mayoría de tallas de pantorrilla y pie femenino." },
+];
 
 export default function Home() {
   return (
     <>
       {/* Hero */}
-      <Section className="pb-10 pt-10 sm:pt-16">
+      <Section id="hero" className="pb-10 pt-10 sm:pt-16">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
             <Eyebrow>Ciencia Circulatoria de Grado Farmacéutico</Eyebrow>
@@ -24,6 +53,8 @@ export default function Home() {
               farmacéutico — Centella Asiática, Castaño de Indias, Compresión Graduada — adaptado
               específicamente al clima tropical de Panamá. Sin intermediarios, sin sobreprecio de farmacia.
             </p>
+
+            <AggregateRatingBadge className="mt-4" />
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <LinkButton href="/kit-completo" size="lg">
@@ -70,6 +101,10 @@ export default function Home() {
         </div>
       </Section>
 
+      <Section className="pt-0 sm:pt-0">
+        <StatsStrip />
+      </Section>
+
       {/* Brand pillars */}
       <Section className="bg-mint-50/50">
         <SectionHeading
@@ -91,7 +126,60 @@ export default function Home() {
             </div>
           ))}
         </div>
+
+        {/* Brand story */}
+        <div className="mx-auto mt-10 max-w-2xl rounded-2xl border border-mint-200 bg-white/70 p-6 text-center sm:p-8">
+          <p className="font-display text-lg leading-relaxed text-ink/80 sm:text-xl">
+            &ldquo;{BUSINESS.brand} nació para llevar el rigor de una farmacia directo a tu casa —
+            sin intermediarios, sin sobreprecio— formulado para el calor y la humedad de{" "}
+            {BUSINESS.country}.&rdquo;
+          </p>
+          <Link
+            href="/nosotros"
+            className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-mint-700 hover:underline"
+          >
+            Conoce nuestra historia <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
       </Section>
+
+      {/* Comparación */}
+      <Section>
+        <SectionHeading
+          eyebrow="La comparación"
+          title={`${BUSINESS.brand} vs. farmacia vs. cremas genéricas`}
+        />
+        <BrandComparisonTable />
+      </Section>
+
+      {/* Cómo funciona — el ritual + la ciencia */}
+      <Section>
+        <SectionHeading
+          eyebrow="Cómo funciona"
+          title="Un producto para cada momento del día"
+          subtitle="El ritual completo de piernas ligeras, respaldado por ingredientes con nombre y mecanismo de acción."
+        />
+        <div className="grid gap-6 sm:grid-cols-3">
+          {ritualSteps.map((step) => (
+            <div key={step.time} className="rounded-2xl border border-mint-100 bg-white p-6 text-center">
+              <p className="text-xs font-bold uppercase tracking-widest text-mint-600">{step.time}</p>
+              <p className="mt-2 font-display text-lg font-semibold text-ink">{step.title}</p>
+              <p className="mt-2 text-sm leading-relaxed text-ink/65">{step.description}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-8 grid gap-5 sm:grid-cols-3">
+          {keyIngredients.map((ing) => (
+            <IngredientCard key={ing.name} ingredient={ing} />
+          ))}
+        </div>
+        <p className="mx-auto mt-6 max-w-2xl text-center text-xs leading-relaxed text-ink/50">
+          Resultados individuales pueden variar. LÉGER es un producto de bienestar y no sustituye el
+          consejo ni el tratamiento médico.
+        </p>
+      </Section>
+
+      <BeforeAfterSection />
 
       {/* Product showcase */}
       <Section>
@@ -130,11 +218,17 @@ export default function Home() {
         {/* Bundle callout */}
         <div className="mt-8 flex flex-col items-center justify-between gap-6 rounded-3xl bg-mint-900 p-8 text-white sm:flex-row sm:p-10">
           <div>
-            <span className="inline-block rounded-full bg-sand-500 px-3 py-1 text-xs font-bold uppercase tracking-wide">
-              Más Popular
-            </span>
+            <div className="flex flex-wrap gap-2">
+              <span className="inline-block rounded-full bg-sand-500 px-3 py-1 text-xs font-bold uppercase tracking-wide">
+                Más Popular
+              </span>
+              <span className="inline-block rounded-full bg-white/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+                Oferta de Lanzamiento
+              </span>
+            </div>
             <p className="mt-3 font-display text-2xl font-semibold">{kitProduct.name}</p>
             <p className="mt-1 text-mint-200">{kitProduct.tagline}</p>
+            <p className="mt-2 text-xs font-semibold text-mint-300">Pídelo hoy y recíbelo en 24–48h.</p>
           </div>
           <div className="flex items-center gap-4">
             <div className="text-right">
@@ -178,7 +272,16 @@ export default function Home() {
       {/* Testimonials */}
       <Section className="bg-mint-50/50">
         <SectionHeading eyebrow="Prueba social" title={`Las mujeres que ya confían en ${BUSINESS.brand}`} />
+        <AggregateRatingBadge className="-mt-6 mb-8 justify-center" />
         <TestimonialsCarousel />
+      </Section>
+
+      {/* FAQ */}
+      <Section className="bg-mint-50/50">
+        <SectionHeading eyebrow="Preguntas Frecuentes" title="Todo lo que necesitas saber" />
+        <div className="mx-auto max-w-3xl">
+          <FaqAccordion items={homeFaq} />
+        </div>
       </Section>
 
       {/* Trust bar */}
@@ -202,6 +305,16 @@ export default function Home() {
           </div>
         </div>
       </Section>
+
+      <div className="h-20 sm:hidden" aria-hidden />
+      <StickyCtaBar
+        price={kitProduct.price}
+        compareAtPrice={kitProduct.compareAtPrice}
+        productSlug="kit-completo"
+        planId="kit"
+        label="Pedir el Kit"
+        unitLabel="Kit Completo"
+      />
     </>
   );
 }

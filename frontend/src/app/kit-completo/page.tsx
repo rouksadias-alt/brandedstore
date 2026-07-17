@@ -5,6 +5,9 @@ import { LinkButton } from "@/components/ui/button";
 import { Section, SectionHeading, Eyebrow } from "@/components/ui/section";
 import { ProductVisual } from "@/components/product-visual";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
+import { AggregateRatingBadge } from "@/components/aggregate-rating-badge";
+import { ProductJsonLd } from "@/components/product-json-ld";
+import { ValueStack } from "@/components/value-stack";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { StickyCtaBar } from "@/components/sticky-cta-bar";
 import { TrustBar } from "@/components/trust-bar";
@@ -41,7 +44,18 @@ const kitFaq = [
 export default function KitCompletoPage() {
   return (
     <>
-      <Section className="pb-10 pt-8 sm:pt-14">
+      <ProductJsonLd
+        product={{
+          slug: kitProduct.slug,
+          name: kitProduct.name,
+          description: kitProduct.tagline,
+          price: kitProduct.price,
+          images: kitProduct.images,
+          reviewTag: "Kit Completo",
+        }}
+      />
+
+      <Section id="hero" className="pb-10 pt-8 sm:pt-14">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
             <Eyebrow>Oferta Ancla — Más Popular</Eyebrow>
@@ -52,6 +66,8 @@ export default function KitCompletoPage() {
               Un ritual completo para piernas ligeras todo el día: frío inmediato en la mañana,
               compresión activa durante el día y refresco instantáneo en cualquier momento.
             </p>
+
+            <AggregateRatingBadge className="mt-4" />
 
             <div className="mt-7 flex flex-wrap items-center gap-4">
               <LinkButton href="/checkout?product=kit-completo&plan=kit" size="lg">
@@ -150,6 +166,7 @@ export default function KitCompletoPage() {
       {/* Testimonios */}
       <Section className="bg-mint-50/50">
         <SectionHeading eyebrow="Prueba social" title={`Las mujeres que ya confían en ${BUSINESS.brand}`} />
+        <AggregateRatingBadge className="-mt-6 mb-8 justify-center" />
         <TestimonialsCarousel />
       </Section>
 
@@ -167,13 +184,12 @@ export default function KitCompletoPage() {
           <p className="mt-1 text-sm font-semibold text-mint-700">
             Ahorras {formatUSD(separatePrice - kitProduct.price)}
           </p>
-          <ul className="mt-6 space-y-2 text-left text-sm text-ink/75">
-            {products.map((p) => (
-              <li key={p.slug} className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 shrink-0 text-mint-600" /> {p.shortName}
-              </li>
-            ))}
-          </ul>
+          <ValueStack
+            className="mt-6"
+            items={products.map((p) => ({ label: p.shortName, price: p.price }))}
+            total={separatePrice}
+            price={kitProduct.price}
+          />
           <LinkButton href="/checkout?product=kit-completo&plan=kit" size="lg" className="mt-7 w-full">
             Pedir el Kit Completo
           </LinkButton>
@@ -213,7 +229,14 @@ export default function KitCompletoPage() {
       </Section>
 
       <div className="h-20 sm:hidden" aria-hidden />
-      <StickyCtaBar price={kitProduct.price} productSlug="kit-completo" label="Pedir el Kit Completo" />
+      <StickyCtaBar
+        price={kitProduct.price}
+        compareAtPrice={kitProduct.compareAtPrice}
+        productSlug="kit-completo"
+        planId="kit"
+        label="Pedir el Kit Completo"
+        unitLabel="Kit Completo"
+      />
     </>
   );
 }

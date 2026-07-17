@@ -34,7 +34,9 @@ class Settings(BaseSettings):
 
     # WhatsApp Business number that order-confirmation links point to
     # (international format, no "+" or spaces, e.g. 50760000000)
-    WHATSAPP_NUMBER: str = "34694210495"
+    # TODO: número temporal (Marruecos) — sustituir por el número real de
+    # Panamá en cuanto esté disponible (P0.1 de LEGER_CRO_UPGRADE.md).
+    WHATSAPP_NUMBER: str = "212664365298"
 
     # Google Apps Script Web App URL that appends every order as a row in a
     # Google Sheet (live ops dashboard without DB access). Leave empty to

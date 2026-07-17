@@ -7,13 +7,13 @@ services:
         # Same Easypanel substitution issue as the backend below — these
         # defaults are what's ACTUALLY baked into the compiled frontend.
         - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-https://api.soyleger.store}
-        - NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER:-34694210495}
+        - NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER:-212664365298}
         - NEXT_PUBLIC_FB_PIXEL_ID=${NEXT_PUBLIC_FB_PIXEL_ID:-1021474537476265}
         - NEXT_PUBLIC_TIKTOK_PIXEL_ID=${NEXT_PUBLIC_TIKTOK_PIXEL_ID:-}
         - NEXT_PUBLIC_SNAPCHAT_PIXEL_ID=${NEXT_PUBLIC_SNAPCHAT_PIXEL_ID:-}
     environment:
       - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-https://api.soyleger.store}
-      - NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER:-34694210495}
+      - NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER:-212664365298}
       - NEXT_PUBLIC_FB_PIXEL_ID=${NEXT_PUBLIC_FB_PIXEL_ID:-1021474537476265}
       - NEXT_PUBLIC_TIKTOK_PIXEL_ID=${NEXT_PUBLIC_TIKTOK_PIXEL_ID:-}
       - NEXT_PUBLIC_SNAPCHAT_PIXEL_ID=${NEXT_PUBLIC_SNAPCHAT_PIXEL_ID:-}
@@ -36,7 +36,7 @@ services:
       # domains) instead of relying on the Easypanel panel.
       - DATABASE_URL=${DATABASE_URL:-postgres://postgres:7Otlcjn37i2kczza34rm@brandedstore_databasebranded:5432/brandedstore?sslmode=disable}
       - FRONTEND_ORIGIN=${FRONTEND_ORIGIN:-https://soyleger.store}
-      - WHATSAPP_NUMBER=${WHATSAPP_NUMBER:-34694210495}
+      - WHATSAPP_NUMBER=${WHATSAPP_NUMBER:-212664365298}
       - GOOGLE_SHEETS_WEBHOOK_URL=${GOOGLE_SHEETS_WEBHOOK_URL:-https://script.google.com/macros/s/AKfycbwdEw8_v2lZ5U66Nr5LRh4mYmdqNOfirI3xNiddUuHmiUjyPZhs_DveMzAOD4XRQvtV/exec}
       - CALLMEBOT_API_KEY=${CALLMEBOT_API_KEY:-4926995}
       # Conversions API (server-side ad tracking) — empty by default, so

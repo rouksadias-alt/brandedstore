@@ -4,6 +4,8 @@ import { LinkButton } from "@/components/ui/button";
 import { Section, SectionHeading, Eyebrow } from "@/components/ui/section";
 import { ProductVisual } from "@/components/product-visual";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
+import { AggregateRatingBadge } from "@/components/aggregate-rating-badge";
+import { ProductJsonLd } from "@/components/product-json-ld";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { StickyCtaBar } from "@/components/sticky-cta-bar";
 import { TrustBar } from "@/components/trust-bar";
@@ -17,8 +19,18 @@ export function DuoLandingPage({ duo }: { duo: DuoOffer }) {
 
   return (
     <>
+      <ProductJsonLd
+        product={{
+          slug: duo.slug,
+          name: duo.title,
+          description: duo.tagline,
+          price: duo.price,
+          images: duo.images,
+        }}
+      />
+
       {/* Hero */}
-      <Section className="pb-10 pt-8 sm:pt-14">
+      <Section id="hero" className="pb-10 pt-8 sm:pt-14">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
             <Eyebrow>{duo.badge}</Eyebrow>
@@ -26,6 +38,8 @@ export function DuoLandingPage({ duo }: { duo: DuoOffer }) {
               {duo.heroHeadline}
             </h1>
             <p className="mt-5 text-lg leading-relaxed text-ink/70">{duo.heroSubheadline}</p>
+
+            <AggregateRatingBadge className="mt-4" />
 
             <div className="mt-7 flex flex-wrap items-center gap-4">
               <LinkButton href={checkoutHref} size="lg">
@@ -116,6 +130,7 @@ export function DuoLandingPage({ duo }: { duo: DuoOffer }) {
       {/* Testimonios */}
       <Section className="bg-mint-50/50">
         <SectionHeading eyebrow="Prueba social" title={`Las mujeres que ya confían en ${BUSINESS.brand}`} />
+        <AggregateRatingBadge className="-mt-6 mb-8 justify-center" />
         <TestimonialsCarousel />
       </Section>
 
@@ -177,6 +192,7 @@ export function DuoLandingPage({ duo }: { duo: DuoOffer }) {
       <div className="h-20 sm:hidden" aria-hidden />
       <StickyCtaBar
         price={duo.price}
+        compareAtPrice={duo.compareAtPrice}
         productSlug={duo.checkoutProductSlug}
         planId={duo.checkoutPlanId}
         label="Pedir el Dúo"

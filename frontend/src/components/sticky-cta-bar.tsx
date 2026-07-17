@@ -20,11 +20,20 @@ export function StickyCtaBar({
   label?: string;
   unitLabel?: string;
 }) {
-  // Hidden while the hero (which already has its own CTA) or the footer is
-  // in view — no point duplicating the CTA right next to another one.
-  // Looks for #hero and the page's single <footer> (see app/layout.tsx).
+  // Hidden until the visitor has scrolled a bit, and hidden again while the
+  // hero (which already has its own CTA) or the footer is in view — no point
+  // duplicating the CTA right next to another one. Looks for #hero and the
+  // page's single <footer> (see app/layout.tsx).
+  const [scrolledEnough, setScrolledEnough] = useState(false);
   const [heroVisible, setHeroVisible] = useState(false);
   const [footerVisible, setFooterVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolledEnough(window.scrollY > 400);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const hero = document.getElementById("hero");
@@ -48,7 +57,7 @@ export function StickyCtaBar({
     };
   }, []);
 
-  const hidden = heroVisible || footerVisible;
+  const hidden = !scrolledEnough || heroVisible || footerVisible;
 
   const href = planId
     ? `/checkout?product=${productSlug}&plan=${planId}`

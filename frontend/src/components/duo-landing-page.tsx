@@ -100,7 +100,7 @@ export function DuoLandingPage({ duo }: { duo: DuoOffer }) {
               <div className="mt-auto flex items-center justify-between">
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-wide text-mint-600">
-                    {p!.heroPriceLabel ?? "2 unidades"}
+                    {p!.heroPriceLabel ?? "Precio por unidad"}
                   </p>
                   <span className="text-sm font-bold text-mint-700">{formatUSD(p!.price)}</span>
                 </div>

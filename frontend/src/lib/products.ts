@@ -118,8 +118,7 @@ export const products: Product[] = [
       "Roll-On Frío de Centella Asiática y Cafeína — Alivio Inmediato para Piernas Pesadas",
     tagline: "Lo sientes frío, lo sientes trabajando — en 60 segundos.",
     price: 39,
-    compareAtPrice: 58,
-    heroPriceLabel: "Precio por 2 unidades",
+    heroPriceLabel: "Precio por unidad",
     heroHeadline: "¿Tus piernas se sienten pesadas antes de que termine el día?",
     heroSubheadline:
       "El Roll-On Crioactivo LÉGER combina Centella Asiática, Cafeína y una bola aplicadora fría que drena la pesadez al instante — sientes el efecto desde la primera aplicación.",
@@ -157,7 +156,7 @@ export const products: Product[] = [
       { feature: "Garantía de devolución 30 días", leger: true, generic: false, nothing: false },
     ],
     pricingTiers: [
-      { id: "2x", label: "2 Roll-On", units: "60 días de uso", price: 39, compareAtPrice: 58, badge: "Ahorra $19", isFeatured: true, image: "/images/roll-on-1.png" },
+      { id: "2x", label: "1 Roll-On", units: "30 días de uso", price: 39, isFeatured: true, image: "/images/roll-on-1.png" },
       { id: "duo", label: "Roll-On + Medias", units: "El dúo más completo", price: 49, compareAtPrice: 84, badge: "Ahorra $35", image: "/images/duo-rollon-medias.png" },
       { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 112, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
@@ -176,8 +175,7 @@ export const products: Product[] = [
       "Medias de Compresión Graduada con Grafeno — Circulación Activa Todo el Día",
     tagline: "La misma tecnología que usan las aeromozas y enfermeras — ahora con estilo.",
     price: 39,
-    compareAtPrice: 50,
-    heroPriceLabel: "Precio por 2 pares",
+    heroPriceLabel: "Precio por unidad",
     heroHeadline: "La misma tecnología que usan las aeromozas y enfermeras — ahora con estilo",
     heroSubheadline:
       "Compresión graduada real en fibra de bambú y grafeno: más apretado en el tobillo, disminuye hacia la rodilla, para circulación activa durante tu día completo.",
@@ -215,7 +213,7 @@ export const products: Product[] = [
       { feature: "Garantía de devolución 30 días", leger: true, generic: false, nothing: false },
     ],
     pricingTiers: [
-      { id: "2x", label: "2 Pares Medias", units: "Rotación semanal", price: 39, compareAtPrice: 50, badge: "Ahorra $11", isFeatured: true, image: "/images/medias-2.png" },
+      { id: "2x", label: "1 Par de Medias", units: "Uso diario", price: 39, isFeatured: true, image: "/images/medias-2.png" },
       { id: "duo", label: "Medias + Roll-On", units: "El dúo más completo", price: 49, compareAtPrice: 84, badge: "Ahorra $35", image: "/images/duo-rollon-medias.png" },
       { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 112, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
@@ -232,8 +230,7 @@ export const products: Product[] = [
     fullName: "Bruma Fría de Castaño de Indias y Mentol — Piernas Ligeras al Instante",
     tagline: "El refresh de piernas que cabe en tu cartera.",
     price: 34,
-    compareAtPrice: 58,
-    heroPriceLabel: "Precio por 2 unidades",
+    heroPriceLabel: "Precio por unidad",
     heroHeadline: "El refresh de piernas que cabe en tu cartera",
     heroSubheadline:
       "Un spray frío de Castaño de Indias, Mentol y Cafeína Verde para ese \"bajón\" de piernas a media tarde — sin manos libres, sin rutina, en segundos.",
@@ -271,7 +268,7 @@ export const products: Product[] = [
       { feature: "Garantía de devolución 30 días", leger: true, generic: false, nothing: false },
     ],
     pricingTiers: [
-      { id: "2x", label: "2 Brumas", units: "Casa + cartera", price: 34, compareAtPrice: 58, badge: "Ahorra $24", isFeatured: true, image: "/images/bruma-1.png" },
+      { id: "2x", label: "1 Bruma", units: "Tu dosis diaria", price: 34, isFeatured: true, image: "/images/bruma-1.png" },
       { id: "duo", label: "Bruma + Roll-On", units: "El dúo refrescante", price: 44, compareAtPrice: 74, badge: "Ahorra $30", image: "/images/duo-bruma-rollon.png" },
       { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 112, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
@@ -352,7 +349,7 @@ export const duoOffers: DuoOffer[] = [
       },
       {
         question: "¿Cuánto ahorro comprando el dúo?",
-        answer: "El dúo cuesta $44 vs. $74 comprando cada producto por separado en su presentación de 2 unidades — un ahorro real de $30.",
+        answer: "El dúo cuesta $44 vs. $74 comprando cada producto por separado — un ahorro real de $30.",
       },
       {
         question: "¿Tiene la misma garantía que los productos individuales?",

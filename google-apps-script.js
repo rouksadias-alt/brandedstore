@@ -84,7 +84,7 @@ function testDoPost() {
         city: "Panama",
         province: "Panama",
         product: "Roll-On Crioactivo",
-        plan: "2 Roll-On",
+        plan: "1 Roll-On",
         bump: true,
         express: false,
         total_usd: 48,

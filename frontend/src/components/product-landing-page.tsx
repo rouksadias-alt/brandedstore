@@ -48,7 +48,7 @@ export function ProductLandingPage({ product }: { product: Product }) {
               </LinkButton>
               <div className="flex flex-col gap-0.5">
                 <span className="text-[11px] font-semibold uppercase tracking-wide text-mint-600">
-                  {product.heroPriceLabel ?? "Precio por 2 unidades"}
+                  {product.heroPriceLabel ?? "Precio por unidad"}
                 </span>
                 <div className="flex items-baseline gap-2">
                   <span className="text-2xl font-extrabold text-mint-700">

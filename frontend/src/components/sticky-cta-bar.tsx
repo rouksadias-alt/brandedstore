@@ -11,7 +11,7 @@ export function StickyCtaBar({
   productSlug,
   planId,
   label = "Pedir Ahora",
-  unitLabel = "2 unidades",
+  unitLabel = "Precio por unidad",
 }: {
   price: number;
   compareAtPrice?: number;

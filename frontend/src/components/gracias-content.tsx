@@ -105,7 +105,7 @@ export function GraciasContent() {
                   <div className="flex-1">
                     <p className="text-sm font-bold text-ink">{p.shortName}</p>
                     <p className="text-xs text-ink/60">
-                      {formatUSD(p.price)} — {p.heroPriceLabel ?? "2 unidades"}
+                      {formatUSD(p.price)} — {p.heroPriceLabel ?? "Precio por unidad"}
                     </p>
                   </div>
                   <ArrowRight className="h-4 w-4 shrink-0 text-mint-600 transition-transform group-hover:translate-x-1" />

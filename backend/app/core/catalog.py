@@ -36,7 +36,7 @@ CHECKOUT_OPTIONS: dict[str, CheckoutOption] = {
         name="Roll-On Crioactivo",
         allow_bump=True,
         tiers={
-            "2x": PlanTier("2x", "2 Roll-On", 39.0),
+            "2x": PlanTier("2x", "1 Roll-On", 39.0),
             "duo": PlanTier("duo", "Roll-On + Medias", 49.0),
             "kit": PlanTier("kit", "Kit Completo", 59.0),
         },
@@ -46,7 +46,7 @@ CHECKOUT_OPTIONS: dict[str, CheckoutOption] = {
         name="Compression 360°",
         allow_bump=True,
         tiers={
-            "2x": PlanTier("2x", "2 Pares Medias", 39.0),
+            "2x": PlanTier("2x", "1 Par de Medias", 39.0),
             "duo": PlanTier("duo", "Medias + Roll-On", 49.0),
             "kit": PlanTier("kit", "Kit Completo", 59.0),
         },
@@ -56,7 +56,7 @@ CHECKOUT_OPTIONS: dict[str, CheckoutOption] = {
         name="Bruma Instantánea",
         allow_bump=False,
         tiers={
-            "2x": PlanTier("2x", "2 Brumas", 34.0),
+            "2x": PlanTier("2x", "1 Bruma", 34.0),
             "duo": PlanTier("duo", "Bruma + Roll-On", 44.0),
             "kit": PlanTier("kit", "Kit Completo", 59.0),
         },

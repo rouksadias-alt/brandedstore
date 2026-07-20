@@ -3,6 +3,7 @@ import { LinkButton } from "@/components/ui/button";
 import { Section, SectionHeading, Eyebrow } from "@/components/ui/section";
 import { ProductVisual } from "@/components/product-visual";
 import { IngredientCard } from "@/components/ingredient-card";
+import { DemoVideo } from "@/components/demo-video";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
 import { AggregateRatingBadge } from "@/components/aggregate-rating-badge";
 import { ProductJsonLd } from "@/components/product-json-ld";
@@ -167,6 +168,9 @@ export function ProductLandingPage({ product }: { product: Product }) {
           eyebrow="Cómo funciona"
           title={`De aplicar a sentirte ${BUSINESS.tagline.split(" ").pop()} en 3 pasos`}
         />
+        {product.demoVideo && (
+          <DemoVideo video={product.demoVideo} className="mb-10 sm:mb-12" />
+        )}
         <div className="grid gap-6 sm:grid-cols-3">
           {product.howItWorks.map((step) => (
             <div key={step.step} className="rounded-2xl border border-mint-100 bg-white p-6 text-center">

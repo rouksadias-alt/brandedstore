@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Truck } from "lucide-react";
 import { LinkButton } from "@/components/ui/button";
 import { Section, SectionHeading, Eyebrow } from "@/components/ui/section";
 import { ProductVisual } from "@/components/product-visual";
+import { DemoVideo } from "@/components/demo-video";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
 import { AggregateRatingBadge } from "@/components/aggregate-rating-badge";
 import { ProductJsonLd } from "@/components/product-json-ld";
@@ -116,6 +117,9 @@ export function DuoLandingPage({ duo }: { duo: DuoOffer }) {
       {/* Cuándo usar cada uno */}
       <Section>
         <SectionHeading eyebrow="Tu ritual" title="Un producto para cada momento" />
+        {duo.demoVideo && (
+          <DemoVideo video={duo.demoVideo} className="mb-10 sm:mb-12" />
+        )}
         <div className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-2">
           {duo.useCases.map((step) => (
             <div key={step.time} className="rounded-2xl border border-mint-100 bg-white p-6 text-center">

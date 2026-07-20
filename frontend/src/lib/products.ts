@@ -29,6 +29,20 @@ export type Testimonial = {
   product: string;
 };
 
+// Vídeo demo mudo (autoplay + loop) que se muestra en la sección "Cómo
+// funciona" de cada página de producto. Si el fichero .mp4 no existe todavía
+// en /public/videos/, el componente <DemoVideo> se oculta silenciosamente —
+// por eso podemos dejar la ruta configurada de antemano y solo hay que
+// depositar el vídeo (naming exacto) para que aparezca. Ver
+// LEGER_VIDEOS_GUIDE.md para el flujo de compresión con FFmpeg.
+export type DemoVideoData = {
+  src: string;
+  webm?: string;
+  poster: string;
+  aspectRatio?: "9/16" | "1/1" | "4/5" | "16/9";
+  caption?: string;
+};
+
 export type Product = {
   slug: string;
   shortName: string;
@@ -43,6 +57,7 @@ export type Product = {
   accent: string;
   emoji: string;
   images?: string[];
+  demoVideo?: DemoVideoData;
   agitation: string[];
   whyItHappens: string;
   howItWorks: { step: string; title: string; description: string }[];
@@ -129,6 +144,13 @@ export const products: Product[] = [
       "/images/roll-on-1.png",
       "/images/roll-on-2.png",
     ],
+    demoVideo: {
+      src: "/videos/roll-on-demo.mp4",
+      webm: "/videos/roll-on-demo.webm",
+      poster: "/images/roll-on-1.png",
+      aspectRatio: "9/16",
+      caption: "Aplica la bola metálica fría de tobillo a rodilla — el frío se siente al instante.",
+    },
     agitation: [
       "Subes las escaleras del Metro y sientes las piernas como si cargaras sacos de cemento.",
       "Llegas a casa y lo primero que haces es tirarte al sofá — no te quedan fuerzas ni para jugar con tus hijos.",
@@ -186,6 +208,13 @@ export const products: Product[] = [
       "/images/medias-1.png",
       "/images/medias-2.png",
     ],
+    demoVideo: {
+      src: "/videos/medias-demo.mp4",
+      webm: "/videos/medias-demo.webm",
+      poster: "/images/medias-1.png",
+      aspectRatio: "9/16",
+      caption: "Compresión graduada del tobillo hacia la rodilla — activa la circulación todo el día.",
+    },
     agitation: [
       "A las 3pm ya sientes los zapatos apretados — tus tobillos se hincharon otra vez dentro del turno.",
       "El viaje en bus o el vuelo te deja las piernas dormidas y \"cargadas\", y al bajarte casi no puedes caminar bien.",
@@ -241,6 +270,13 @@ export const products: Product[] = [
       "/images/bruma-1.png",
       "/images/bruma-2.png",
     ],
+    demoVideo: {
+      src: "/videos/bruma-demo.mp4",
+      webm: "/videos/bruma-demo.webm",
+      poster: "/images/bruma-1.png",
+      aspectRatio: "9/16",
+      caption: "Un spray a media tarde y las piernas se sienten frescas al instante — cabe en tu cartera.",
+    },
     agitation: [
       "A media tarde, con el calor de la ciudad, sientes las piernas ardiendo y pulsando — y todavía te quedan horas de trabajo.",
       "Estás en la oficina, en el bus o en fila y no puedes quitarte los zapatos ni subir las piernas — necesitas alivio ahí mismo.",
@@ -289,6 +325,13 @@ export const kitProduct = {
   compareAtPrice: 112,
   images: ["/images/kit-completo-1.png"],
   includes: products.map((p) => p.shortName),
+  demoVideo: {
+    src: "/videos/kit-demo.mp4",
+    webm: "/videos/kit-demo.webm",
+    poster: "/images/kit-completo-1.png",
+    aspectRatio: "9/16" as const,
+    caption: "El ritual completo en 3 pasos: Roll-On frío, Medias de compresión, Bruma refrescante.",
+  },
 };
 
 export type DuoOffer = {
@@ -303,6 +346,7 @@ export type DuoOffer = {
   emoji: string;
   gradient: string;
   images: string[];
+  demoVideo?: DemoVideoData;
   productSlugs: [string, string];
   checkoutProductSlug: string;
   checkoutPlanId: string;
@@ -327,6 +371,13 @@ export const duoOffers: DuoOffer[] = [
     emoji: "💦",
     gradient: "from-mint-50 via-frost to-mint-100",
     images: ["/images/duo-bruma-rollon.png"],
+    demoVideo: {
+      src: "/videos/duo-bruma-rollon-demo.mp4",
+      webm: "/videos/duo-bruma-rollon-demo.webm",
+      poster: "/images/duo-bruma-rollon.png",
+      aspectRatio: "9/16" as const,
+      caption: "Roll-On por la mañana, Bruma en el día — alivio frío continuo sin esfuerzo.",
+    },
     productSlugs: ["bruma", "roll-on"],
     checkoutProductSlug: "bruma",
     checkoutPlanId: "duo",

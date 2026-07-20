@@ -1,7 +1,7 @@
 import { AGGREGATE_RATING, BUSINESS } from "@/lib/products";
 
 const stats = [
-  { value: `+${BUSINESS.founderCount}`, label: "Clientas felices" },
+  { value: `+${BUSINESS.founderCount}`, label: "Clientes felices" },
   { value: `${AGGREGATE_RATING.value}★`, label: "Valoración" },
   { value: "24–48h", label: "Envío" },
   { value: `${BUSINESS.guaranteeDays} días`, label: "Garantía" },

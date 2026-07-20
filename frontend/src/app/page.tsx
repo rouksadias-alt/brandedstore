@@ -49,7 +49,7 @@ export default function Home() {
               No es cansancio. Es tu circulación pidiendo ayuda.
             </h1>
             <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink/70">
-              El primer sistema de bienestar circulatorio formulado con ingredientes de grado
+              El único sistema de bienestar circulatorio formulado con ingredientes de grado
               farmacéutico — Centella Asiática, Castaño de Indias, Compresión Graduada — adaptado
               específicamente al clima tropical de Panamá. Sin intermediarios, sin sobreprecio de farmacia.
             </p>
@@ -58,10 +58,10 @@ export default function Home() {
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <LinkButton href="/kit-completo" size="lg">
-                Ver el Kit Completo
+                Empieza a sentirte ligera hoy
               </LinkButton>
               <LinkButton href="/checkout" variant="outline" size="lg">
-                Pedir Ahora
+                Pedir con Pago Contra Entrega
               </LinkButton>
             </div>
 
@@ -271,7 +271,7 @@ export default function Home() {
 
       {/* Testimonials */}
       <Section className="bg-mint-50/50">
-        <SectionHeading eyebrow="Prueba social" title={`Las mujeres que ya confían en ${BUSINESS.brand}`} />
+        <SectionHeading eyebrow="Prueba social" title={`Más de ${BUSINESS.founderCount} personas que ya confían en ${BUSINESS.brand}`} />
         <AggregateRatingBadge className="-mt-6 mb-8 justify-center" />
         <TestimonialsCarousel />
       </Section>
@@ -293,14 +293,14 @@ export default function Home() {
       <Section className="pt-0">
         <div className="mx-auto max-w-3xl rounded-3xl bg-mint-900 px-6 py-14 text-center text-white sm:px-14">
           <h2 className="font-display text-3xl font-semibold sm:text-4xl">
-            Siéntete {BUSINESS.brand.charAt(0)}{BUSINESS.brand.slice(1).toLowerCase()}
+            Tus piernas merecen sentirse {BUSINESS.brand.charAt(0)}{BUSINESS.brand.slice(1).toLowerCase()}
           </h2>
           <p className="mt-4 text-mint-100">
-            Pago Contra Entrega en toda {BUSINESS.country}. Pagas solo cuando lo recibes.
+            Pago Contra Entrega en toda {BUSINESS.country}. Pagas solo cuando lo recibes. Garantía de {BUSINESS.guaranteeDays} días.
           </p>
           <div className="mt-8">
             <LinkButton href="/checkout" size="lg">
-              Pedir Ahora
+              Quiero piernas ligeras — Pedir ahora
             </LinkButton>
           </div>
         </div>

@@ -42,7 +42,7 @@ const generalFaq = [
   {
     question: "¿Cómo sé cuál producto es para mí?",
     answer:
-      "Si buscas alivio inmediato de piernas pesadas, empieza con el Roll-On. Si estás de pie todo el día, las Medias de Compresión son ideales. Si quieres algo rápido para llevar contigo, prueba la Bruma. O ahorra con el Kit Completo, que incluye los tres.",
+      "Si buscas alivio inmediato de piernas pesadas, empieza con el Gel Crioactivo. Si estás de pie todo el día, las Medias de Compresión son ideales. Si quieres algo rápido para llevar contigo, prueba la Bruma. O ahorra con el Kit Completo, que incluye los tres.",
   },
 ];
 

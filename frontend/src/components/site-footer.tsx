@@ -5,7 +5,7 @@ const columns = [
   {
     title: "Productos",
     links: [
-      { href: "/roll-on", label: "Roll-On Crioactivo" },
+      { href: "/roll-on", label: "Gel Crioactivo" },
       { href: "/medias-compresion", label: "Medias Compression 360°" },
       { href: "/bruma", label: "Bruma Instantánea" },
       { href: "/kit-completo", label: "Kit Completo" },

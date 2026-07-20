@@ -16,7 +16,7 @@ import { BUSINESS, products, kitProduct, duoOffers, type FAQItem, type Ingredien
 import { formatUSD } from "@/lib/utils";
 
 const ritualSteps = [
-  { time: "Mañana", title: "Roll-On Crioactivo", description: "Frío inmediato — activa la sensación y drena la pesadez desde temprano." },
+  { time: "Mañana", title: "Gel Crioactivo", description: "Frío inmediato — activa la sensación y drena la pesadez desde temprano." },
   { time: "Día", title: "Medias 360°", description: "Compresión graduada 15–20 mmHg — sostiene la circulación todo el día." },
   { time: "Tarde", title: "Bruma Instantánea", description: "Refresca y \"reinicia\" las piernas en segundos, sin manos libres." },
 ];
@@ -30,7 +30,7 @@ const keyIngredients: Ingredient[] = [
 const homeFaq: FAQItem[] = [
   { question: "¿Cómo funciona el pago contra entrega?", answer: "Pagas en efectivo al recibir tu pedido. Cero riesgo, cero adelanto." },
   { question: "¿Cuánto tarda el envío?", answer: "24–48h en Ciudad de Panamá; 2–4 días al interior." },
-  { question: "¿Cada cuánto uso los productos?", answer: "Roll-On por la mañana, Medias durante el día, Bruma cuando lo necesites." },
+  { question: "¿Cada cuánto uso los productos?", answer: "Gel por la mañana, Medias durante el día, Bruma cuando lo necesites." },
   { question: "¿Sirve si paso muchas horas de pie o sentada?", answer: "Sí, está diseñado justo para eso." },
   { question: "¿Es apto en el embarazo?", answer: "La fibra de bambú es suave y transpirable; aun así, consulta a tu médico." },
   { question: "¿Y si no me funciona?", answer: `Tienes garantía de ${BUSINESS.guaranteeDays} días.` },

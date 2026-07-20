@@ -7,7 +7,7 @@ import { LinkButton } from "@/components/ui/button";
 import { BUSINESS } from "@/lib/products";
 
 const NAV_LINKS = [
-  { href: "/roll-on", label: "Roll-On" },
+  { href: "/roll-on", label: "Gel Crioactivo" },
   { href: "/medias-compresion", label: "Medias" },
   { href: "/bruma", label: "Bruma" },
   { href: "/kit-completo", label: "Kit Completo" },

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | LÉGER",
   },
   description:
-    "LÉGER es la primera línea de bienestar circulatorio de grado farmacéutico formulada para el clima tropical de Panamá. Roll-On Crioactivo, Medias de Compresión y Bruma Instantánea. Pago contra entrega, garantía de 30 días.",
+    "LÉGER es la primera línea de bienestar circulatorio de grado farmacéutico formulada para el clima tropical de Panamá. Gel Crioactivo, Medias de Compresión y Bruma Instantánea. Pago contra entrega, garantía de 30 días.",
   metadataBase: new URL("https://soyleger.store"),
   openGraph: {
     title: "LÉGER — Ciencia Circulatoria",

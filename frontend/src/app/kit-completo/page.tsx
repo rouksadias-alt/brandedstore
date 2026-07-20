@@ -30,7 +30,7 @@ const kitFaq = [
   {
     question: "¿Cómo uso los 3 productos juntos?",
     answer:
-      "Roll-On en la mañana o al llegar del trabajo, Medias de Compresión durante el día activo, y Bruma en cualquier momento que sientas el 'bajón' de piernas — un ritual completo para cada momento del día.",
+      "Gel en la mañana o al llegar del trabajo, Medias de Compresión durante el día activo, y Bruma en cualquier momento que sientas el 'bajón' de piernas — un ritual completo para cada momento del día.",
   },
   {
     question: "¿Tiene la misma garantía que los productos individuales?",
@@ -154,7 +154,7 @@ export default function KitCompletoPage() {
         )}
         <div className="grid gap-6 sm:grid-cols-3">
           {[
-            { time: "Mañana", product: products[0], desc: "Aplica el Roll-On frío para empezar el día con piernas activas." },
+            { time: "Mañana", product: products[0], desc: "Aplica el Gel frío para empezar el día con piernas activas." },
             { time: "Durante el día", product: products[1], desc: "Usa las Medias de Compresión en tu turno, oficina o viaje." },
             { time: "Cuando lo necesites", product: products[2], desc: "Refresca al instante con la Bruma, sin manos libres." },
           ].map((step) => (

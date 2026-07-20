@@ -128,7 +128,7 @@ export function GraciasContent() {
             <RefreshCcw className="h-6 w-6 text-mint-600" />
             <p className="mt-2 font-bold text-ink">¿Necesitas más pronto?</p>
             <p className="mt-1 text-sm text-ink/65">
-              El Roll-On y la Bruma duran 30–45 días — te avisaremos por WhatsApp cuando sea hora
+              El Gel y la Bruma duran 30–45 días — te avisaremos por WhatsApp cuando sea hora
               de tu próximo pedido, con un descuento especial de reorden.
             </p>
           </div>

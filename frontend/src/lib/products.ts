@@ -91,10 +91,10 @@ export const testimonials: Testimonial[] = [
     name: "María Fernández",
     city: "Ciudad de Panamá",
     quote:
-      "Trabajo 10 horas de pie en la farmacia y para las 6pm sentía que cargaba troncos. Con el Roll-On siento el frío de inmediato y mis piernas se sienten ligeras otra vez.",
+      "Trabajo 10 horas de pie en la farmacia y para las 6pm sentía que cargaba troncos. Con el Gel siento el frío de inmediato y mis piernas se sienten ligeras otra vez.",
     rating: 5,
     verified: true,
-    product: "Roll-On Crioactivo",
+    product: "Gel Crioactivo",
   },
   {
     name: "Yaritza Gómez",
@@ -128,15 +128,15 @@ export const testimonials: Testimonial[] = [
 export const products: Product[] = [
   {
     slug: "roll-on",
-    shortName: "Roll-On Crioactivo",
+    shortName: "Gel Crioactivo",
     fullName:
-      "Roll-On Frío de Centella Asiática y Cafeína — Alivio Inmediato para Piernas Pesadas",
+      "Gel Frío de Centella Asiática y Castaño de Indias — Alivio Inmediato para Piernas Pesadas",
     tagline: "Lo sientes frío, lo sientes trabajando — en 60 segundos.",
     price: 39,
     heroPriceLabel: "Precio por unidad",
     heroHeadline: "¿Tus piernas se sienten pesadas antes de que termine el día?",
     heroSubheadline:
-      "El Roll-On Crioactivo LÉGER combina Centella Asiática, Cafeína y una bola aplicadora fría que drena la pesadez al instante — sientes el efecto desde la primera aplicación.",
+      "El Gel Crioactivo LÉGER combina Centella Asiática, Castaño de Indias y un efecto frío inmediato que drena la pesadez al instante — sientes el alivio desde la primera aplicación.",
     gradient: "from-mint-100 via-mint-50 to-frost",
     accent: "mint",
     emoji: "🧊",
@@ -148,7 +148,7 @@ export const products: Product[] = [
       src: "/videos/roll-on-demo.mp4",
       poster: "/images/roll-on-1.png",
       aspectRatio: "9/16",
-      caption: "Aplica la bola metálica fría de tobillo a rodilla — el frío se siente al instante.",
+      caption: "Aplica el gel de tobillo a rodilla con un masaje suave — el frío se siente al instante.",
     },
     agitation: [
       "Subes las escaleras del Metro y sientes las piernas como si cargaras sacos de cemento.",
@@ -159,15 +159,15 @@ export const products: Product[] = [
     whyItHappens:
       "Cuando pasas muchas horas de pie o sentada, la circulación venosa de las piernas tiene que trabajar contra la gravedad para regresar la sangre al corazón. El calor tropical dilata los vasos y hace todo peor, retenido líquido se acumula y sientes pesadez, hinchazón y esa sensación de \"piernas de tronco\" al final del día.",
     howItWorks: [
-      { step: "1", title: "Aplica", description: "Desliza la bola de metal fría por tu pierna, de tobillo hacia la rodilla." },
-      { step: "2", title: "Siente el frío", description: "El mentol y la bola metálica generan una sensación fría inmediata con micro-masaje de drenaje." },
-      { step: "3", title: "Piernas ligeras", description: "La Centella Asiática y la Cafeína siguen trabajando en la microcirculación mientras sigues tu día." },
+      { step: "1", title: "Aplica", description: "Extiende el gel por tu pierna con un masaje suave, de tobillo hacia la rodilla." },
+      { step: "2", title: "Siente el frío", description: "El efecto refrescante genera una sensación fría inmediata que descongestiona al instante." },
+      { step: "3", title: "Piernas ligeras", description: "La Centella Asiática y el Castaño de Indias siguen trabajando en la microcirculación mientras sigues tu día." },
     ],
     ingredients: [
       { name: "Centella Asiática", icon: "leaf", benefit: "Estudiada por su efecto en la microcirculación venosa." },
-      { name: "Cafeína", icon: "coffee", benefit: "Efecto drenante y descongestivo natural." },
-      { name: "Mentol", icon: "snowflake", benefit: "Frío inmediato — la prueba sensorial de que está funcionando." },
-      { name: "Bola Aplicadora Metálica", icon: "droplets", benefit: "Se siente fría al contacto y da micro-masaje de drenaje." },
+      { name: "Castaño de Indias", icon: "shield", benefit: "Venotónico clásico — confort y tono venoso." },
+      { name: "Ginkgo Biloba", icon: "wind", benefit: "Apoya la circulación y revitaliza las piernas cansadas." },
+      { name: "Aloe Vera", icon: "droplets", benefit: "Hidrata y calma la piel mientras el frío hace su trabajo." },
     ],
     comparison: [
       { feature: "Ingredientes con nombre y estudio", leger: true, generic: false, nothing: false },
@@ -177,12 +177,12 @@ export const products: Product[] = [
       { feature: "Garantía de devolución 30 días", leger: true, generic: false, nothing: false },
     ],
     pricingTiers: [
-      { id: "2x", label: "1 Roll-On", units: "30 días de uso", price: 39, isFeatured: true, image: "/images/roll-on-1.png" },
-      { id: "duo", label: "Roll-On + Medias", units: "El dúo más completo", price: 49, compareAtPrice: 84, badge: "Ahorra $35", image: "/images/duo-rollon-medias.png" },
-      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 112, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
+      { id: "2x", label: "1 Gel Crioactivo", units: "30 días de uso", price: 39, isFeatured: true, image: "/images/roll-on-1.png" },
+      { id: "duo", label: "Gel + Medias", units: "El dúo más completo", price: 49, compareAtPrice: 84, badge: "Ahorra $35", image: "/images/duo-rollon-medias.png" },
+      { id: "kit", label: "Kit Completo", units: "Gel + Medias + Bruma", price: 59, compareAtPrice: 112, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
     faq: [
-      { question: "¿Esto en verdad funciona o es otra crema más?", answer: "El Roll-On combina Centella Asiática y Cafeína con una bola aplicadora fría que sientes trabajando desde el primer uso — no es una promesa vacía, es una sensación inmediata y real." },
+      { question: "¿Esto en verdad funciona o es otra crema más?", answer: "El Gel Crioactivo combina Centella Asiática y Castaño de Indias con un efecto frío que sientes trabajando desde el primer uso — no es una promesa vacía, es una sensación inmediata y real." },
       { question: "Ya he comprado cosas que no sirvieron, ¿por qué confiar en esto?", answer: "Por eso ofrecemos garantía de devolución de 30 días y pago contra entrega: pagas solo cuando lo recibes y compruebas que funciona." },
       { question: "¿Es seguro? ¿Tiene químicos raros?", answer: "Lista de ingredientes clara y transparente, libre de parabenos, de uso tópico y dermatológicamente apto." },
       { question: "¿Cuánto tarda en llegar a mi casa?", answer: "24–72 horas en Ciudad de Panamá; un poco más en el interior. Te confirmamos por WhatsApp antes de despachar." },
@@ -241,8 +241,8 @@ export const products: Product[] = [
     ],
     pricingTiers: [
       { id: "2x", label: "1 Par de Medias", units: "Uso diario", price: 39, isFeatured: true, image: "/images/medias-2.png" },
-      { id: "duo", label: "Medias + Roll-On", units: "El dúo más completo", price: 49, compareAtPrice: 84, badge: "Ahorra $35", image: "/images/duo-rollon-medias.png" },
-      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 112, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
+      { id: "duo", label: "Medias + Gel", units: "El dúo más completo", price: 49, compareAtPrice: 84, badge: "Ahorra $35", image: "/images/duo-rollon-medias.png" },
+      { id: "kit", label: "Kit Completo", units: "Gel + Medias + Bruma", price: 59, compareAtPrice: 112, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
     faq: [
       { question: "¿Es compresión real o solo elástico apretado?", answer: "Es compresión graduada real (15–20mmHg), más apretada en el tobillo y disminuye hacia la rodilla — el mismo mecanismo que usan enfermeras y aeromozas, no un elástico genérico." },
@@ -302,8 +302,8 @@ export const products: Product[] = [
     ],
     pricingTiers: [
       { id: "2x", label: "1 Bruma", units: "Tu dosis diaria", price: 34, isFeatured: true, image: "/images/bruma-1.png" },
-      { id: "duo", label: "Bruma + Roll-On", units: "El dúo refrescante", price: 44, compareAtPrice: 74, badge: "Ahorra $30", image: "/images/duo-bruma-rollon.png" },
-      { id: "kit", label: "Kit Completo", units: "Roll-On + Medias + Bruma", price: 59, compareAtPrice: 112, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
+      { id: "duo", label: "Bruma + Gel", units: "El dúo refrescante", price: 44, compareAtPrice: 74, badge: "Ahorra $30", image: "/images/duo-bruma-rollon.png" },
+      { id: "kit", label: "Kit Completo", units: "Gel + Medias + Bruma", price: 59, compareAtPrice: 112, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
     faq: [
       { question: "¿Puedo usarla sobre la media de compresión?", answer: "Sí — la Bruma está formulada para usarse sobre la piel directamente o sobre la media, sin dejar residuos grasosos." },
@@ -326,7 +326,7 @@ export const kitProduct = {
     src: "/videos/kit-demo.mp4",
     poster: "/images/kit-completo-1.png",
     aspectRatio: "9/16" as const,
-    caption: "El ritual completo en 3 pasos: Roll-On frío, Medias de compresión, Bruma refrescante.",
+    caption: "El ritual completo en 3 pasos: Gel frío, Medias de compresión, Bruma refrescante.",
   },
 };
 
@@ -356,11 +356,11 @@ export type DuoOffer = {
 export const duoOffers: DuoOffer[] = [
   {
     slug: "bruma-rollon",
-    title: "Bruma + Roll-On Crioactivo",
+    title: "Bruma + Gel Crioactivo",
     tagline: "Frío inmediato + refresco al instante — el dúo para piernas ligeras todo el día",
     heroHeadline: "Alivio en casa por la mañana, refresco instantáneo el resto del día",
     heroSubheadline:
-      "El Roll-On Crioactivo drena la pesadez con frío profundo cuando tienes tiempo de aplicarlo con calma, y la Bruma te da ese mismo alivio en segundos, sin manos libres, dondequiera que estés — oficina, bus o fila del súper.",
+      "El Gel Crioactivo drena la pesadez con frío profundo cuando tienes tiempo de aplicarlo con calma, y la Bruma te da ese mismo alivio en segundos, sin manos libres, dondequiera que estés — oficina, bus o fila del súper.",
     price: 44,
     compareAtPrice: 74,
     badge: "Ahorra $30",
@@ -371,7 +371,7 @@ export const duoOffers: DuoOffer[] = [
       src: "/videos/duo-bruma-rollon-demo.mp4",
       poster: "/images/duo-bruma-rollon.png",
       aspectRatio: "9/16" as const,
-      caption: "Roll-On por la mañana, Bruma en el día — alivio frío continuo sin esfuerzo.",
+      caption: "Gel por la mañana, Bruma en el día — alivio frío continuo sin esfuerzo.",
     },
     productSlugs: ["bruma", "roll-on"],
     checkoutProductSlug: "bruma",
@@ -379,8 +379,8 @@ export const duoOffers: DuoOffer[] = [
     useCases: [
       {
         time: "Mañana / en casa",
-        title: "Roll-On Crioactivo",
-        desc: "Aplica con calma antes de salir — la bola metálica fría y la Centella Asiática drenan la pesadez desde temprano.",
+        title: "Gel Crioactivo",
+        desc: "Aplica con calma antes de salir — el efecto frío y la Centella Asiática drenan la pesadez desde temprano.",
       },
       {
         time: "Fuera de casa",
@@ -391,7 +391,7 @@ export const duoOffers: DuoOffer[] = [
     faq: [
       {
         question: "¿Por qué comprar los dos en vez de uno solo?",
-        answer: "Porque cubren momentos distintos: el Roll-On es ideal cuando tienes unos minutos para aplicarlo con calma (mañana o al llegar a casa), y la Bruma es tu solución rápida cuando estás fuera y no puedes detenerte — juntos cubren todo el día.",
+        answer: "Porque cubren momentos distintos: el Gel es ideal cuando tienes unos minutos para aplicarlo con calma (mañana o al llegar a casa), y la Bruma es tu solución rápida cuando estás fuera y no puedes detenerte — juntos cubren todo el día.",
       },
       {
         question: "¿Cuánto ahorro comprando el dúo?",
@@ -463,7 +463,7 @@ export const checkoutOptions: CheckoutOption[] = [
       {
         id: "kit",
         label: "Kit Completo",
-        units: "Roll-On + Medias + Bruma",
+        units: "Gel + Medias + Bruma",
         price: kitProduct.price,
         compareAtPrice: kitProduct.compareAtPrice,
         badge: "Más Popular",

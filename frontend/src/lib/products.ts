@@ -146,7 +146,6 @@ export const products: Product[] = [
     ],
     demoVideo: {
       src: "/videos/roll-on-demo.mp4",
-      webm: "/videos/roll-on-demo.webm",
       poster: "/images/roll-on-1.png",
       aspectRatio: "9/16",
       caption: "Aplica la bola metálica fría de tobillo a rodilla — el frío se siente al instante.",
@@ -210,7 +209,6 @@ export const products: Product[] = [
     ],
     demoVideo: {
       src: "/videos/medias-demo.mp4",
-      webm: "/videos/medias-demo.webm",
       poster: "/images/medias-1.png",
       aspectRatio: "9/16",
       caption: "Compresión graduada del tobillo hacia la rodilla — activa la circulación todo el día.",
@@ -272,7 +270,6 @@ export const products: Product[] = [
     ],
     demoVideo: {
       src: "/videos/bruma-demo.mp4",
-      webm: "/videos/bruma-demo.webm",
       poster: "/images/bruma-1.png",
       aspectRatio: "9/16",
       caption: "Un spray a media tarde y las piernas se sienten frescas al instante — cabe en tu cartera.",
@@ -327,7 +324,6 @@ export const kitProduct = {
   includes: products.map((p) => p.shortName),
   demoVideo: {
     src: "/videos/kit-demo.mp4",
-    webm: "/videos/kit-demo.webm",
     poster: "/images/kit-completo-1.png",
     aspectRatio: "9/16" as const,
     caption: "El ritual completo en 3 pasos: Roll-On frío, Medias de compresión, Bruma refrescante.",
@@ -373,7 +369,6 @@ export const duoOffers: DuoOffer[] = [
     images: ["/images/duo-bruma-rollon.png"],
     demoVideo: {
       src: "/videos/duo-bruma-rollon-demo.mp4",
-      webm: "/videos/duo-bruma-rollon-demo.webm",
       poster: "/images/duo-bruma-rollon.png",
       aspectRatio: "9/16" as const,
       caption: "Roll-On por la mañana, Bruma en el día — alivio frío continuo sin esfuerzo.",

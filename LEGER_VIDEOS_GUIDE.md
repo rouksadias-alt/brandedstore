@@ -48,6 +48,15 @@ Alternatifs WebM (optionnels, réduisent la bande passante d'env. 30%) :
 `roll-on-demo.webm`, `medias-demo.webm`, `bruma-demo.webm`, `kit-demo.webm`,
 `duo-bruma-rollon-demo.webm`.
 
+**⚠️ Important** : le champ `webm` dans `products.ts` est optionnel — s'il est
+défini, le navigateur essaiera **toujours** de charger ce fichier en premier.
+Si le `.webm` référencé n'existe pas réellement dans `public/videos/`, la
+vidéo entière peut ne pas s'afficher sur certains navigateurs mobiles (le
+`.mp4` de secours n'est pas toujours chargé correctement après un 404 sur la
+première source). **Ne mets `webm: "..."` dans `products.ts` que si le
+fichier `.webm` correspondant existe vraiment** — sinon laisse le champ
+complètement absent (ce qui est le réglage actuel pour les 5 vidéos).
+
 `PUSH.bat` copie automatiquement tout ce qui existe dans ce dossier vers
 `frontend/public/videos/` avant de pousser sur GitHub.
 

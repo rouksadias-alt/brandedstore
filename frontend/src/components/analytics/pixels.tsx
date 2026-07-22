@@ -8,10 +8,11 @@ import Script from "next/script";
 // injected once the page has hydrated, so they never block first paint or
 // contend with critical page JS — while still firing early enough to catch
 // the PageView reliably.
-const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FB_PIXEL_ID;
+const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FB_PIXEL_ID ?? "1021474537476265";
 const TIKTOK_PIXEL_ID = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID;
 const SNAPCHAT_PIXEL_ID = process.env.NEXT_PUBLIC_SNAPCHAT_PIXEL_ID;
-const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
+// Hardcoded so it works regardless of Docker build-time env injection
+const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID ?? "xqbgrngtw5";
 const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
 
 export function Pixels() {

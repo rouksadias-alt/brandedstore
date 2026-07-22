@@ -11,6 +11,8 @@ import Script from "next/script";
 const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FB_PIXEL_ID;
 const TIKTOK_PIXEL_ID = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID;
 const SNAPCHAT_PIXEL_ID = process.env.NEXT_PUBLIC_SNAPCHAT_PIXEL_ID;
+const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
+const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
 
 export function Pixels() {
   return (
@@ -70,6 +72,37 @@ export function Pixels() {
             snaptr('track', 'PAGE_VIEW');
           `}
         </Script>
+      )}
+
+      {/* Microsoft Clarity — session recordings + heatmaps */}
+      {CLARITY_ID && (
+        <Script id="clarity-base" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", '${CLARITY_ID}');
+          `}
+        </Script>
+      )}
+
+      {/* Google Analytics 4 */}
+      {GA4_ID && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+            strategy="afterInteractive"
+          />
+          <Script id="ga4-base" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA4_ID}');
+            `}
+          </Script>
+        </>
       )}
     </>
   );

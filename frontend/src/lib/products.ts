@@ -131,10 +131,10 @@ export const products: Product[] = [
     gradient: "from-rose-100 via-pink-50 to-amber-50",
     accent: "mint",
     emoji: "✨",
-    images: ["/images/roll-on-1.png", "/images/roll-on-2.png"],
+    images: ["/images/roll-on-1.webp", "/images/roll-on-2.webp", "/images/roll-on-3.webp", "/images/roll-on-4.webp"],
     demoVideo: {
       src: "/videos/roll-on-demo.mp4",
-      poster: "/images/roll-on-1.png",
+      poster: "/images/roll-on-1.webp",
       aspectRatio: "9/16",
       caption: "Colágeno + Glutatión + Vitamina C — brilla desde adentro.",
     },
@@ -165,8 +165,8 @@ export const products: Product[] = [
       { feature: "Garantía de devolución 30 días", leger: true, generic: false, nothing: false },
     ],
     pricingTiers: [
-      { id: "2x", label: "1 frasco — 1 mes", units: "30 días de uso", price: 39, isFeatured: true, image: "/images/roll-on-1.png" },
-      { id: "duo", label: "2 frascos — 2 meses", units: "Resultados óptimos", price: 49, compareAtPrice: 78, badge: "Ahorra $29", image: "/images/duo-rollon-medias.png" },
+      { id: "2x", label: "1 frasco — 1 mes", units: "30 días de uso", price: 39, isFeatured: true, image: "/images/roll-on-1.webp" },
+      { id: "duo", label: "2 frascos — 2 meses", units: "Resultados óptimos", price: 49, compareAtPrice: 78, badge: "Ahorra $29", image: "/images/roll-on-2.webp" },
       { id: "kit", label: "Kit 3 meses", units: "Transformación completa", price: 59, compareAtPrice: 117, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
     faq: [

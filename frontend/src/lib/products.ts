@@ -190,10 +190,10 @@ export const products: Product[] = [
     gradient: "from-purple-100 via-pink-50 to-rose-50",
     accent: "sand",
     emoji: "💎",
-    images: ["/images/medias-1.png", "/images/medias-2.png"],
+    images: ["/images/medias-1.webp", "/images/medias-2.webp", "/images/medias-3.webp", "/images/medias-4.webp", "/images/medias-5.webp"],
     demoVideo: {
       src: "/videos/medias-demo.mp4",
-      poster: "/images/medias-1.png",
+      poster: "/images/medias-1.webp",
       aspectRatio: "9/16",
       caption: "5 tipos de colágeno — piel, cabello, uñas y articulaciones en un solo frasco.",
     },
@@ -224,8 +224,8 @@ export const products: Product[] = [
       { feature: "Garantía de devolución 30 días", leger: true, generic: false, nothing: false },
     ],
     pricingTiers: [
-      { id: "2x", label: "1 frasco — 1 mes", units: "30 días de uso", price: 39, isFeatured: true, image: "/images/medias-1.png" },
-      { id: "duo", label: "2 frascos — 2 meses", units: "Resultados completos", price: 49, compareAtPrice: 78, badge: "Ahorra $29", image: "/images/duo-rollon-medias.png" },
+      { id: "2x", label: "1 frasco — 1 mes", units: "30 días de uso", price: 39, isFeatured: true, image: "/images/medias-1.webp" },
+      { id: "duo", label: "2 frascos — 2 meses", units: "Resultados completos", price: 49, compareAtPrice: 78, badge: "Ahorra $29", image: "/images/medias-2.webp" },
       { id: "kit", label: "Kit 3 meses", units: "Transformación total", price: 59, compareAtPrice: 117, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
     faq: [

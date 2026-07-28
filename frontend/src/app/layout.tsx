@@ -21,16 +21,16 @@ const display = Fraunces({
 
 export const metadata: Metadata = {
   title: {
-    default: "LÉGER — Ciencia Circulatoria de Grado Farmacéutico | Panamá",
-    template: "%s | LÉGER",
+    default: "GLUTA — Colágeno + Glutatión | Piel Clara y Luminosa | Panamá",
+    template: "%s | GLUTA",
   },
   description:
-    "LÉGER es la primera línea de bienestar circulatorio de grado farmacéutico formulada para el clima tropical de Panamá. Gel Crioactivo, Medias de Compresión y Bruma Instantánea. Pago contra entrega, garantía de 30 días.",
+    "GLUTA es la línea de belleza interna con Colágeno Hidrolizado, L-Glutatión y Vitamina C formulada para la mujer panameña. Piel más clara, firme y luminosa desde adentro. Pago contra entrega, garantía de 30 días.",
   metadataBase: new URL("https://soyleger.store"),
   openGraph: {
-    title: "LÉGER — Ciencia Circulatoria",
+    title: "GLUTA — Brilla desde adentro",
     description:
-      "La autoridad de una farmacia, sin el intermediario de una farmacia. Ingredientes de grado farmacéutico para piernas ligeras, hecho para el trópico. Pago contra entrega en Panamá.",
+      "Colágeno + Glutatión + Vitamina C para piel clara, luminosa y firme. Sin cremas, desde adentro. Pago contra entrega en Panamá. Garantía 30 días.",
     locale: "es_PA",
     type: "website",
   },

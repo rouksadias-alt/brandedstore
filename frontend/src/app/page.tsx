@@ -16,25 +16,25 @@ import { BUSINESS, products, kitProduct, duoOffers, type FAQItem, type Ingredien
 import { formatUSD } from "@/lib/utils";
 
 const ritualSteps = [
-  { time: "Mañana", title: "Gel Crioactivo", description: "Frío inmediato — activa la sensación y drena la pesadez desde temprano." },
-  { time: "Día", title: "Medias 360°", description: "Compresión graduada 15–20 mmHg — sostiene la circulación todo el día." },
-  { time: "Tarde", title: "Bruma Instantánea", description: "Refresca y \"reinicia\" las piernas en segundos, sin manos libres." },
+  { time: "Mañana", title: "Colágeno + Glutatión", description: "Toma tu dosis diaria — aclara manchas y unifica el tono desde adentro." },
+  { time: "Constancia", title: "5D Gluta Colágeno", description: "5 tipos de colágeno para piel firme, cabello fuerte y uñas perfectas." },
+  { time: "Potencia", title: "Colágeno Líquido", description: "Absorción 3x más rápida — resultados más visibles, más rápido." },
 ];
 
 const keyIngredients: Ingredient[] = [
-  { name: "Centella Asiática", icon: "leaf", benefit: "Apoya la microcirculación venosa." },
-  { name: "Castaño de Indias", icon: "shield", benefit: "Venotónico clásico — confort y tono venoso." },
-  { name: "Mentol / efecto frío", icon: "snowflake", benefit: "Alivio inmediato — la prueba sensorial de que está funcionando." },
+  { name: "L-Glutatión", icon: "shield", benefit: "Reduce la melanina — aclara manchas desde adentro." },
+  { name: "Colágeno Hidrolizado", icon: "leaf", benefit: "Repara, firma y rejuvenece la piel a nivel celular." },
+  { name: "Vitamina C", icon: "snowflake", benefit: "Potencia el Glutatión y protege contra el daño solar." },
 ];
 
 const homeFaq: FAQItem[] = [
+  { question: "¿Cuándo veo resultados?", answer: "Muchas clientes notan piel más luminosa en 2–3 semanas. Resultados óptimos en 4–8 semanas de uso continuo." },
+  { question: "¿Cómo se toman los productos?", answer: "Diluye el polvo en agua o jugo y tómalo por la mañana, preferiblemente en ayunas para mejor absorción." },
   { question: "¿Cómo funciona el pago contra entrega?", answer: "Pagas en efectivo al recibir tu pedido. Cero riesgo, cero adelanto." },
   { question: "¿Cuánto tarda el envío?", answer: "24–48h en Ciudad de Panamá; 2–4 días al interior." },
-  { question: "¿Cada cuánto uso los productos?", answer: "Gel por la mañana, Medias durante el día, Bruma cuando lo necesites." },
-  { question: "¿Sirve si paso muchas horas de pie o sentada?", answer: "Sí, está diseñado justo para eso." },
-  { question: "¿Es apto en el embarazo?", answer: "La fibra de bambú es suave y transpirable; aun así, consulta a tu médico." },
-  { question: "¿Y si no me funciona?", answer: `Tienes garantía de ${BUSINESS.guaranteeDays} días.` },
-  { question: "¿Qué tallas hay en las medias?", answer: "Talla única con compresión adaptable (S–XL) — cubre la mayoría de tallas de pantorrilla y pie femenino." },
+  { question: "¿Puede tomarlo si tengo diabetes o hipertensión?", answer: "Consulta a tu médico antes si tienes condiciones médicas. Los ingredientes son naturales pero siempre es mejor verificar." },
+  { question: "¿Y si no me funciona?", answer: `Tienes garantía de ${BUSINESS.guaranteeDays} días — sin preguntas, sin complicaciones.` },
+  { question: "¿Funciona en pieles oscuras y mestizas?", answer: "Sí. El L-Glutatión reduce la melanina de forma gradual y segura — perfectamente formulado para pieles latinas." },
 ];
 
 export default function Home() {
@@ -44,21 +44,21 @@ export default function Home() {
       <Section id="hero" className="pb-10 pt-10 sm:pt-16">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
-            <Eyebrow>Ciencia Circulatoria de Grado Farmacéutico</Eyebrow>
+            <Eyebrow>Colágeno · Glutatión · Vitamina C — Hecho para la mujer panameña</Eyebrow>
             <h1 className="font-display text-4xl font-semibold leading-[1.08] text-balance text-ink sm:text-5xl lg:text-6xl">
-              No es cansancio. Es tu circulación pidiendo ayuda.
+              Tu piel merece brillar desde adentro.
             </h1>
             <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink/70">
-              El único sistema de bienestar circulatorio formulado con ingredientes de grado
-              farmacéutico — Centella Asiática, Castaño de Indias, Compresión Graduada — adaptado
-              específicamente al clima tropical de Panamá. Sin intermediarios, sin sobreprecio de farmacia.
+              GLUTA combina Colágeno Hidrolizado, L-Glutatión y Vitamina C en fórmulas de alta absorción
+              — para piel más clara, firme y luminosa sin cremas ni tratamientos costosos. Formulado para el
+              clima tropical de Panamá.
             </p>
 
             <AggregateRatingBadge className="mt-4" />
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <LinkButton href="/kit-completo" size="lg">
-                Empieza a sentirte ligera hoy
+                Ver el Kit Belleza Completa
               </LinkButton>
               <LinkButton href="/checkout" variant="outline" size="lg">
                 Pedir con Pago Contra Entrega

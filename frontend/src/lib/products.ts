@@ -171,7 +171,7 @@ export const products: Product[] = [
     ],
   },
   {
-    slug: "medias-compresion",
+    slug: "gluta-colageno",
     shortName: "5D Gluta Colágeno",
     fullName: "5D Gluta Multi Colágeno — Fórmula Completa para Piel, Cabello y Uñas",
     tagline: "5 tipos de colágeno + Gluta — la fórmula más completa del mercado.",
@@ -276,7 +276,7 @@ export const duoOffers: DuoOffer[] = [
       aspectRatio: "9/16" as const,
       caption: "Colágeno + Glutatión de día, 5D Gluta para cobertura total — el dúo perfecto.",
     },
-    productSlugs: ["roll-on", "medias-compresion"],
+    productSlugs: ["roll-on", "gluta-colageno"],
     checkoutProductSlug: "roll-on",
     checkoutPlanId: "duo",
     useCases: [
@@ -319,8 +319,8 @@ export function getDuoOfferBySlug(slug: string): DuoOffer | undefined {
 // Post-purchase upsell: which product each "duo" plan is paired with, so we
 // know what's *not* included yet and worth offering on the thank-you page.
 const DUO_PAIR: Record<string, string> = {
-  "roll-on": "medias-compresion",
-  "medias-compresion": "roll-on",
+  "roll-on": "gluta-colageno",
+  "gluta-colageno": "roll-on",
 };
 
 export function getUpsellProducts(productSlug: string, planId: string | null): Product[] {

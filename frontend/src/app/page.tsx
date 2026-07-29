@@ -82,19 +82,13 @@ export default function Home() {
               emoji={products[0].emoji}
               gradient={products[0].gradient}
               images={products[0].images ? [products[0].images[0]] : undefined}
-              className="col-span-2"
+              className="col-span-1"
             />
             <ProductVisual
               emoji={products[1].emoji}
               gradient={products[1].gradient}
               images={products[1].images ? [products[1].images[0]] : undefined}
-              size="sm"
-            />
-            <ProductVisual
-              emoji={products[2].emoji}
-              gradient={products[2].gradient}
-              images={products[2].images ? [products[2].images[0]] : undefined}
-              size="sm"
+              className="col-span-1"
             />
           </div>
         </div>
@@ -107,8 +101,8 @@ export default function Home() {
       {/* Brand pillars */}
       <Section className="bg-mint-50/50">
         <SectionHeading
-          eyebrow="Por qué LÉGER"
-          title="La autoridad de una farmacia, sin el sobreprecio de una farmacia"
+          eyebrow="Por qué GLUTA"
+          title="La potencia de una fórmula farmacéutica, sin el sobreprecio de una farmacia"
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {[
@@ -155,10 +149,10 @@ export default function Home() {
       <Section>
         <SectionHeading
           eyebrow="Cómo funciona"
-          title="Un producto para cada momento del día"
-          subtitle="El ritual completo de piernas ligeras, respaldado por ingredientes con nombre y mecanismo de acción."
+          title="Dos fórmulas, un solo ritual de belleza"
+          subtitle="Colágeno + Glutatión y 5D Gluta actúan juntos — respaldados por ingredientes con nombre y mecanismo de acción."
         />
-        <div className="grid gap-6 sm:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2">
           {ritualSteps.map((step) => (
             <div key={step.time} className="rounded-2xl border border-mint-100 bg-white p-6 text-center">
               <p className="text-xs font-bold uppercase tracking-widest text-mint-600">{step.time}</p>
@@ -173,7 +167,7 @@ export default function Home() {
           ))}
         </div>
         <p className="mx-auto mt-6 max-w-2xl text-center text-xs leading-relaxed text-ink/50">
-          Resultados individuales pueden variar. LÉGER es un producto de bienestar y no sustituye el
+          Resultados individuales pueden variar. GLUTA es un suplemento de bienestar y no sustituye el
           consejo ni el tratamiento médico.
         </p>
       </Section>
@@ -185,7 +179,7 @@ export default function Home() {
         <SectionHeading
           eyebrow="Nuestros productos"
           title="Un sistema completo, no un producto suelto"
-          subtitle="Tres productos, un solo problema, resuelto desde todos los ángulos."
+          subtitle="Dos productos, un solo sistema de belleza interna."
         />
         <div className="grid gap-6 sm:grid-cols-3">
           {products.map((p) => (
@@ -292,14 +286,14 @@ export default function Home() {
       <Section className="pt-0">
         <div className="mx-auto max-w-3xl rounded-3xl bg-mint-900 px-6 py-14 text-center text-white sm:px-14">
           <h2 className="font-display text-3xl font-semibold sm:text-4xl">
-            Tus piernas merecen sentirse {BUSINESS.brand.charAt(0)}{BUSINESS.brand.slice(1).toLowerCase()}
+            Tu piel merece brillar desde adentro
           </h2>
           <p className="mt-4 text-mint-100">
             Pago Contra Entrega en toda {BUSINESS.country}. Pagas solo cuando lo recibes. Garantía de {BUSINESS.guaranteeDays} días.
           </p>
           <div className="mt-8">
             <LinkButton href="/checkout" size="lg">
-              Quiero piernas ligeras — Pedir ahora
+              Brillar desde adentro — Pedir ahora
             </LinkButton>
           </div>
         </div>

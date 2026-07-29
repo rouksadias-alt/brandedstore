@@ -152,7 +152,7 @@ export const products: Product[] = [
       { step: "3", title: "Resultados visibles", description: "Semana 1–2: piel más hidratada. Semana 3–4: tono más parejo y luminoso." },
     ],
     ingredients: [
-      { name: "L-Glutatión", icon: "sparkles", benefit: "Reduce la producción de melanina — aclara manchas desde adentro." },
+      { name: "L-Glutatión", icon: "shield", benefit: "Reduce la producción de melanina — aclara manchas desde adentro." },
       { name: "Colágeno Hidrolizado", icon: "shield", benefit: "Repara y firma la piel, reduce arrugas y flacidez." },
       { name: "Vitamina C", icon: "leaf", benefit: "Potencia el Glutatión y protege contra el daño solar." },
       { name: "Biotina", icon: "droplets", benefit: "Fortalece uñas y cabello — belleza completa." },
@@ -212,7 +212,7 @@ export const products: Product[] = [
     ],
     ingredients: [
       { name: "5 Tipos de Colágeno", icon: "shield", benefit: "Tipos I, II, III, V y X — cobertura total piel, cabello, uñas, articulaciones." },
-      { name: "L-Glutatión", icon: "sparkles", benefit: "El antioxidante maestro — aclara y protege desde adentro." },
+      { name: "L-Glutatión", icon: "shield", benefit: "El antioxidante maestro — aclara y protege desde adentro." },
       { name: "Ácido Hialurónico", icon: "droplets", benefit: "Hidratación profunda — piel rellena y sin arrugas finas." },
       { name: "Biotina + Vit C", icon: "leaf", benefit: "Cabello y uñas fuertes, absorción máxima del colágeno." },
     ],
@@ -272,7 +272,7 @@ export const products: Product[] = [
       { name: "Colágeno Hidrolizado Líquido", icon: "droplets", benefit: "Absorción 3x más rápida que las cápsulas — llega donde más importa." },
       { name: "Biotina", icon: "leaf", benefit: "Cabello más fuerte, menos caída, uñas que no se rompen." },
       { name: "Ácido Hialurónico", icon: "shield", benefit: "Hidratación profunda desde adentro — efecto relleno natural." },
-      { name: "Vitamina C + E", icon: "sparkles", benefit: "Antioxidantes que protegen y potencian la producción de colágeno." },
+      { name: "Vitamina C + E", icon: "shield", benefit: "Antioxidantes que protegen y potencian la producción de colágeno." },
     ],
     comparison: [
       { feature: "Absorción 3x más rápida que cápsulas", leger: true, generic: false, nothing: false },
@@ -463,3 +463,4 @@ export function getCheckoutOption(slug: string): CheckoutOption {
 // Order-confirmation WhatsApp links are generated server-side now
 // (backend/app/core/whatsapp.py) so the message always reflects the
 // authoritative, server-computed total. This file only owns catalog/copy.
+

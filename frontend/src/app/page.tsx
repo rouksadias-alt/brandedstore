@@ -18,7 +18,6 @@ import { formatUSD } from "@/lib/utils";
 const ritualSteps = [
   { time: "Mañana", title: "Colágeno + Glutatión", description: "Toma tu dosis diaria — aclara manchas y unifica el tono desde adentro." },
   { time: "Constancia", title: "5D Gluta Colágeno", description: "5 tipos de colágeno para piel firme, cabello fuerte y uñas perfectas." },
-  { time: "Potencia", title: "Colágeno Líquido", description: "Absorción 3x más rápida — resultados más visibles, más rápido." },
 ];
 
 const keyIngredients: Ingredient[] = [

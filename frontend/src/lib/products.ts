@@ -235,70 +235,12 @@ export const products: Product[] = [
       { question: "¿Cómo pago?", answer: "Pago Contra Entrega — pagas en efectivo al repartidor cuando recibes. Cero riesgo." },
     ],
   },
-  {
-    slug: "bruma",
-    shortName: "Colágeno Líquido",
-    fullName: "Colágeno Líquido + Biotina + Ácido Hialurónico — Absorción Ultra Rápida",
-    tagline: "Absorción 3x más rápida que las cápsulas — el colágeno que realmente llega.",
-    price: 34,
-    heroPriceLabel: "Precio por unidad",
-    heroHeadline: "Colágeno líquido: absorción 3x más rápida. Resultados más rápidos.",
-    heroSubheadline:
-      "El Colágeno Líquido GLUTA en gotas se absorbe directamente — sin pasar por la digestión. Biotina + Ácido Hialurónico en formato concentrado para piel hidratada, cabello fuerte y uñas perfectas.",
-    gradient: "from-amber-50 via-rose-50 to-pink-100",
-    accent: "mint",
-    emoji: "💧",
-    images: ["/images/bruma-1.png", "/images/bruma-2.png"],
-    demoVideo: {
-      src: "/videos/bruma-demo.mp4",
-      poster: "/images/bruma-1.png",
-      aspectRatio: "9/16",
-      caption: "Unas gotas al día — colágeno de absorción máxima.",
-    },
-    agitation: [
-      "Has tomado cápsulas de colágeno sin ver resultados — probablemente el problema es la absorción.",
-      "Quieres algo fácil, sin pastillas ni polvos — solo unas gotas y listo.",
-      "Buscas resultados más rápidos, no esperar 3 meses para ver si funciona.",
-      "Tu piel necesita hidratación profunda que las cremas no logran dar desde la superficie.",
-    ],
-    whyItHappens:
-      "El colágeno en cápsulas debe pasar por todo el sistema digestivo antes de absorberse — y parte se pierde en ese proceso. El formato líquido en gotas tiene una absorción sublingual hasta 3 veces más rápida, llegando al torrente sanguíneo directamente para resultados más rápidos y visibles.",
-    howItWorks: [
-      { step: "1", title: "Unas gotas bajo la lengua", description: "10–15 gotas diarias, directo o en tu bebida favorita." },
-      { step: "2", title: "Absorción directa", description: "Sin pasar por la digestión — llega al torrente sanguíneo más rápido." },
-      { step: "3", title: "Resultados desde la semana 1", description: "Piel más hidratada y elástica, cabello con más brillo desde las primeras semanas." },
-    ],
-    ingredients: [
-      { name: "Colágeno Hidrolizado Líquido", icon: "droplets", benefit: "Absorción 3x más rápida que las cápsulas — llega donde más importa." },
-      { name: "Biotina", icon: "leaf", benefit: "Cabello más fuerte, menos caída, uñas que no se rompen." },
-      { name: "Ácido Hialurónico", icon: "shield", benefit: "Hidratación profunda desde adentro — efecto relleno natural." },
-      { name: "Vitamina C + E", icon: "shield", benefit: "Antioxidantes que protegen y potencian la producción de colágeno." },
-    ],
-    comparison: [
-      { feature: "Absorción 3x más rápida que cápsulas", leger: true, generic: false, nothing: false },
-      { feature: "Formato líquido sin pastillas", leger: true, generic: false, nothing: false },
-      { feature: "Biotina + HA + Vit C incluidos", leger: true, generic: false, nothing: false },
-      { feature: "Pago contra entrega, cero riesgo", leger: true, generic: true, nothing: false },
-      { feature: "Garantía de devolución 30 días", leger: true, generic: false, nothing: false },
-    ],
-    pricingTiers: [
-      { id: "2x", label: "1 frasco — 1 mes", units: "30 días de uso", price: 34, isFeatured: true, image: "/images/bruma-1.png" },
-      { id: "duo", label: "Líquido + Colágeno Gluta", units: "Combo absorción máxima", price: 44, compareAtPrice: 73, badge: "Ahorra $29", image: "/images/duo-bruma-rollon.png" },
-      { id: "kit", label: "Kit 3 productos", units: "Transformación completa", price: 59, compareAtPrice: 112, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
-    ],
-    faq: [
-      { question: "¿Realmente es más efectivo que las cápsulas?", answer: "El formato líquido tiene una biodisponibilidad mayor — más colágeno llega a donde lo necesitas. Para resultados más rápidos, el líquido gana." },
-      { question: "¿Cómo se toma exactamente?", answer: "10–15 gotas bajo la lengua durante 30 segundos, o mezclado en agua o jugo. Una vez al día." },
-      { question: "¿Cuánto dura un frasco?", answer: "Aproximadamente 30 días con uso diario." },
-      { question: "¿Cómo pago?", answer: "Pago Contra Entrega — pagas en efectivo al repartidor cuando recibes. Cero riesgo." },
-    ],
-  },
 ];
 
 export const kitProduct = {
   slug: "kit-completo",
-  name: "Kit GLUTA Belleza Completa — 3 Productos",
-  tagline: "Los 3 frascos, un solo ritual de belleza — ahorra $53",
+  name: "Kit GLUTA Belleza Completa — 2 Productos",
+  tagline: "Los 2 frascos, el dúo completo de belleza — ahorra $29",
   price: 59,
   compareAtPrice: 112,
   images: ["/images/kit-completo-1.png"],
@@ -399,7 +341,6 @@ export function getDuoOfferBySlug(slug: string): DuoOffer | undefined {
 const DUO_PAIR: Record<string, string> = {
   "roll-on": "medias-compresion",
   "medias-compresion": "roll-on",
-  bruma: "roll-on",
 };
 
 export function getUpsellProducts(productSlug: string, planId: string | null): Product[] {

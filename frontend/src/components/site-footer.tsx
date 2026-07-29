@@ -7,7 +7,6 @@ const columns = [
     links: [
       { href: "/roll-on", label: "Colágeno + Glutatión" },
       { href: "/medias-compresion", label: "5D Gluta Colágeno" },
-      { href: "/bruma", label: "Colágeno Líquido" },
       { href: "/kit-completo", label: "Kit Completo" },
     ],
   },

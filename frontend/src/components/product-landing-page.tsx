@@ -31,17 +31,29 @@ export function ProductLandingPage({ product }: { product: Product }) {
 
       {/* 1. Hero */}
       <Section id="hero" className="pb-10 pt-8 sm:pt-14">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-16">
+          {/* 1. Titre + Note */}
           <div>
             <Eyebrow>{product.shortName}</Eyebrow>
             <h1 className="font-display text-4xl font-semibold leading-[1.1] text-balance text-ink sm:text-5xl">
               {product.heroHeadline}
             </h1>
-            <p className="mt-5 text-lg leading-relaxed text-ink/70">
+            <AggregateRatingBadge className="mt-3" />
+          </div>
+
+          {/* 2. Image — après la note sur mobile, colonne droite sur desktop */}
+          <ProductVisual
+            emoji={product.emoji}
+            gradient={product.gradient}
+            images={product.images}
+            className="lg:row-span-2 lg:row-start-1"
+          />
+
+          {/* 3. Texte + CTA */}
+          <div>
+            <p className="text-lg leading-relaxed text-ink/70">
               {product.heroSubheadline}
             </p>
-
-            <AggregateRatingBadge className="mt-4" />
 
             <div className="mt-7 flex flex-wrap items-center gap-4">
               <LinkButton href={`/checkout?product=${product.slug}`} size="lg">
@@ -76,12 +88,6 @@ export function ProductLandingPage({ product }: { product: Product }) {
               </span>
             </div>
           </div>
-
-          <ProductVisual
-            emoji={product.emoji}
-            gradient={product.gradient}
-            images={product.images}
-          />
         </div>
       </Section>
 

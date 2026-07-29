@@ -41,19 +41,39 @@ export default function Home() {
     <>
       {/* Hero */}
       <Section id="hero" className="pb-10 pt-10 sm:pt-16">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-16">
+          {/* 1. Titre + Note */}
           <div>
             <Eyebrow>Colágeno · Glutatión · Vitamina C — Hecho para la mujer panameña</Eyebrow>
             <h1 className="font-display text-4xl font-semibold leading-[1.08] text-balance text-ink sm:text-5xl lg:text-6xl">
               Tu piel merece brillar desde adentro.
             </h1>
-            <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink/70">
+            <AggregateRatingBadge className="mt-3" />
+          </div>
+
+          {/* 2. Images — après la note sur mobile, colonne droite sur desktop */}
+          <div className="grid grid-cols-2 gap-4 lg:row-span-2 lg:row-start-1">
+            <ProductVisual
+              emoji={products[0].emoji}
+              gradient={products[0].gradient}
+              images={products[0].images ? [products[0].images[0]] : undefined}
+              className="col-span-1"
+            />
+            <ProductVisual
+              emoji={products[1].emoji}
+              gradient={products[1].gradient}
+              images={products[1].images ? [products[1].images[0]] : undefined}
+              className="col-span-1"
+            />
+          </div>
+
+          {/* 3. Texte + CTA */}
+          <div>
+            <p className="text-lg leading-relaxed text-ink/70">
               GLUTA combina Colágeno Hidrolizado, L-Glutatión y Vitamina C en fórmulas de alta absorción
               — para piel más clara, firme y luminosa sin cremas ni tratamientos costosos. Formulado para el
               clima tropical de Panamá.
             </p>
-
-            <AggregateRatingBadge className="mt-4" />
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <LinkButton href="/kit-completo" size="lg">
@@ -75,21 +95,6 @@ export default function Home() {
                 <Sparkles className="h-4 w-4 text-mint-600" /> Grado Farmacéutico
               </span>
             </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <ProductVisual
-              emoji={products[0].emoji}
-              gradient={products[0].gradient}
-              images={products[0].images ? [products[0].images[0]] : undefined}
-              className="col-span-1"
-            />
-            <ProductVisual
-              emoji={products[1].emoji}
-              gradient={products[1].gradient}
-              images={products[1].images ? [products[1].images[0]] : undefined}
-              className="col-span-1"
-            />
           </div>
         </div>
       </Section>

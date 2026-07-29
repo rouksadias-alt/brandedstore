@@ -93,14 +93,14 @@ export function ProductLandingPage({ product }: { product: Product }) {
 
       {/* 1.5 Teaser de ofertas — atajo para compradores decididos */}
       <Section className="py-0 sm:py-0">
-        <div className="rounded-3xl border border-mint-100 bg-white p-4 shadow-sm sm:p-5">
-          <div className="grid grid-cols-3 gap-2 sm:gap-4">
+        <div className="rounded-3xl border border-mint-100 bg-white p-4 shadow-sm sm:p-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {product.pricingTiers.map((tier) => (
               <a
                 key={tier.id}
                 href="#oferta"
                 className={cn(
-                  "relative flex flex-col items-center gap-0.5 rounded-2xl border-2 px-2 py-3 text-center transition-all sm:px-4 sm:py-4",
+                  "relative flex flex-col rounded-2xl border-2 overflow-hidden transition-all",
                   tier.isFeatured
                     ? "border-mint-600 bg-mint-50"
                     : "border-black/10 bg-white hover:border-mint-300"
@@ -109,23 +109,37 @@ export function ProductLandingPage({ product }: { product: Product }) {
                 {tier.badge && (
                   <span
                     className={cn(
-                      "absolute -top-2.5 rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white sm:text-[10px]",
+                      "absolute top-2 left-1/2 -translate-x-1/2 z-10 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-white whitespace-nowrap",
                       tier.isFeatured ? "bg-sand-500" : "bg-mint-600"
                     )}
                   >
                     {tier.badge}
                   </span>
                 )}
-                <p className="mt-1 text-xs font-bold leading-tight text-ink sm:text-sm">{tier.label}</p>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-lg font-extrabold text-mint-700 sm:text-xl">
-                    {formatUSD(tier.price)}
-                  </span>
-                  {tier.compareAtPrice && (
-                    <span className="text-[11px] text-ink/50 line-through">
-                      {formatUSD(tier.compareAtPrice)}
+                {/* Image */}
+                {tier.image && (
+                  <div className="relative w-full aspect-square bg-gradient-to-br from-mint-50 to-sand-50">
+                    <img
+                      src={tier.image}
+                      alt={tier.label}
+                      className="w-full h-full object-contain p-3"
+                    />
+                  </div>
+                )}
+                {/* Info */}
+                <div className="p-3 text-center sm:p-4">
+                  <p className="text-sm font-bold leading-tight text-ink sm:text-base">{tier.label}</p>
+                  <p className="mt-0.5 text-xs text-ink/55">{tier.units}</p>
+                  <div className="mt-2 flex items-baseline justify-center gap-1">
+                    <span className="text-xl font-extrabold text-mint-700 sm:text-2xl">
+                      {formatUSD(tier.price)}
                     </span>
-                  )}
+                    {tier.compareAtPrice && (
+                      <span className="text-xs text-ink/50 line-through">
+                        {formatUSD(tier.compareAtPrice)}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </a>
             ))}

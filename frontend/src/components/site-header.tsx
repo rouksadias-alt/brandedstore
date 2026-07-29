@@ -7,9 +7,9 @@ import { LinkButton } from "@/components/ui/button";
 import { BUSINESS } from "@/lib/products";
 
 const NAV_LINKS = [
-  { href: "/roll-on", label: "Gel Crioactivo" },
-  { href: "/medias-compresion", label: "Medias" },
-  { href: "/bruma", label: "Bruma" },
+  { href: "/roll-on", label: "Colágeno + Glutatión" },
+  { href: "/medias-compresion", label: "5D Gluta" },
+  { href: "/bruma", label: "Colágeno Líquido" },
   { href: "/kit-completo", label: "Kit Completo" },
   { href: "/nosotros", label: "Nosotros" },
 ];
@@ -25,7 +25,7 @@ export function SiteHeader() {
             {BUSINESS.brand}
           </span>
           <span className="mt-0.5 hidden text-[10px] font-bold uppercase tracking-[0.15em] text-mint-600 sm:block">
-            Ciencia Circulatoria
+            Brilla desde adentro
           </span>
         </Link>
 

@@ -5,9 +5,9 @@ const columns = [
   {
     title: "Productos",
     links: [
-      { href: "/roll-on", label: "Gel Crioactivo" },
-      { href: "/medias-compresion", label: "Medias Compression 360°" },
-      { href: "/bruma", label: "Bruma Instantánea" },
+      { href: "/roll-on", label: "Colágeno + Glutatión" },
+      { href: "/medias-compresion", label: "5D Gluta Colágeno" },
+      { href: "/bruma", label: "Colágeno Líquido" },
       { href: "/kit-completo", label: "Kit Completo" },
     ],
   },
@@ -37,7 +37,7 @@ export function SiteFooter() {
           <div className="col-span-2 sm:col-span-1">
             <p className="font-display text-2xl font-semibold text-white">{BUSINESS.brand}</p>
             <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.15em] text-mint-300">
-              Ciencia Circulatoria
+              Brilla desde adentro
             </p>
             <p className="mt-3 text-sm leading-relaxed text-mint-200">
               Ingredientes de grado farmacéutico, formulados para el clima tropical de{" "}

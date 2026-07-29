@@ -374,7 +374,7 @@ export const checkoutOptions: CheckoutOption[] = [
     emoji: p.emoji,
     image: p.images?.[0],
     tiers: p.pricingTiers,
-    allowBump: p.slug !== "bruma",
+    allowBump: true,
   })),
   {
     slug: kitProduct.slug,

@@ -132,12 +132,6 @@ export const products: Product[] = [
     accent: "mint",
     emoji: "✨",
     images: ["/images/roll-on-1.webp", "/images/roll-on-2.webp", "/images/roll-on-3.webp", "/images/roll-on-4.webp"],
-    demoVideo: {
-      src: "/videos/roll-on-demo.mp4",
-      poster: "/images/roll-on-1.webp",
-      aspectRatio: "9/16",
-      caption: "Colágeno + Glutatión + Vitamina C — brilla desde adentro.",
-    },
     agitation: [
       "Te miras al espejo y ves manchas, tono desigual y una piel apagada que no refleja cómo te sientes por dentro.",
       "Has probado cremas caras que prometen aclarar manchas — y no ves diferencia después de meses.",
@@ -190,12 +184,6 @@ export const products: Product[] = [
     accent: "sand",
     emoji: "💎",
     images: ["/images/medias-1.webp", "/images/medias-2.webp", "/images/medias-3.webp", "/images/medias-4.webp", "/images/medias-5.webp"],
-    demoVideo: {
-      src: "/videos/medias-demo.mp4",
-      poster: "/images/medias-1.webp",
-      aspectRatio: "9/16",
-      caption: "5 tipos de colágeno — piel, cabello, uñas y articulaciones en un solo frasco.",
-    },
     agitation: [
       "Tu cabello cae más de lo normal y se ve sin brillo — aunque cuides tu alimentación.",
       "Tus uñas se rompen fácil y no crecen, sin importar cuántos tratamientos pruebas.",
@@ -243,12 +231,6 @@ export const kitProduct = {
   compareAtPrice: 112,
   images: ["/images/kit-completo-1.png"],
   includes: products.map((p) => p.shortName),
-  demoVideo: {
-    src: "/videos/kit-demo.mp4",
-    poster: "/images/kit-completo-1.png",
-    aspectRatio: "9/16" as const,
-    caption: "El ritual completo GLUTA: Colágeno + Glutatión, 5D Multi Colágeno y Colágeno Líquido.",
-  },
 };
 
 export type DuoOffer = {

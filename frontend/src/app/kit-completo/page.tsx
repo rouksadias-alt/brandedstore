@@ -28,13 +28,13 @@ const kitFaq = [
     answer: `Sí — comprado por separado suma ${formatUSD(separatePrice)}. El Kit Completo cuesta ${formatUSD(kitProduct.price)}, un ahorro real de ${formatUSD(separatePrice - kitProduct.price)}.`,
   },
   {
-    question: "¿Cómo uso los 3 productos juntos?",
+    question: "¿Cómo uso los 2 productos juntos?",
     answer:
-      "Gel en la mañana o al llegar del trabajo, Medias de Compresión durante el día activo, y Bruma en cualquier momento que sientas el 'bajón' de piernas — un ritual completo para cada momento del día.",
+      "Toma el Colágeno + Glutatión cada mañana para aclarar manchas y unificar el tono. Añade las cápsulas 5D Gluta para potenciar firmeza, cabello y uñas. Juntos forman el ritual de belleza interna más completo.",
   },
   {
     question: "¿Tiene la misma garantía que los productos individuales?",
-    answer: `Sí — Garantía de ${BUSINESS.guaranteeDays} días sobre todo el kit y Pago Contra Entrega, igual que cualquier producto LÉGER.`,
+    answer: `Sí — Garantía de ${BUSINESS.guaranteeDays} días sobre todo el kit y Pago Contra Entrega, igual que cualquier producto GLUTA.`,
   },
   {
     question: "¿Cómo pago?",
@@ -64,8 +64,8 @@ export default function KitCompletoPage() {
               {kitProduct.name}
             </h1>
             <p className="mt-5 text-lg leading-relaxed text-ink/70">
-              Un ritual completo para piernas ligeras todo el día: frío inmediato en la mañana,
-              compresión activa durante el día y refresco instantáneo en cualquier momento.
+                    El dúo más completo de belleza interna: Colágeno + Glutatión aclara manchas y unifica el tono,
+                    mientras el 5D Gluta cubre firmeza, cabello y uñas — juntos dan resultados que ninguno logra solo.
             </p>
 
             <AggregateRatingBadge className="mt-4" />
@@ -76,7 +76,7 @@ export default function KitCompletoPage() {
               </LinkButton>
               <div className="flex flex-col gap-0.5">
                 <span className="text-[11px] font-semibold uppercase tracking-wide text-mint-600">
-                  Los 3 productos juntos
+                  Los 2 productos juntos
                 </span>
                 <div className="flex items-baseline gap-2">
                   <span className="text-2xl font-extrabold text-mint-700">
@@ -112,7 +112,7 @@ export default function KitCompletoPage() {
 
       {/* Qué incluye */}
       <Section className="bg-mint-50/50">
-        <SectionHeading eyebrow="Qué incluye" title="Los 3 productos, un solo ritual" />
+        <SectionHeading eyebrow="Qué incluye" title="Los 2 productos, un solo ritual de belleza" />
         <div className="grid gap-5 sm:grid-cols-3">
           {products.map((p) => (
             <Link
@@ -148,15 +148,14 @@ export default function KitCompletoPage() {
 
       {/* Ritual del día */}
       <Section>
-        <SectionHeading eyebrow="Tu ritual diario" title="Un producto para cada momento del día" />
+        <SectionHeading eyebrow="Tu ritual diario" title="Dos fórmulas complementarias para belleza total" />
         {kitProduct.demoVideo && (
           <DemoVideo video={kitProduct.demoVideo} className="mb-10 sm:mb-12" />
         )}
-        <div className="grid gap-6 sm:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2">
           {[
-            { time: "Mañana", product: products[0], desc: "Aplica el Gel frío para empezar el día con piernas activas." },
-            { time: "Durante el día", product: products[1], desc: "Usa las Medias de Compresión en tu turno, oficina o viaje." },
-            { time: "Cuando lo necesites", product: products[2], desc: "Refresca al instante con la Bruma, sin manos libres." },
+            { time: "Manchas & Luminosidad", product: products[0], desc: "Colágeno + Glutatión aclara manchas, unifica el tono y da luminosidad desde adentro." },
+            { time: "Firmeza & Cobertura Total", product: products[1], desc: "5D Gluta cubre piel firme, cabello fuerte, uñas perfectas y articulaciones saludables." },
           ].map((step) => (
             <div key={step.time} className="rounded-2xl border border-mint-100 bg-white p-6 text-center">
               <p className="text-xs font-bold uppercase tracking-widest text-mint-600">{step.time}</p>
@@ -215,10 +214,10 @@ export default function KitCompletoPage() {
       <Section>
         <div className="mx-auto max-w-3xl rounded-3xl bg-mint-900 px-6 py-14 text-center text-white sm:px-14">
           <h2 className="font-display text-3xl font-semibold sm:text-4xl">
-            El ritual completo para piernas ligeras
+            El kit completo para brillar desde adentro
           </h2>
           <p className="mt-4 text-mint-100">
-            Únete a las +{BUSINESS.founderCount} mujeres que ya sienten sus piernas ligeras con {BUSINESS.brand}.
+            Únete a las +{BUSINESS.founderCount} mujeres que ya transformaron su piel con {BUSINESS.brand}.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3">
             <LinkButton href="/checkout?product=kit-completo&plan=kit" size="lg">

@@ -9,8 +9,6 @@ import { BUSINESS } from "@/lib/products";
 const NAV_LINKS = [
   { href: "/roll-on", label: "Colágeno + Glutatión" },
   { href: "/medias-compresion", label: "5D Gluta" },
-  { href: "/kit-completo", label: "Kit Completo" },
-  { href: "/nosotros", label: "Nosotros" },
 ];
 
 export function SiteHeader() {

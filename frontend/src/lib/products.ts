@@ -167,7 +167,6 @@ export const products: Product[] = [
     pricingTiers: [
       { id: "2x", label: "1 frasco — 1 mes", units: "30 días de uso", price: 39, isFeatured: true, image: "/images/roll-on-1.webp" },
       { id: "duo", label: "2 frascos — 2 meses", units: "Resultados óptimos", price: 49, compareAtPrice: 78, badge: "Ahorra $29", image: "/images/roll-on-2.webp" },
-      { id: "kit", label: "Kit 3 meses", units: "Transformación completa", price: 59, compareAtPrice: 117, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
     faq: [
       { question: "¿En cuánto tiempo veo resultados?", answer: "La mayoría nota la piel más hidratada y luminosa en la semana 1–2. Las manchas y el tono mejoran visiblemente entre la semana 3 y el mes 2 con uso constante." },
@@ -226,7 +225,6 @@ export const products: Product[] = [
     pricingTiers: [
       { id: "2x", label: "1 frasco — 1 mes", units: "30 días de uso", price: 39, isFeatured: true, image: "/images/medias-1.webp" },
       { id: "duo", label: "2 frascos — 2 meses", units: "Resultados completos", price: 49, compareAtPrice: 78, badge: "Ahorra $29", image: "/images/medias-2.webp" },
-      { id: "kit", label: "Kit 3 meses", units: "Transformación total", price: 59, compareAtPrice: 117, badge: "Mejor Valor", image: "/images/kit-completo-1.png" },
     ],
     faq: [
       { question: "¿Qué diferencia hay con el Colágeno + Glutatión?", answer: "El 5D Gluta incluye 5 tipos de colágeno y Ácido Hialurónico — es la fórmula más completa, ideal si quieres cubrir piel, cabello, uñas Y articulaciones al mismo tiempo." },

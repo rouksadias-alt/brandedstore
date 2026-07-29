@@ -7,7 +7,7 @@ import { LinkButton } from "@/components/ui/button";
 import { BUSINESS } from "@/lib/products";
 
 const NAV_LINKS = [
-  { href: "/roll-on", label: "Colágeno + Glutatión" },
+  { href: "/colageno-glutathion", label: "Colágeno + Glutatión" },
   { href: "/gluta-colageno", label: "5D Gluta" },
 ];
 

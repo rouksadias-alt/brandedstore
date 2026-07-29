@@ -119,7 +119,7 @@ export const testimonials: Testimonial[] = [
 
 export const products: Product[] = [
   {
-    slug: "roll-on",
+    slug: "colageno-glutathion",
     shortName: "Colágeno + Glutatión",
     fullName: "Colágeno Hidrolizado + L-Glutatión + Vitamina C — Piel Clara y Luminosa",
     tagline: "Piel más clara, luminosa y firme — desde adentro.",
@@ -258,7 +258,7 @@ export type DuoOffer = {
 // matching `app/<slug>/page.tsx` that renders <DuoLandingPage duo={...} />.
 export const duoOffers: DuoOffer[] = [
   {
-    slug: "bruma-rollon",
+    slug: "duo-gluta",
     title: "Colágeno + Glutatión + 5D Gluta",
     tagline: "El dúo más completo — piel clara, firme y luminosa desde adentro",
     heroHeadline: "Dos fórmulas, un solo objetivo: la piel que siempre quisiste",
@@ -269,15 +269,9 @@ export const duoOffers: DuoOffer[] = [
     badge: "Ahorra $29",
     emoji: "✨",
     gradient: "from-rose-100 via-pink-50 to-purple-50",
-    images: ["/images/duo-bruma-rollon.png"],
-    demoVideo: {
-      src: "/videos/duo-bruma-rollon-demo.mp4",
-      poster: "/images/duo-bruma-rollon.png",
-      aspectRatio: "9/16" as const,
-      caption: "Colágeno + Glutatión de día, 5D Gluta para cobertura total — el dúo perfecto.",
-    },
-    productSlugs: ["roll-on", "gluta-colageno"],
-    checkoutProductSlug: "roll-on",
+    images: ["/images/duo-gluta.png"],
+    productSlugs: ["colageno-glutathion", "gluta-colageno"],
+    checkoutProductSlug: "colageno-glutathion",
     checkoutPlanId: "duo",
     useCases: [
       {
@@ -319,8 +313,8 @@ export function getDuoOfferBySlug(slug: string): DuoOffer | undefined {
 // Post-purchase upsell: which product each "duo" plan is paired with, so we
 // know what's *not* included yet and worth offering on the thank-you page.
 const DUO_PAIR: Record<string, string> = {
-  "roll-on": "gluta-colageno",
-  "gluta-colageno": "roll-on",
+  "colageno-glutathion": "gluta-colageno",
+  "gluta-colageno": "colageno-glutathion",
 };
 
 export function getUpsellProducts(productSlug: string, planId: string | null): Product[] {

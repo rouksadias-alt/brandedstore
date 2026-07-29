@@ -18,7 +18,7 @@ export function CheckoutForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const initialProduct = searchParams.get("product") ?? "roll-on";
+  const initialProduct = searchParams.get("product") ?? "colageno-glutathion";
   const initialPlan = searchParams.get("plan");
   // When the customer lands on checkout from a specific product/duo/kit
   // page (i.e. the URL already has ?product=...), we lock the product so

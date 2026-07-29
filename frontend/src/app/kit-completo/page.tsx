@@ -4,7 +4,6 @@ import { ArrowRight, ShieldCheck, Truck, CheckCircle2 } from "lucide-react";
 import { LinkButton } from "@/components/ui/button";
 import { Section, SectionHeading, Eyebrow } from "@/components/ui/section";
 import { ProductVisual } from "@/components/product-visual";
-import { DemoVideo } from "@/components/demo-video";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
 import { AggregateRatingBadge } from "@/components/aggregate-rating-badge";
 import { ProductJsonLd } from "@/components/product-json-ld";
@@ -149,9 +148,6 @@ export default function KitCompletoPage() {
       {/* Ritual del día */}
       <Section>
         <SectionHeading eyebrow="Tu ritual diario" title="Dos fórmulas complementarias para belleza total" />
-        {kitProduct.demoVideo && (
-          <DemoVideo video={kitProduct.demoVideo} className="mb-10 sm:mb-12" />
-        )}
         <div className="grid gap-6 sm:grid-cols-2">
           {[
             { time: "Manchas & Luminosidad", product: products[0], desc: "Colágeno + Glutatión aclara manchas, unifica el tono y da luminosidad desde adentro." },
